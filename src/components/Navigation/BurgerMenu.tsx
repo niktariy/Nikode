@@ -6,10 +6,10 @@ interface BurgerMenuProps {
   onToggle: () => void;
 }
 
-const spacing = 10; //px
-const height = 28; //px
-const width = 36; //px
-const bunHeight = (3 * spacing - height) * 2; // (length($burger_buns) * $spacing - $height) * 2 - hardcoded 3 buns
+const spacing = 8; //px
+const height = 24; //px
+const width = 28; //px
+const bunHeight = 3; // px
 
 // Keyframes
 const bunTopOut = keyframes`
@@ -75,44 +75,44 @@ const bunBotIn = keyframes`
 const bunFillIn = keyframes`
   0% {
     width: 0;
-    left: ${width - bunHeight}px;
+    right: 0;
   }
   40% {
     width: 0;
-    left: 40px;
+    right: ${width * -1}px;
   }
   80% {
     width: ${width - bunHeight}px;
-    left: -6px;
+    right: 6px;
   }
   100% {
     width: ${width - bunHeight}px;
-    left: 0;
+    right: 0;
   }
 `;
 
 const bunFillOut = keyframes`
   0% {
     width: ${width - bunHeight}px;
-    left: 0;
+    right: 0;
   }
   20% {
     width: 42px;
-    left: -6px;
+    right: 6px;
   }
   40% {
     width: 0;
-    left: 40px;
+    right: -40px;
   }
   100% {
     width: 0;
-    left: ${width - bunHeight}px;
+    right: ${width - bunHeight}px;
   }
 `;
 
 const StyledBurger = styled.div`
   width: ${width + 2 * spacing}px;
-  height: ${height + 3 * spacing}px;
+  height: ${height + 2 * spacing}px;
   display: none; // Default to none, then show on mobile
   position: relative;
   padding: ${1.5 * spacing}px ${spacing}px;
@@ -130,8 +130,6 @@ const StyledBurger = styled.div`
   }
 
   .burger__buns {
-    width: ${width}px;
-    height: ${height}px;
     position: relative;
   }
 

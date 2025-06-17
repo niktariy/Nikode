@@ -12,6 +12,16 @@ const StyledGroup = styled.div`
   gap: ${({ theme }) => theme.spacing(2)};
   margin-top: ${({ theme }) => theme.spacing(3)};
   
+  @media (${({ theme }) => theme.breakpoints.lg} > width >= ${({ theme }) => theme.breakpoints.sm}) {
+    max-width: 60%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    & > * {
+      flex:1 
+    } 
+  }
+  
   @media (width > ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: row;
     gap: ${({ theme }) => theme.spacing(3)};
