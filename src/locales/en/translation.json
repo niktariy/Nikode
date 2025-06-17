@@ -1,0 +1,20 @@
+{
+  "welcome": "Welcome to the React App!",
+  "toggle_theme": "Toggle Theme",
+  "toggle_language": "Toggle Language",
+  "current_language": "Current Language: English",
+  "navigation": {
+    "home": "Home",
+    "about": "About Me",
+    "mentoring": "Mentoring",
+    "development": "Development",
+    "portfolio": "Portfolio",
+    "logo_aria_label": "Open Home page"
+  },
+  "home": {
+    "title": "Frontend Developer",
+    "desc": "Hello! My name is <strong>Veronika Khalikova</strong>.<br/><br/>I am a <strong>design-oriented</strong> frontend developer with a keen eye for details and extensive experience in implementing design layouts. My main focus is on <strong>React (TypeScript)</strong>, but I feel comfortable with Vue and Angular as well.",
+    "CTA_portfolio": "View portfolio",
+    "CTA_mentoring": "About mentoring"
+  }
+}
