@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '../../store';
 import { Dropdown, StyledDropdownOption } from '../UI/Dropdown/Dropdown';
-import { setLanguage } from '../../store/languageSlice';
 
 const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
-  const dispatch = useDispatch();
-  const { currentLanguage } = useSelector((state: RootState) => state.language);
+  // const dispatch = useDispatch();
+  const [currentLng, setCurrentLng] = useState(i18n.language);
   const [isOpen, setIsOpen] = useState(false);
 
-  // Синхронизируем i18n с состоянием Redux
-  useEffect(() => {
-    if (i18n.language !== currentLanguage) {
-      i18n.changeLanguage(currentLanguage);
-    }
-  }, [currentLanguage, i18n]);
-
-  const handleLanguageChange = (lang: 'en' | 'ru') => {
-    dispatch(setLanguage(lang));
+  const handleLanguageChange = async (lang: 'en' | 'ru') => {
+    await i18n.changeLanguage(lang);
+    setCurrentLng(i18n.language);
     setIsOpen(false);
   };
 
@@ -27,12 +18,12 @@ const LanguageSwitcher: React.FC = () => {
     <Dropdown
       isOpen={isOpen}
       setIsOpen={setIsOpen}
-      triggerLabel={currentLanguage.toUpperCase()}
+      triggerLabel={currentLng.toUpperCase()}
       triggerAriaLabel={i18n.t('toggle_language') + '. ' + i18n.t('current_language')}
     >
       <li>
         <StyledDropdownOption
-          $isActive={currentLanguage === 'en'}
+          $isActive={currentLng === 'en'}
           onClick={() => handleLanguageChange('en')}
         >
           EN
@@ -40,7 +31,7 @@ const LanguageSwitcher: React.FC = () => {
       </li>
       <li>
         <StyledDropdownOption
-          $isActive={currentLanguage === 'ru'}
+          $isActive={currentLng === 'ru'}
           onClick={() => handleLanguageChange('ru')}
         >
           RU

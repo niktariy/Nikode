@@ -1,5 +1,5 @@
-import { t } from 'i18next';
 import React, { useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import NavLink from './NavLink';
 
@@ -49,6 +49,7 @@ const LinkUnderline = styled.span.withConfig({
 `;
 
 const Nav: React.FC<NavProps> = ({ routes }) => {
+  const { t } = useTranslation();
   const [underlineWidth, setUnderlineWidth] = useState(0);
   const [underlineLeft, setUnderlineLeft] = useState(0);
   const [isHovered, setIsHovered] = useState(false);

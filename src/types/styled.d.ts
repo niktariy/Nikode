@@ -35,6 +35,7 @@ export type LinkColors = {
 }
 
 export type ShadowElevation = {
+  flat: string;
   xs: string;
   sm: string;
   md: string;

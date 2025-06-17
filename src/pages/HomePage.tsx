@@ -1,13 +1,13 @@
 import React from 'react';
 import Button from '../components/UI/Button/Button';
-import { t } from 'i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import BaseHeroSection from '../components/UI/BaseHeroSection';
 import type { RootState } from '../store';
 import { useSelector } from 'react-redux';
 import ButtonGroup from '../components/ButtonGroup/ButtonGroup';
-import { Trans } from 'react-i18next/TransWithoutContext';
 
 const HomePage: React.FC = () => {
+  const { t } = useTranslation();
   const selectCurrentTheme = (state: RootState) => state.theme.currentTheme;
   const isDarkTheme = useSelector(selectCurrentTheme) === 'dark';
 

@@ -15,20 +15,20 @@ const StyledDropdownButton = styled(Button)`
   gap: ${({ theme }) => theme.spacing(0.5)};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.radii.pill};
-  background-color: ${({ theme }) => theme.colors.header};
   cursor: pointer;
   font-size: 0.9rem;
   color: ${({ theme }) => theme.colors.text};
   outline: none;
+  box-shadow: 0 0 0 transparent;
   transition: border-color 0.2s, box-shadow 0.2s;
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: ${({ theme }) => theme.shadow.elevation.flat} ${({ theme }) => theme.shadow.color.main};
   }
 
   &[aria-expanded="true"] {
     border-color: ${({ theme }) => theme.colors.primary};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.shadow.color.accent};
   }
 
   & svg {
@@ -44,8 +44,9 @@ const StyledDropdownContent = styled.ul`
   left: 0;
   background-color: ${({ theme }) => theme.colors.body};
   border-radius: ${({ theme }) => theme.radii.base};
-  box-shadow: 0 4px 8px ${({ theme }) => theme.shadow.color.main};
-  min-width: 10rem;
+  box-shadow: ${({ theme }) => theme.shadow.elevation.md} ${({ theme }) => theme.shadow.color.main};
+  min-width: 6rem;
+  width: max-content;
   z-index: ${({ theme }) => theme.zIndex.popover};
   padding: ${({ theme }) => theme.spacing(1)};
   list-style: none;

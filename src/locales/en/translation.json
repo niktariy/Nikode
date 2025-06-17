@@ -16,5 +16,21 @@
     "desc": "Hello! My name is <strong>Veronika Khalikova</strong>.<br/><br/>I am a <strong>design-oriented</strong> frontend developer with a keen eye for details and extensive experience in implementing design layouts. My main focus is on <strong>React (TypeScript)</strong>, but I feel comfortable with Vue and Angular as well.",
     "CTA_portfolio": "View portfolio",
     "CTA_mentoring": "About mentoring"
+  },
+  "about": {
+    "title": "Veronika Khalikova",
+    "description": "Senior UI/UX Developer. I possess a keen eye for detail, capable of precisely implementing design layouts and effectively solving complex layout tasks."
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "description": "My works will be here."
+  },
+  "development": {
+    "title": "Development",
+    "description": "Information about development will be here."
+  },
+  "mentoring": {
+    "title": "Mentoring",
+    "description": "Information about mentoring will be here."
   }
 }

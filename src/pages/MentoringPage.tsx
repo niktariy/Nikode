@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 const PageContainer = styled.div`
   padding: var(--spacing-xxl) var(--spacing-md);
@@ -7,10 +8,11 @@ const PageContainer = styled.div`
 `;
 
 const MentoringPage: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <PageContainer>
-      <h1>Менторство</h1>
-      <p>Здесь будет информация о менторстве.</p>
+      <h1>{t('mentoring.title')}</h1>
+      <p>{t('mentoring.description')}</p>
     </PageContainer>
   );
 };

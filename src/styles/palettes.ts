@@ -85,6 +85,7 @@ export const palette = {
 
 export const shadow = {
   elevation: {
+    flat: '0 0 0 3px',
     xs: '0 0 4px',
     sm: '0 2px 8px',
     md: '0 4px 16px',

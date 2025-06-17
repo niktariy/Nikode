@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import BaseSection from '../components/UI/BaseSection';
-
+import { useTranslation } from 'react-i18next';
 
 const AboutMePage: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <>
-      <BaseSection title='Veronika Khalikova' description='Senior UI/UX Developer. Обладаю острым вниманием к деталям, способна точно воплощать дизайнерские макеты и эффективно решать сложные задачи вёрстки.' />
+      <BaseSection title={t('about.title')} description={t('about.description')} />
     </>
   );
 };

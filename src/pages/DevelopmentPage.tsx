@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 const PageContainer = styled.div`
   padding: var(--spacing-xxl) var(--spacing-md);
@@ -7,10 +8,11 @@ const PageContainer = styled.div`
 `;
 
 const DevelopmentPage: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <PageContainer>
-      <h1>Разработка</h1>
-      <p>Здесь будет информация о разработке.</p>
+      <h1>{t('development.title')}</h1>
+      <p>{t('development.description')}</p>
     </PageContainer>
   );
 };

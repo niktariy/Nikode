@@ -1,5 +1,5 @@
-import { t } from 'i18next';
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Nav from '../Navigation/Nav';
@@ -42,12 +42,13 @@ const LogoLink = styled(Link)`
 const NavContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(4)};
+  gap: ${({ theme }) => theme.spacing(2)};
 `;
 
 const Divider = styled.span`
   width: 2px;
   height: 24px;
+  margin: 0 ${({ theme }) => theme.spacing(2)};
   background-color: ${({ theme }) => theme.colors.text};
 `;
 
@@ -77,6 +78,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ currentTheme, onThemeChange }) => {
+  const { t } = useTranslation();
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef<HTMLElement>(null);

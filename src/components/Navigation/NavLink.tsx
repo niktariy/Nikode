@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const StyledNavLink = styled(Link)`
   color: ${({ theme }) => theme.colors.link.neutral.default};
+  font-family: ${({ theme }) => theme.fonts.monospace};
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.5;
