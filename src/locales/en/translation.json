@@ -12,10 +12,10 @@
     "logo_aria_label": "Open Home page"
   },
   "home": {
-    "title": "Frontend Developer",
-    "desc": "Hello! My name is <strong>Veronika</strong>.<br/><br/>I am a <strong>design-oriented</strong> frontend developer with a keen eye for details and extensive experience in implementing design layouts.<br/> My main focus is on <strong>React (TypeScript)</strong>, but I feel comfortable with Vue and Angular as well.",
+    "title": "Hi, I'm Veronika 👋🏻<br/>Frontend developer <br/><small>& UX Enthusiast</small>",
+    "desc": "<p>Yes, I'm that person who opens Figma and isn't scared.</p><p>I transform layouts into clean, adaptive markup — so everything looks right in Chrome, Safari, and even IE (just kidding, no one looks at IE anymore... I hope).</p><p>My main focus is <strong>React (TypeScript)</strong>, but I also comfortably work with Vue and Angular.",
     "CTA_portfolio": "View portfolio",
-    "CTA_mentoring": "About mentoring"
+    "CTA_contact": "Invite to a project"
   },
   "about": {
     "title": "Veronika Khalikova",

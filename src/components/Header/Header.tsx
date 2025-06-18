@@ -94,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({ currentTheme, onThemeChange }) => {
   };
 
   const routes = [
-    { path: '/about', label: 'navigation.about' },
+    { path: '/', label: 'navigation.about' },
     { path: '/mentoring', label: 'navigation.mentoring' },
     { path: '/development', label: 'navigation.development' },
     { path: '/portfolio', label: 'navigation.portfolio' },

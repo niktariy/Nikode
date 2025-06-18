@@ -15,13 +15,17 @@ const StyledTypography = styled.p.attrs<{
   color: ${({ theme, $variant }) => $variant !== 'p' ? theme.colors.headline : theme.colors.text};
   line-height: 1.5;
 
-  ${({ $variant }) => {
+  ${({ theme, $variant }) => {
     switch ($variant) {
       case 'h1':
         return `
           font-size: 3.5em;
           font-weight: 700;
           line-height: 1.2;
+
+          small {
+            color: ${theme.colors.primary};
+          }
         `;
       case 'h2':
         return `

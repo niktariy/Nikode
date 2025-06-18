@@ -9,7 +9,6 @@ import { setTheme, type Theme } from './store/themeSlice';
 import ThemeInitializer from './components/ThemeInitializer/ThemeInitializer';
 
 import HomePage from './pages/HomePage';
-import AboutMePage from './pages/AboutMePage';
 import MentoringPage from './pages/MentoringPage';
 import DevelopmentPage from './pages/DevelopmentPage';
 import PortfolioPage from './pages/PortfolioPage';
@@ -33,7 +32,6 @@ const App: React.FC = () => {
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutMePage />} />
             <Route path="/mentoring" element={<MentoringPage />} />
             <Route path="/development" element={<DevelopmentPage />} />
             <Route path="/portfolio" element={<PortfolioPage />} />

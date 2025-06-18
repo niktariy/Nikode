@@ -1,6 +1,18 @@
-import React, { type ReactNode } from 'react';
+import React, { useState, useEffect, type ReactNode } from 'react';
 import styled from 'styled-components';
 import Typography from './Typography/Typography';
+
+const DescriptionWrapper = styled.div`
+  p {
+    margin-bottom: ${({ theme }) => theme.spacing(1)};
+    font-size: 1.2em;
+    line-height: 1.5;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+`;
 
 interface IllustrationPaths {
   png1x: string;
@@ -10,7 +22,7 @@ interface IllustrationPaths {
 }
 
 interface BaseHeroSectionProps {
-  title: string;
+  title: string | ReactNode;
   description?: string | ReactNode;
   actions?: ReactNode;
   illustration: IllustrationPaths;
@@ -70,20 +82,41 @@ const BaseHeroSection: React.FC<BaseHeroSectionProps> = ({
   actions,
   illustration,
 }) => {
+  const [currentIllustration, setCurrentIllustration] = useState(illustration.png1x);
+  const fallbackImage = illustration.png1x;
+
+  useEffect(() => {
+    setCurrentIllustration(illustration.webp2x);
+  }, [illustration.webp2x]);
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    if ((e.target as HTMLImageElement).src !== fallbackImage) {
+      setCurrentIllustration(fallbackImage);
+    }
+  };
+
   return (
     <StyledSection>
       <div className="container">
         <ContentWrapper>
           <HeroSectionHeader>
             <Typography variant="h1">{title}</Typography>
-            {description && <Typography variant="p">{description}</Typography>}
+            {description && (
+              <DescriptionWrapper>
+                {typeof description === 'string' ? (
+                  <Typography variant="p">{description}</Typography>
+                ) : (
+                  description
+                )}
+              </DescriptionWrapper>
+            )}
             {actions && actions}
           </HeroSectionHeader>
           <ImageWrapper>
             <picture>
-              <source type="image/webp" srcSet={`${illustration.webp1x} 1x, ${illustration.webp2x} 2x`} />
-              <source type="image/png" srcSet={`${illustration.png1x} 1x, ${illustration.png2x} 2x`} />
-              <img src={illustration.png1x} alt={title} />
+              <source type="image/webp" src={currentIllustration} srcSet={`${illustration.webp1x} 1x, ${illustration.webp2x} 2x`} />
+              <source type="image/png" src={currentIllustration} srcSet={`${illustration.png1x} 1x, ${illustration.png2x} 2x`} />
+              <img src={currentIllustration} alt={title?.toString()} onError={handleImageError} />
             </picture>
           </ImageWrapper>
         </ContentWrapper>
