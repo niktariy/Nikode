@@ -47,6 +47,11 @@ export type ShadowColor = {
   accent?: string | null;
 };
 
+export type TimingFunctions = {
+  easeInOutQuart: string;
+  easeOutExpo: string;
+};
+
 declare module 'styled-components' {
   export interface DefaultTheme {
     mode: 'light' | 'dark';
@@ -120,7 +125,7 @@ declare module 'styled-components' {
     };
     breakpoints: Breakpoints;
     transition: {
-      timingFunc: string;
+      timingFunc: TimingFunctions;
       durationBase: string;
     };
     baseSpacing: number;

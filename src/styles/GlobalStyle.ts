@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.colors.text};
     transition-property: background-color, color;
     transition-duration: ${({ theme }) => theme.transition.durationBase};
-    transition-timing-function: ${({ theme }) => theme.transition.timingFunc};
+    transition-timing-function: ${({ theme }) => theme.transition.timingFunc.easeInOutQuart};
   }
 
   #root {

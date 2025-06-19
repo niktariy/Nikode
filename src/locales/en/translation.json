@@ -32,5 +32,98 @@
   "mentoring": {
     "title": "Mentoring",
     "description": "Information about mentoring will be here."
+  },
+  "skills": {
+    "title": "What's in my toolkit?",
+    "desc": "Aside from a strong mind and a stockpile of coffee",
+    "markup": {
+      "title": "Core strength — layout and styles",
+      "html_css": {
+        "title": "HTML + CSS",
+        "description": "Layout isn't just a bunch of tags — it's engineering. I work with HTML and CSS contextually. Use custom properties for themes, scalability, and clarity. Media queries aren't just for breakpoints: I adapt to `hover`, `prefers-color-scheme`, and other subtle cases."
+      },
+      "preprocessors": {
+        "title": "CSS Preprocessors",
+        "description": "Deep knowledge of Sass/SCSS: variables, functions, `@if`, `@extend`, placeholder selectors. I write scalable, DRY code without chaos — easy to work with, pleasant to read. Can switch to Less or Stylus when needed, no panic."
+      },
+      "bem_semantics": {
+        "title": "BEM + Semantics",
+        "description": "Readable code is my thing. BEM brings order, semantics bring meaning. HTML isn't just for looks — it's for screen readers to say ‘well done’ too."
+      },
+      "storybook": {
+        "title": "Storybook",
+        "description": "I don't just build components — I document them. Storybook is my mirror: it reveals all the nuances. Useful for design, QA, and common sense. \"Where can I see it?\" — not a question I hear often."
+      },
+      "css_modules": {
+        "title": "CSS Modules",
+        "description": "Scoped styles at the component level — no global mess. Great for scalable architecture and teamwork."
+      },
+      "css_in_js": {
+        "title": "CSS-in-JS (Styled Components)",
+        "description": "Theming, dynamics, conditions — all inside the component. No file-jumping or class juggling. Styled Components / Emotion — practiced, not just read about."
+      }
+    },
+    "uiux": {
+      "title": "UI sensitivity & UX awareness",
+      "responsive_crossbrowser": {
+        "title": "Responsive & Cross-Browser",
+        "description": "I code for reality, not ideal mockups. Consider retina, breakpoints, unusual DPIs, and Safari's quirks. I catch edge cases before QA does."
+      },
+      "a11y": {
+        "title": "Accessibility (a11y)",
+        "description": "I follow WCAG in practice. Use ARIA attributes and roles properly. Test with screen readers (NVDA, VoiceOver), keyboard nav, and visible focus. Consider user settings (`prefers-reduced-motion`, `hover`, etc.) and build barrier-free interfaces."
+      },
+      "interactivity": {
+        "title": "Interactivity",
+        "description": "I know when interactivity helps and when it just gets in the way. Navigation, hovers, clicks — nothing extra. Behavior is predictable — not boring, just logical."
+      },
+      "animations": {
+        "title": "Animations",
+        "description": "I’ve built microinteractions and complex timeline animations. CSS for lightweight reactions, GSAP for choreography. Motion guides the eye — not just for aesthetics. And yes, I know when to ease off to avoid motion sickness."
+      },
+      "figma": {
+        "title": "Figma",
+        "description": "I read mockups without chanting. Understand auto layout, components, constraints — and don’t get lost in layers. Spot contradictions, clarify behaviors — turn mockups into dev-friendly UIs."
+      },
+      "ui_libs": {
+        "title": "UI Libraries (MUI, AntD, CDS, etc.)",
+        "description": "I know UI libraries beyond their docs. Read their source code — understand slots, theming, styled API, internal hooks, overrides. That helps me integrate them cleanly, without hacks or bugs."
+      },
+      "ui_kit": {
+        "title": "UI Kit — not holy scripture",
+        "description": "I study UI Kits critically: spot missing states, mismatched spacing. I clarify, patch gaps with the designer, and adapt for real-world behavior."
+      }
+    },
+    "code": {
+      "title": "Frontend tools at hand",
+      "javascript": {
+        "title": "JavaScript (ES6+)",
+        "description": "Work with the DOM and events consciously — I bring interfaces to life intentionally. Base JS is solid; frameworks come as needed."
+      },
+      "typescript": {
+        "title": "TypeScript",
+        "description": "I design types up front — from basic props to complex generics and utility types. TS helps keep the project sane — not overkill, just good insurance."
+      },
+      "react": {
+        "title": "React",
+        "description": "React isn’t just a library — it’s a mindset. State, effects, memoization — all in the right place and for a reason."
+      },
+      "vue": {
+        "title": "Vue",
+        "description": "Vue is for when things need to be quick and light. I understand reactivity and know how not to mess it up with templates."
+      },
+      "angular": {
+        "title": "Angular",
+        "description": "Angular isn’t for everyone — but we’re on polite terms. Components, services, DI — no fear when you get the architecture."
+      },
+      "tooling": {
+        "title": "Linters & Code Style",
+        "description": "Set up ESLint, Prettier, Stylelint — tailored to team workflows. Clean code style = a stable project. Automated checks keep the brain free for logic."
+      }
+    }
+  },
+  "social_links": {
+    "github": "https://github.com/your-github-profile",
+    "figma": "https://www.figma.com/@your-figma-profile"
   }
 }

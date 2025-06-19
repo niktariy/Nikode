@@ -15,7 +15,10 @@ const commonStyles = {
     xl: '1500px',
   },
   transition: {
-    timingFunc: 'cubic-bezier(0.4, 0, 0.2, 1)',
+    timingFunc: {
+      easeInOutQuart: 'cubic-bezier(0.77,0,0.175,1)',
+      easeOutExpo: 'cubic-bezier(0.19,1,0.22,1)',
+    },
     durationBase: '280ms',
   },
   baseSpacing: 8,

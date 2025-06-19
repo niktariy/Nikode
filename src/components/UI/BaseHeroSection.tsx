@@ -5,7 +5,7 @@ import Typography from './Typography/Typography';
 const DescriptionWrapper = styled.div`
   p {
     margin-bottom: ${({ theme }) => theme.spacing(1)};
-    font-size: 1.2em;
+    font-size: 1.25em;
     line-height: 1.5;
 
     &:last-child {

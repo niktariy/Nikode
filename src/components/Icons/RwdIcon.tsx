@@ -1,0 +1,29 @@
+import React from 'react';
+
+interface RwdIconProps {
+  color?: string;
+}
+
+const RwdIcon: React.FC<RwdIconProps> = ({ color = 'currentColor' }) => (
+  <svg width="144" height="144" viewBox="0 0 144 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fillRule="evenodd" clipRule="evenodd" d="M64.5 83.25C63.6716 83.25 63 83.9216 63 84.75C63 85.5784 63.6716 86.25 64.5 86.25H71.5C72.3284 86.25 73 85.5784 73 84.75C73 83.9216 72.3284 83.25 71.5 83.25H64.5Z" fill={color} />
+    <path fillRule="evenodd" clipRule="evenodd" d="M82 99.75C82.3977 99.7504 82.779 99.9086 83.06 100.19L89.06 106.19C89.3434 106.47 89.5029 106.852 89.5029 107.25C89.5029 107.648 89.3434 108.03 89.06 108.31C88.4744 108.895 87.5256 108.895 86.94 108.31L81.38 102.75H54.62L49.06 108.31C48.469 108.861 47.548 108.844 46.9768 108.273C46.4055 107.702 46.3893 106.781 46.94 106.19L52.94 100.19C53.221 99.9086 53.6023 99.7504 54 99.75H58.73L60.15 91.25H31C29.3431 91.25 28 89.9069 28 88.25V38.25C28 36.5931 29.3431 35.25 31 35.25H105C106.657 35.25 108 36.5931 108 38.25V48.25H105V38.25H31V78.25H89V81.25H31V88.25H89V91.25H75.85L77.27 99.75H82ZM72.81 91.25H63.19L61.77 99.75H74.23L72.81 91.25Z" fill={color} />
+    <path fillRule="evenodd" clipRule="evenodd" d="M95 51.25H121C122.657 51.25 124 52.5931 124 54.25V104.25C124 105.907 122.657 107.25 121 107.25H95C93.3431 107.25 92 105.907 92 104.25V54.25C92 52.5931 93.3431 51.25 95 51.25ZM95 104.25H121V97.25H95V104.25ZM121 94.25H95V64.25H121V94.25ZM95 61.25H121V54.25H95V61.25Z" fill={color} />
+    <path fillRule="evenodd" clipRule="evenodd" d="M104.5 59.25H111.5C112.328 59.25 113 58.5784 113 57.75C113 56.9216 112.328 56.25 111.5 56.25H104.5C103.672 56.25 103 56.9216 103 57.75C103 58.5784 103.672 59.25 104.5 59.25V59.25Z" fill={color} />
+    <rect x="104.317" y="82.6094" width="11" height="3" transform="rotate(-65 104.317 82.6094)" fill={color} />
+    <path fillRule="evenodd" clipRule="evenodd" d="M115.17 84.1901L119.17 79.1901C119.612 78.6411 119.612 77.859 119.17 77.3101L115.17 72.3101L112.83 74.1901L116.08 78.2501L112.83 82.3101L115.17 84.1901Z" fill={color} />
+    <path fillRule="evenodd" clipRule="evenodd" d="M100.83 84.1901L103.17 82.3101L99.9201 78.2501L103.17 74.1901L100.83 72.3101L96.8301 77.3101C96.3887 77.859 96.3887 78.6411 96.8301 79.1901L100.83 84.1901Z" fill={color} />
+    <path fillRule="evenodd" clipRule="evenodd" d="M108 102.25C108.828 102.25 109.5 101.578 109.5 100.75C109.5 99.9216 108.828 99.25 108 99.25C107.172 99.25 106.5 99.9216 106.5 100.75C106.5 101.578 107.172 102.25 108 102.25Z" fill={color} />
+    <rect x="39" y="53.25" width="12" height="3" fill={color} />
+    <rect x="53" y="53.25" width="35" height="3" fill={color} />
+    <rect x="39" y="60.25" width="21" height="3" fill={color} />
+    <rect x="62" y="60.25" width="26" height="3" fill={color} />
+    <rect x="39" y="67.25" width="21" height="3" fill={color} />
+    <rect x="62" y="67.25" width="16" height="3" fill={color} />
+    <rect x="39" y="46.25" width="3" height="3" fill={color} />
+    <rect x="44" y="46.25" width="3" height="3" fill={color} />
+    <rect x="49" y="46.25" width="3" height="3" fill={color} />
+  </svg>
+);
+
+export default RwdIcon; 

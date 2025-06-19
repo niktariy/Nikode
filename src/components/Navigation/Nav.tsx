@@ -42,7 +42,7 @@ const LinkUnderline = styled.span.withConfig({
   will-change: width, left, transform;
   transition-property: width, left, transform;
   transition-duration: ${({ theme }) => theme.transition.durationBase};
-  transition-timing-function: ${({ theme }) => theme.transition.timingFunc};
+  transition-timing-function: ${({ theme }) => theme.transition.timingFunc.easeInOutQuart};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: none;

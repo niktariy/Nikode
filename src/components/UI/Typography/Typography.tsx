@@ -11,8 +11,7 @@ const StyledTypography = styled.p.attrs<{
   $variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   $style?: 'accent' | 'caption';
 }>(props => ({ $variant: props.$variant || 'p' }))`
-  font-family: ${({ theme }) => theme.fonts.primary};
-  color: ${({ theme, $variant }) => $variant !== 'p' ? theme.colors.headline : theme.colors.text};
+  color: ${({ theme, $variant }) => $variant !== 'p' ? `var(--title-color, ${theme.colors.headline})` : 'inherit'};
   line-height: 1.5;
 
   ${({ theme, $variant }) => {
@@ -22,7 +21,6 @@ const StyledTypography = styled.p.attrs<{
           font-size: 3.5em;
           font-weight: 700;
           line-height: 1.2;
-
           small {
             color: ${theme.colors.primary};
           }
@@ -35,7 +33,7 @@ const StyledTypography = styled.p.attrs<{
         `;
       case 'h3':
         return `
-          font-size: 2em;
+          font-size: 1.875em;
           font-weight: 600;
           line-height: 1.4;
         `;

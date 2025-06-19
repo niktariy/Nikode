@@ -14,7 +14,7 @@ const StyledNavLink = styled(Link) <{ $isActive: boolean }>`
   padding: ${({ theme }) => theme.spacing(1)} 0;
   transition-property: color, font-weight;
   transition-duration: ${({ theme }) => theme.transition.durationBase};
-  transition-timing-function: ${({ theme }) => theme.transition.timingFunc};
+  transition-timing-function: ${({ theme }) => theme.transition.timingFunc.easeInOutQuart};
 
   &:hover {
     color: ${({ theme }) => theme.colors.link.neutral.hover};

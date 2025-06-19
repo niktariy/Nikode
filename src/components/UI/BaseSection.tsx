@@ -16,19 +16,24 @@ const SectionContainer = styled.section`
   color: var(--color-text);
 `;
 
-const SectionWrapper = styled.div`
+const SectionWrapper = styled.div<{ $contentDirection?: 'row' | 'column' }>`
   display: flex;
+  flex-direction: ${({ $contentDirection }) => $contentDirection || 'column'};
+  gap: ${({ theme }) => theme.spacing(10)};
 `;
 
-const SectionHeader = styled.header<{ centered?: boolean }>`
-  ${(props) => props.centered && `
+const SectionHeader = styled.header<{ $centered?: boolean }>`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(3)};
+  ${(props) => props.$centered && `
     text-align: center;
   `}
 `;
 
-const CustomContentWrapper = styled.div`
-  margin-top: ${({ theme }) => theme.spacing(12)};
-`;
+const StyledDescription = styled(Typography)`
+  font-size: 1.25em;
+`
 
 const BaseSection: React.FC<BaseSectionProps> = ({
   title,
@@ -39,9 +44,9 @@ const BaseSection: React.FC<BaseSectionProps> = ({
   children,
 }) => {
   const BaseSectionHeader = () => (
-    <SectionHeader centered={centered}>
+    <SectionHeader $centered={centered}>
       <Typography variant="h2">{title}</Typography>
-      {description && <Typography variant="p">{description}</Typography>}
+      {description && <StyledDescription variant='p'>{description}</StyledDescription>}
       {actions && actions}
     </SectionHeader>
   );
@@ -49,18 +54,10 @@ const BaseSection: React.FC<BaseSectionProps> = ({
   return (
     <SectionContainer>
       <div className="container">
-        {halfContent ? (
-          <SectionWrapper>
-            <BaseSectionHeader />
-            {children && <CustomContentWrapper>{children}</CustomContentWrapper>}
-          </SectionWrapper>
-        ) : (
-          <>
-            <BaseSectionHeader />
-            {children && <CustomContentWrapper>{children}</CustomContentWrapper>}
-          </>
-        )
-        }
+        <SectionWrapper $contentDirection={halfContent ? 'row' : 'column'}>
+          <BaseSectionHeader />
+          {children && <div>{children}</div>}
+        </SectionWrapper>
       </div>
     </SectionContainer>
   );

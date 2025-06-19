@@ -36,7 +36,7 @@ const StyledButton = styled.button.attrs<{
   will-change: background-color, color, box-shadow;
   transition-property: background-color, color, box-shadow;
   transition-duration: ${({ theme }) => theme.transition.durationBase};
-  transition-timing-function: ${({ theme }) => theme.transition.timingFunc};
+  transition-timing-function: ${({ theme }) => theme.transition.timingFunc.easeInOutQuart};
 
   ${({ theme, $variant }) => {
     switch ($variant) {
