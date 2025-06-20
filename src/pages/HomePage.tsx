@@ -6,9 +6,19 @@ import type { RootState } from '../store';
 import { useSelector } from 'react-redux';
 import ButtonGroup from '../components/ButtonGroup/ButtonGroup';
 import styled from 'styled-components';
-import Typography from '../components/UI/Typography/Typography';
 import SocialLinks from '../components/SocialLinks/SocialLinks';
 import Skills from '../components/Skills/Skills';
+import { socialLinksData as importedSocialLinksData } from '../mock/socialLinks';
+
+const StyledLine = styled.span`
+  position: fixed;
+  left: 0;
+  top: 64vh;
+  width: 80vw;
+  height: 36vh;
+  background: #f0f3fd;
+  z-index: -1;
+`
 
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
@@ -22,18 +32,10 @@ const HomePage: React.FC = () => {
     webp2x: `/src/assets/illustrations/Theme_${isDarkTheme ? 'Dark' : 'Light'}_Me@2x.webp`,
   };
 
-  const socialLinksData = [
-    {
-      url: t('social_links.github'),
-      icon: '/src/assets/icons/github.svg', // Placeholder, replace with actual SVG path
-      label: 'GitHub',
-    },
-    {
-      url: t('social_links.figma'),
-      icon: '/src/assets/icons/figma.svg', // Placeholder, replace with actual SVG path
-      label: 'Figma',
-    },
-  ];
+  const socialLinks = importedSocialLinksData.map(link => ({
+    ...link,
+    url: t(link.url as any),
+  }));
 
   return (
     <>
@@ -46,11 +48,13 @@ const HomePage: React.FC = () => {
               <Button label={t('home.CTA_portfolio')} variant='filled' />
               <Button label={t('home.CTA_contact')} variant='outlined' />
             </ButtonGroup>
-            <SocialLinks links={socialLinksData} />
           </>
         } illustration={illustrationPaths}>
       </BaseHeroSection>
+      <StyledLine />
       <Skills />
+      <SocialLinks links={socialLinks} />
+
     </>
   );
 };

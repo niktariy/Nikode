@@ -1,4 +1,5 @@
 import 'styled-components';
+import { commonStyles } from '../styles/themes';
 
 export type BorderRadius = {
   base: string;
@@ -42,9 +43,10 @@ export type ShadowElevation = {
   lg: string;
 };
 
-export type ShadowColor = {
+export type ShadowColors = {
   main?: string | null;
   accent?: string | null;
+  fill?: string | null;
 };
 
 export type TimingFunctions = {
@@ -53,6 +55,8 @@ export type TimingFunctions = {
 };
 
 declare module 'styled-components' {
+  type TypographyType = typeof commonStyles.typography;
+
   export interface DefaultTheme {
     mode: 'light' | 'dark';
     colors: {
@@ -65,6 +69,7 @@ declare module 'styled-components' {
       border: string;
       disabled: string;
       caption: string;
+      shadow: ShadowColors;
       link: {
         primary: LinkColors,
         accent: LinkColors,
@@ -130,17 +135,11 @@ declare module 'styled-components' {
     };
     baseSpacing: number;
     spacing: (factor: number) => string;
-    // Обновленное определение shadow
     shadow: {
       elevation: ShadowElevation;
-      color: ShadowColor;
-      button: {
-        hover: string;
-        focus: string;
-      };
-      header: string;
     };
     radii: BorderRadius;
     zIndex: ZIndex;
+    typography: TypographyType;
   }
 } 

@@ -2,18 +2,6 @@ import React, { useState, useEffect, type ReactNode } from 'react';
 import styled from 'styled-components';
 import Typography from './Typography/Typography';
 
-const DescriptionWrapper = styled.div`
-  p {
-    margin-bottom: ${({ theme }) => theme.spacing(1)};
-    font-size: 1.25em;
-    line-height: 1.5;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-`;
-
 interface IllustrationPaths {
   png1x: string;
   png2x: string;
@@ -29,6 +17,8 @@ interface BaseHeroSectionProps {
 }
 
 const StyledSection = styled.section`
+  display: flex;
+  align-items: center;
   padding: ${({ theme }) => theme.spacing(8)} 0;
   min-height: 64vh;
 
@@ -36,12 +26,16 @@ const StyledSection = styled.section`
     padding: ${({ theme }) => theme.spacing(12)} 0;
   }
 `
+
 const ContentWrapper = styled.div`
-  gap: ${({ theme }) => theme.spacing(2)};
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-flow: row;
+  gap: ${({ theme }) => theme.spacing(6)};
   
   @media (width > ${({ theme }) => theme.breakpoints.lg}) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.25fr 1fr;
+    gap: ${({ theme }) => theme.spacing(4)};
   }
 `;
 
@@ -57,20 +51,35 @@ const HeroSectionHeader = styled.header`
   }
 `;
 
+const DescriptionWrapper = styled.div`
+  p {
+    margin-bottom: ${({ theme }) => theme.spacing(1)};
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+`;
+
 const ImageWrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: ${({ theme }) => theme.spacing(6)};
+  width: 600px;
+  max-width: 80%;
+  height: auto;
+  margin: 0 auto;
 
   img {
     max-width: 100%;
     height: auto;
-    border-radius: ${({ theme }) => theme.radii.base};
   }
 
   @media (width > ${({ theme }) => theme.breakpoints.lg}) {
+    width: 100%;
+    max-width: 100%;
     margin-top: 0;
     padding-left: ${({ theme }) => theme.spacing(6)};
   }
@@ -110,7 +119,6 @@ const BaseHeroSection: React.FC<BaseHeroSectionProps> = ({
                 )}
               </DescriptionWrapper>
             )}
-            {actions && actions}
           </HeroSectionHeader>
           <ImageWrapper>
             <picture>
@@ -119,6 +127,7 @@ const BaseHeroSection: React.FC<BaseHeroSectionProps> = ({
               <img src={currentIllustration} alt={title?.toString()} onError={handleImageError} />
             </picture>
           </ImageWrapper>
+          {actions && actions}
         </ContentWrapper>
       </div>
     </StyledSection>

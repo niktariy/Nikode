@@ -4,9 +4,35 @@ import { hexToRgba } from '../utils/hexToRgba';
 
 const commonStyles = {
   fonts: {
-    primary: '"Noto Sans", sans-serif',
+    primary: '"JetBrains Mono", monospace',
     monospace: '"JetBrains Mono", monospace',
-    accent: '"Roboto Mono", monospace',
+    accent: 'Unbounded, monospace',
+  },
+  typography: {
+    lineHeights: {
+      heading: 1.2,
+      body: 1.5,
+    },
+    fontSizes: {
+      h1: '4em',
+      h2: '3.5em',
+      h3: '2.5em',
+      h4: '1.5em',
+      h5: '1.375em',
+      h6: '1.2em',
+      p: '1.375em',
+      caption: '0.9em',
+    },
+    fontWeights: {
+      h1: 700,
+      h2: 700,
+      h3: 800,
+      h4: 800,
+      h5: 800,
+      h6: 600,
+      p: 400,
+      caption: 400,
+    }
   },
   breakpoints: {
     sm: '600px',
@@ -21,8 +47,8 @@ const commonStyles = {
     },
     durationBase: '280ms',
   },
-  baseSpacing: 8,
-  spacing: (factor: number) => `${8 * factor}px`,
+  baseSpacing: 0.5,
+  spacing: (factor: number) => `${0.5 * factor}rem`,
   radii: {
     base: '8px',
     small: '4px',
@@ -42,23 +68,20 @@ const commonStyles = {
     modal: 80,
     toast: 90,
   },
+  shadow: {
+    elevation: {
+      flat: '0 0 0 3px',
+      xs: '0 0 4px',
+      sm: '0 2px 8px',
+      md: '0 4px 16px',
+      lg: '0 8px 32px',
+    },
+  }
 };
 
 export const lightTheme: DefaultTheme = {
   ...commonStyles,
   mode: 'light',
-  shadow: {
-    elevation: shadow.elevation,
-    color: {
-      main: shadow.color.mainOnLight,
-      accent: shadow.color.accentOnLight,
-    },
-    button: {
-      hover: shadow.elevation.md + ' ' + shadow.color.accentOnLight,
-      focus: shadow.elevation.sm + ' ' + shadow.color.mainOnLight,
-    },
-    header: shadow.elevation.lg + ' ' + shadow.color.accentOnLight,
-  },
   colors: {
     primary: palette.main[500],
     accent: palette.accent[500],
@@ -69,6 +92,11 @@ export const lightTheme: DefaultTheme = {
     border: palette.main[200],
     disabled: palette.grey[500],
     caption: palette.neutral[500],
+    shadow: {
+      main: hexToRgba(palette.main[700], 24),
+      accent: hexToRgba(palette.accent[700], 24),
+      fill: palette.main[200],
+    },
     link: {
       primary: {
         default: palette.main[700],
@@ -139,18 +167,6 @@ export const lightTheme: DefaultTheme = {
 export const darkTheme: DefaultTheme = {
   ...commonStyles,
   mode: 'dark',
-  shadow: {
-    elevation: shadow.elevation,
-    color: {
-      main: shadow.color.mainOnDark,
-      accent: shadow.color.accentOnDark,
-    },
-    button: {
-      hover: shadow.elevation.md + ' ' + shadow.color.accentOnDark,
-      focus: shadow.elevation.sm + ' ' + shadow.color.mainOnDark,
-    },
-    header: shadow.elevation.lg + ' ' + shadow.color.accentOnDark
-  },
   colors: {
     primary: palette.peach[300],
     accent: palette.accent[300],
@@ -161,6 +177,11 @@ export const darkTheme: DefaultTheme = {
     border: palette.neutral[700],
     disabled: palette.grey[600],
     caption: palette.grey[500],
+    shadow: {
+      main: hexToRgba(palette.peach[300], 32),
+      accent: hexToRgba(palette.accent[300], 32),
+      fill: hexToRgba(palette.neutral[500], 32),
+    },
     link: {
       primary: {
         default: palette.main[500],

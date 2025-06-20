@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { forwardRef } from 'react';
+import styled, { css } from 'styled-components';
 
 interface TypographyProps {
-  variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   children: React.ReactNode;
   style?: 'accent' | 'caption';
 }
@@ -12,55 +12,14 @@ const StyledTypography = styled.p.attrs<{
   $style?: 'accent' | 'caption';
 }>(props => ({ $variant: props.$variant || 'p' }))`
   color: ${({ theme, $variant }) => $variant !== 'p' ? `var(--title-color, ${theme.colors.headline})` : 'inherit'};
-  line-height: 1.5;
+  line-height: ${({ theme, $variant }) => $variant !== 'p' ? theme.typography.lineHeights.heading : theme.typography.lineHeights.body};
+  font-size: ${({ theme, $variant }) => theme.typography.fontSizes[$variant]};
+  font-weight: ${({ theme, $variant }) => theme.typography.fontWeights[$variant]};
+  font-family: ${({ theme, $variant }) => $variant !== 'p' ? theme.fonts.accent : theme.fonts.primary};
 
-  ${({ theme, $variant }) => {
-    switch ($variant) {
-      case 'h1':
-        return `
-          font-size: 3.5em;
-          font-weight: 700;
-          line-height: 1.2;
-          small {
-            color: ${theme.colors.primary};
-          }
-        `;
-      case 'h2':
-        return `
-          font-size: 2.5em;
-          font-weight: 700;
-          line-height: 1.3;
-        `;
-      case 'h3':
-        return `
-          font-size: 1.875em;
-          font-weight: 600;
-          line-height: 1.4;
-        `;
-      case 'h4':
-        return `
-          font-size: 1.5em;
-          font-weight: 600;
-        `;
-      case 'h5':
-        return `
-          font-size: 1.2em;
-          font-weight: 500;
-        `;
-      case 'h6':
-        return `
-          font-size: 1em;
-          font-weight: 500;
-        `;
-      case 'p':
-        return `
-          font-size: 1.2em;
-          font-weight: 400;
-        `;
-      default:
-        return '';
-    }
-  }}
+  small {
+    color: ${({ theme }) => theme.colors.primary};
+  }
 
   ${({ $style, theme }) => {
     switch ($style) {
@@ -71,7 +30,7 @@ const StyledTypography = styled.p.attrs<{
         `;
       case 'caption':
         return `
-          font-size: 0.9em;
+          font-size: ${theme.typography.fontSizes.caption};
           color: ${theme.colors.caption};
         `;
       default:
@@ -80,9 +39,9 @@ const StyledTypography = styled.p.attrs<{
   }}
 `;
 
-const Typography: React.FC<TypographyProps> = ({ variant = 'p', children, style, ...props }) => {
+const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(({ variant = 'p', children, style, ...props }, ref) => {
   const Component = variant;
-  return <StyledTypography as={Component} $variant={variant} $style={style} {...props}>{children}</StyledTypography>;
-};
+  return <StyledTypography as={Component} $variant={variant} $style={style} ref={ref} {...props}>{children}</StyledTypography>;
+});
 
 export default Typography;

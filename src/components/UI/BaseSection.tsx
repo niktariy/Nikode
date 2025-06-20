@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import { type ReactNode, forwardRef } from 'react';
 import styled from 'styled-components';
 import Typography from './Typography/Typography';
 
@@ -12,14 +12,15 @@ interface BaseSectionProps {
 }
 
 const SectionContainer = styled.section`
-  background-color: var(--color-background);
-  color: var(--color-text);
+  padding: ${({ theme }) => theme.spacing(8)} 0;
+  min-height: 100vh; /* Ensure section has a minimum height for scroll effects */
 `;
 
 const SectionWrapper = styled.div<{ $contentDirection?: 'row' | 'column' }>`
   display: flex;
   flex-direction: ${({ $contentDirection }) => $contentDirection || 'column'};
   gap: ${({ theme }) => theme.spacing(10)};
+  height: 100%;
 `;
 
 const SectionHeader = styled.header<{ $centered?: boolean }>`
@@ -35,14 +36,10 @@ const StyledDescription = styled(Typography)`
   font-size: 1.25em;
 `
 
-const BaseSection: React.FC<BaseSectionProps> = ({
-  title,
-  description,
-  actions,
-  centered,
-  halfContent,
-  children,
-}) => {
+const BaseSection = forwardRef<HTMLElement, BaseSectionProps>((
+  { title, description, actions, centered, halfContent, children },
+  ref
+) => {
   const BaseSectionHeader = () => (
     <SectionHeader $centered={centered}>
       <Typography variant="h2">{title}</Typography>
@@ -52,7 +49,7 @@ const BaseSection: React.FC<BaseSectionProps> = ({
   );
 
   return (
-    <SectionContainer>
+    <SectionContainer ref={ref}>
       <div className="container">
         <SectionWrapper $contentDirection={halfContent ? 'row' : 'column'}>
           <BaseSectionHeader />
@@ -61,6 +58,6 @@ const BaseSection: React.FC<BaseSectionProps> = ({
       </div>
     </SectionContainer>
   );
-};
+});
 
 export default BaseSection;

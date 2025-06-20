@@ -1,65 +1,68 @@
 import React from 'react';
 import styled from 'styled-components';
 import Typography from '../Typography/Typography';
-
-interface SkillCardProps {
-  title: string;
-  description: string;
-  iconPath: string;
-}
+import type { ISkillItem } from '../../../types/common';
 
 const StyledSkillCard = styled.div`
+  --title-color: ${({ theme }) => theme.colors.text};
+  --card-w: 100%;
+  --card-ar: auto;
+  --card-fs: 1rem;
+  --card-pad: 6.4vw;
+
   display: flex;
+  gap: ${({ theme }) => theme.spacing(4)};
   flex-direction: column;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.radii.base};
-  background-color: ${({ theme }) => theme.colors.header};
-  box-shadow: ${({ theme }) => theme.shadow.elevation.sm} ${({ theme }) => theme.shadow.color.main};
-
-  margin-bottom: ${({ theme }) => theme.spacing(2.5)}; /* 1.25rem = 20px */
+  font-family: ${({ theme }) => theme.fonts.monospace};
+  font-size: var(--card-fs);
   position: relative;
-  border-left: 2px solid #00fff7;
-  transition: all 0.3s ease;
+  padding: var(--card-pad);
+  border: 2px solid ${({ theme }) => theme.colors.primary};
+  color: var(--title-color);
+  width: var(--card-w);
+  aspect-ratio: var(--card-ar);
 
-  &:hover {
-    background: rgba(0, 255, 255, 0.05);
-    border-color: #00e6e6;
+  @media (width > ${({ theme }) => theme.breakpoints.md}) {
+    --card-pad: 1.6666666667vw;
+    --card-w: 37vw;
+    --card-ar: 1 / 1;
+    --card-fs: 1.222vw;
   }
+  
+  @media (width > ${({ theme }) => theme.breakpoints.lg}) {
+    --card-w: 26vw;
+    --card-fs: 0.88vw;
+  }
+  
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    transition: box-shadow 0.6s ${({ theme }) => theme.transition.timingFunc.easeOutExpo};
+    
+    &:hover,
+    &:focus {
+      box-shadow: 1em 1em 0 0 ${({ theme }) => theme.colors.shadow.fill};
+    }
+  }
+
 `;
 
 const SkillCardHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: ${({ theme }) => theme.spacing(3)}; /* 24px all around */
-`;
-
-const SkillIcon = styled.img`
-  width: 48px;
-  height: 48px;
-  margin-right: ${({ theme }) => theme.spacing(2)}; /* 16px */
-`;
-
-const StyledSkillTitleText = styled(Typography)`
-  font-weight: bold;
-  color: #ffffff;
-  background: linear-gradient(90deg, #00fff7, #00d2ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  gap: ${({ theme }) => theme.spacing(4)};
 `;
 
 const StyledDescriptionText = styled(Typography)`
-  padding: 0 ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(3)}; /* top:0, right:24px, bottom:24px */
-  line-height: 1.6;
-  font-size: 1rem;
+  margin-top: auto;
 `;
 
-const SkillCard: React.FC<SkillCardProps> = ({ title, description, iconPath }) => {
+const SkillCard: React.FC<ISkillItem> = ({ title, description, icon }) => {
+  const Icon = icon;
   return (
     <StyledSkillCard>
       <SkillCardHeader>
-        <SkillIcon src={iconPath} alt={`${title} icon`} />
-        <StyledSkillTitleText variant="h4">{title}</StyledSkillTitleText>
+        <Icon size={64} strokeWidth={1} color='currentColor' style={{ flexShrink: 0 }} />
+        <Typography variant="h4">{title}</Typography>
       </SkillCardHeader>
       <StyledDescriptionText variant="p">{description}</StyledDescriptionText>
     </StyledSkillCard>

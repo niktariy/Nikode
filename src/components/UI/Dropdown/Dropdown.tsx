@@ -24,7 +24,7 @@ const StyledDropdownButton = styled(Button)`
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.primary};
-    box-shadow: ${({ theme }) => theme.shadow.elevation.flat} ${({ theme }) => theme.shadow.color.main};
+    box-shadow: ${({ theme }) => theme.shadow.elevation.flat} ${({ theme }) => theme.colors.shadow.main};
   }
 
   &[aria-expanded="true"] {
@@ -44,7 +44,7 @@ const StyledDropdownContent = styled.ul`
   left: 0;
   background-color: ${({ theme }) => theme.colors.body};
   border-radius: ${({ theme }) => theme.radii.base};
-  box-shadow: ${({ theme }) => theme.shadow.elevation.md} ${({ theme }) => theme.shadow.color.main};
+  box-shadow: ${({ theme }) => theme.shadow.elevation.md} ${({ theme }) => theme.colors.shadow.main};
   min-width: 6rem;
   width: max-content;
   z-index: ${({ theme }) => theme.zIndex.popover};

@@ -7,6 +7,12 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
     font-family: ${({ theme }) => theme.fonts.primary};
     background-color: ${({ theme }) => theme.colors.body};
@@ -24,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
     max-width: 96vw;
     margin: 0 auto;
     padding: 0 ${({ theme }) => theme.spacing(2)};
+    height: 100%;
     
     @media (width > ${({ theme }) => theme.breakpoints.xl}) {
       padding: 0 ${({ theme }) => theme.spacing(3)};

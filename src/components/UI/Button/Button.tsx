@@ -57,13 +57,13 @@ const StyledButton = styled.button.attrs<{
 
   &:hover {
     --button-color: ${({ theme }) => theme.colors.button.hover};
-    box-shadow: ${({ theme }) => theme.shadow.button.hover};
+    box-shadow: ${({ theme }) => theme.shadow.elevation.md} ${({ theme }) => theme.colors.shadow.accent};
   }
 
   &:focus:not(:disabled),
   &:active {
     --button-color: ${({ theme }) => theme.colors.button.focus};
-    box-shadow: ${({ theme, $variant }) => theme.shadow.button.focus + ($variant === 'outlined' && ', inset 0 0 0 2px var(--button-color)' || '')};
+    box-shadow: ${({ theme }) => theme.shadow.elevation.sm} ${({ theme, $variant }) => theme.colors.shadow.main + ($variant === 'outlined' && ', inset 0 0 0 2px var(--button-color)' || '')};
   }
 
   &:disabled {

@@ -7,12 +7,11 @@ import GlobalStyle from './styles/GlobalStyle';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setTheme, type Theme } from './store/themeSlice';
 import ThemeInitializer from './components/ThemeInitializer/ThemeInitializer';
-
+import Header from './components/Header/Header';
 import HomePage from './pages/HomePage';
 import MentoringPage from './pages/MentoringPage';
 import DevelopmentPage from './pages/DevelopmentPage';
 import PortfolioPage from './pages/PortfolioPage';
-import Header from './components/Header/Header';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();

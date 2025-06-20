@@ -35,95 +35,103 @@
   },
   "skills": {
     "title": "What's in my toolkit?",
-    "desc": "Aside from a strong mind and a stockpile of coffee",
+    "desc": "Aside from a steady mind and a stockpile of coffee",
     "markup": {
-      "title": "Core strength — layout and styles",
-      "html_css": {
-        "title": "HTML + CSS",
-        "description": "Layout isn't just a bunch of tags — it's engineering. I work with HTML and CSS contextually. Use custom properties for themes, scalability, and clarity. Media queries aren't just for breakpoints: I adapt to `hover`, `prefers-color-scheme`, and other subtle cases."
-      },
-      "preprocessors": {
-        "title": "CSS Preprocessors",
-        "description": "Deep knowledge of Sass/SCSS: variables, functions, `@if`, `@extend`, placeholder selectors. I write scalable, DRY code without chaos — easy to work with, pleasant to read. Can switch to Less or Stylus when needed, no panic."
-      },
-      "bem_semantics": {
-        "title": "BEM + Semantics",
-        "description": "Readable code is my thing. BEM brings order, semantics bring meaning. HTML isn't just for looks — it's for screen readers to say ‘well done’ too."
-      },
-      "storybook": {
-        "title": "Storybook",
-        "description": "I don't just build components — I document them. Storybook is my mirror: it reveals all the nuances. Useful for design, QA, and common sense. \"Where can I see it?\" — not a question I hear often."
-      },
-      "css_modules": {
-        "title": "CSS Modules",
-        "description": "Scoped styles at the component level — no global mess. Great for scalable architecture and teamwork."
-      },
-      "css_in_js": {
-        "title": "CSS-in-JS (Styled Components)",
-        "description": "Theming, dynamics, conditions — all inside the component. No file-jumping or class juggling. Styled Components / Emotion — practiced, not just read about."
-      }
-    },
-    "uiux": {
-      "title": "UI sensitivity & UX awareness",
-      "responsive_crossbrowser": {
-        "title": "Responsive & Cross-Browser",
-        "description": "I code for reality, not ideal mockups. Consider retina, breakpoints, unusual DPIs, and Safari's quirks. I catch edge cases before QA does."
+      "title": "Solid Markup",
+      "html": {
+        "title": "HTML: Structure With Purpose",
+        "description": "Markup is architecture, not just tags. I shape the page from meaningful blocks to proper heading flow. Semantics are for real people, not just to pleasing validators."
       },
       "a11y": {
         "title": "Accessibility (a11y)",
-        "description": "I follow WCAG in practice. Use ARIA attributes and roles properly. Test with screen readers (NVDA, VoiceOver), keyboard nav, and visible focus. Consider user settings (`prefers-reduced-motion`, `hover`, etc.) and build barrier-free interfaces."
+        "description": "WCAG standards? Check. ARIA roles used as intended. Screen readers (NVDA, VoiceOver), keyboard navigation, focus states — all tested. Respect `prefers-*`, `pointer`, color settings and etc."
       },
+      "responsive_crossbrowser": {
+        "title": "Responsive & Cross-Browser",
+        "description": "Designed for humans — not just perfect mockups. Retina screens, breakpoints, awkward DPIs, Safari quirks — all taken into account before QA raises a brow."
+      },
+      "bem": {
+        "title": "BEM Naming",
+        "description": "Readable, purposeful class names are non-negotiable. Modifiers aren’t mixes, roles aren’t blurred, and every class does exactly one thing — and says so."
+      }
+    },
+    "styling": {
+      "title": "Clean and Flexible Styling",
+      "css": {
+        "title": "Smart CSS: Variables, Layers, Containers",
+        "description": "!important stays untouched — I manage the cascade cleanly. Custom properties keep styles flexible. Media queries cover more than breakpoints: hover, orientation, user quirks — I’m on it."
+      },
+      "preprocessors": {
+        "title": "Preprocessors",
+        "description": "Sass is second nature — from functions to placeholders and deep nesting logic. Styles stay clean and maintainable. Less or Stylus? Not a problem."
+      },
+      "storybook": {
+        "title": "Storybook",
+        "description": "Components come with documentation. Storybook shows everything — edge cases included. Great for designers, QAs, and future me. No need to ask, 'What does this look like?'"
+      },
+      "css_modules": {
+        "title": "CSS Modules",
+        "description": "Scoped styles = zero drama. No global leaks, no naming accidents. Easy to reuse, easy to scale, easy for teammates to trust."
+      },
+      "css_in_js": {
+        "title": "CSS-in-JS",
+        "description": "When styles live in the component, context and logic go side by side. Styled Components or Emotion — used both in production more than once."
+      }
+    },
+    "uiux": {
+      "title": "UI with a Human Touch",
       "interactivity": {
         "title": "Interactivity",
-        "description": "I know when interactivity helps and when it just gets in the way. Navigation, hovers, clicks — nothing extra. Behavior is predictable — not boring, just logical."
+        "description": "No gimmicks, just smooth experience. Hovers, clicks, navigation — behave the way users intuitively expect. Predictable, not boring. Familiar, not rigid."
       },
       "animations": {
         "title": "Animations",
-        "description": "I’ve built microinteractions and complex timeline animations. CSS for lightweight reactions, GSAP for choreography. Motion guides the eye — not just for aesthetics. And yes, I know when to ease off to avoid motion sickness."
+        "description": "From subtle microinteractions to timeline beasts. CSS handles the light stuff, GSAP brings choreography. Every motion earns its place — to guide the user, not just decorate."
       },
       "figma": {
         "title": "Figma",
-        "description": "I read mockups without chanting. Understand auto layout, components, constraints — and don’t get lost in layers. Spot contradictions, clarify behaviors — turn mockups into dev-friendly UIs."
-      },
-      "ui_libs": {
-        "title": "UI Libraries (MUI, AntD, CDS, etc.)",
-        "description": "I know UI libraries beyond their docs. Read their source code — understand slots, theming, styled API, internal hooks, overrides. That helps me integrate them cleanly, without hacks or bugs."
+        "description": "Design files don’t need decoding. I get auto layout, constraints, components — and know where to look when something’s off. Catch inconsistencies, clarify logic, and bring the mockup to life."
       },
       "ui_kit": {
-        "title": "UI Kit — not holy scripture",
-        "description": "I study UI Kits critically: spot missing states, mismatched spacing. I clarify, patch gaps with the designer, and adapt for real-world behavior."
+        "title": "UI Kits ≠ Gospel",
+        "description": "I'm analyzing UI kits, not just accept. Missing states? Weird spacing? Logic gaps? All spotted. Always open to ask, suggest, and adapt — not blindly follow."
+      },
+      "ui_libs": {
+        "title": "UI Libraries (MUI, AntD, CDS etc.)",
+        "description": "I’ve gone deeper than the docs. Know how themes, slots, styled APIs, internal hooks, and override system stick. Integration is clean, no hacks, no fragile band-aids."
       }
     },
     "code": {
-      "title": "Frontend tools at hand",
+      "title": "Logic, Types & Behavior Control",
       "javascript": {
-        "title": "JavaScript (ES6+)",
-        "description": "Work with the DOM and events consciously — I bring interfaces to life intentionally. Base JS is solid; frameworks come as needed."
+        "title": "JavaScript",
+        "description": "From DOM to event handling — everything to make the interface feel alive. ES6 features like destructuring and arrow functions? Of course. Logic stays lean and in sync with the markup."
       },
       "typescript": {
         "title": "TypeScript",
-        "description": "I design types up front — from basic props to complex generics and utility types. TS helps keep the project sane — not overkill, just good insurance."
+        "description": "Types are a design tool, not just a safety net. From prop definitions to utility types and generics — everything’s there to keep the codebase confident and honest."
       },
       "react": {
         "title": "React",
-        "description": "React isn’t just a library — it’s a mindset. State, effects, memoization — all in the right place and for a reason."
+        "description": "React isn’t just a library — it’s a mindset. Props and states link data and UI. Effects, callbacks, memoization — used where they matter. Not over-engineered, not under-thought. "
       },
       "vue": {
         "title": "Vue",
-        "description": "Vue is for when things need to be quick and light. I understand reactivity and know how not to mess it up with templates."
+        "description": "Reactive core, computed props, and directives — all understood and used to keep logic separate from markup. Templates stay clean, scripts stay smart. No spaghetti."
       },
       "angular": {
         "title": "Angular",
-        "description": "Angular isn’t for everyone — but we’re on polite terms. Components, services, DI — no fear when you get the architecture."
+        "description": "Strict but reliable. I use containers, directives, input/output binding — and write component logic that stays clear and testable. Behavior is defined cleanly with methods."
       },
       "tooling": {
         "title": "Linters & Code Style",
-        "description": "Set up ESLint, Prettier, Stylelint — tailored to team workflows. Clean code style = a stable project. Automated checks keep the brain free for logic."
+        "description": "ESLint, Prettier, Stylelint — configured per team and project. Consistent style = stable project. Automation takes care of the routine, so focus stays on the logic."
       }
     }
+
   },
   "social_links": {
-    "github": "https://github.com/your-github-profile",
-    "figma": "https://www.figma.com/@your-figma-profile"
+    "github": "https://github.com/niktariy",
+    "codepen": "https://codepen.io/niktariy"
   }
 }
