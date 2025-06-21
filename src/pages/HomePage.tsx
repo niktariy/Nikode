@@ -5,20 +5,9 @@ import BaseHeroSection from '../components/UI/BaseHeroSection';
 import type { RootState } from '../store';
 import { useSelector } from 'react-redux';
 import ButtonGroup from '../components/ButtonGroup/ButtonGroup';
-import styled from 'styled-components';
 import SocialLinks from '../components/SocialLinks/SocialLinks';
 import Skills from '../components/Skills/Skills';
 import { socialLinksData as importedSocialLinksData } from '../mock/socialLinks';
-
-const StyledLine = styled.span`
-  position: fixed;
-  left: 0;
-  top: 64vh;
-  width: 80vw;
-  height: 36vh;
-  background: #f0f3fd;
-  z-index: -1;
-`
 
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
@@ -51,10 +40,8 @@ const HomePage: React.FC = () => {
           </>
         } illustration={illustrationPaths}>
       </BaseHeroSection>
-      <StyledLine />
       <Skills />
       <SocialLinks links={socialLinks} />
-
     </>
   );
 };

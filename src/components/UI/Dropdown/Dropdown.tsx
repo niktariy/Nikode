@@ -18,7 +18,6 @@ const StyledDropdownButton = styled(Button)`
   cursor: pointer;
   font-size: 0.9rem;
   color: ${({ theme }) => theme.colors.text};
-  outline: none;
   box-shadow: 0 0 0 transparent;
   transition: border-color 0.2s, box-shadow 0.2s;
 
@@ -69,7 +68,6 @@ const StyledDropdownOption = styled.button<StyledDropdownOptionProps>`
   text-align: left;
   font-size: 0.9rem;
   color: ${({ theme }) => theme.colors.text};
-  outline: none;
 
   &:hover {
     background-color: ${({ theme }) => hexToRgba(theme.colors.primary, 16)};

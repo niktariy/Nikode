@@ -19,11 +19,11 @@ export const skillsData: ISkillsData = {
   "styling": {
     title: 'skills.styling.title',
     "items": [
-      { icon: SiCss, title: 'skills.styling.css.title', description: 'skills.styling.css.description' },
+      { icon: SiCss, title: 'skills.styling.css.title', description: 'skills.styling.css.description', additionalClassName: 'fill' },
       { icon: SiSass, title: 'skills.styling.preprocessors.title', description: 'skills.styling.preprocessors.description' },
-      { icon: SiStorybook, title: 'skills.styling.storybook.title', description: 'skills.styling.storybook.description' },
       { icon: SiCssmodules, title: 'skills.styling.css_modules.title', description: 'skills.styling.css_modules.description' },
       { icon: SiStyledcomponents, title: 'skills.styling.css_in_js.title', description: 'skills.styling.css_in_js.description' },
+      { icon: SiStorybook, title: 'skills.styling.storybook.title', description: 'skills.styling.storybook.description' },
     ],
   },
   "uiux": {
@@ -33,7 +33,7 @@ export const skillsData: ISkillsData = {
       { icon: Wand2, title: 'skills.uiux.animations.title', description: 'skills.uiux.animations.description' },
       { icon: SiFigma, title: 'skills.uiux.figma.title', description: 'skills.uiux.figma.description' },
       { icon: CreativeIcon, title: 'skills.uiux.ui_kit.title', description: 'skills.uiux.ui_kit.description' },
-      { icon: Paintbrush, title: 'skills.uiux.ui_libs.title', description: 'skills.uiux.ui_libs.description' },
+      { icon: Paintbrush, title: 'skills.uiux.ui_libs.title', description: 'skills.uiux.ui_libs.description', additionalClassName: 'fill' },
     ],
   },
   "code": {

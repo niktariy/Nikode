@@ -28,12 +28,13 @@ const StyledSection = styled.section`
 `
 
 const ContentWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-flow: row;
+  display: flex;
+  flex-direction: column;
   gap: ${({ theme }) => theme.spacing(6)};
   
   @media (width > ${({ theme }) => theme.breakpoints.lg}) {
+    display: grid;
+    grid-auto-flow: row;
     grid-template-columns: 1.25fr 1fr;
     gap: ${({ theme }) => theme.spacing(4)};
   }
@@ -51,7 +52,7 @@ const HeroSectionHeader = styled.header`
   }
 `;
 
-const DescriptionWrapper = styled.div`
+const DescriptionWrapper = styled(Typography)`
   p {
     margin-bottom: ${({ theme }) => theme.spacing(1)};
 
@@ -111,19 +112,13 @@ const BaseHeroSection: React.FC<BaseHeroSectionProps> = ({
           <HeroSectionHeader>
             <Typography variant="h1">{title}</Typography>
             {description && (
-              <DescriptionWrapper>
-                {typeof description === 'string' ? (
-                  <Typography variant="p">{description}</Typography>
-                ) : (
-                  description
-                )}
-              </DescriptionWrapper>
+              <DescriptionWrapper variant='body2' component='div'>{description}</DescriptionWrapper>
             )}
           </HeroSectionHeader>
           <ImageWrapper>
             <picture>
-              <source type="image/webp" src={currentIllustration} srcSet={`${illustration.webp1x} 1x, ${illustration.webp2x} 2x`} />
-              <source type="image/png" src={currentIllustration} srcSet={`${illustration.png1x} 1x, ${illustration.png2x} 2x`} />
+              <source type="image/webp" srcSet={`${illustration.webp1x} 1x, ${illustration.webp2x} 2x`} />
+              <source type="image/png" srcSet={`${illustration.png1x} 1x, ${illustration.png2x} 2x`} />
               <img src={currentIllustration} alt={title?.toString()} onError={handleImageError} />
             </picture>
           </ImageWrapper>

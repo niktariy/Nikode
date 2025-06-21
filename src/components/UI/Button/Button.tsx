@@ -27,7 +27,6 @@ const StyledButton = styled.button.attrs<{
     return $size === 'small' ? theme.spacing(1) + ' ' + theme.spacing(2) : theme.spacing(1.5) + ' ' + theme.spacing(3)
   }};
   border-radius: ${({ theme }) => theme.radii.base};
-  border: none;
   cursor: pointer;
   font-weight: 700;
   font-family: ${({ theme }) => theme.fonts.monospace};

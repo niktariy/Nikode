@@ -65,10 +65,6 @@
         "title": "Preprocessors",
         "description": "Sass is second nature — from functions to placeholders and deep nesting logic. Styles stay clean and maintainable. Less or Stylus? Not a problem."
       },
-      "storybook": {
-        "title": "Storybook",
-        "description": "Components come with documentation. Storybook shows everything — edge cases included. Great for designers, QAs, and future me. No need to ask, 'What does this look like?'"
-      },
       "css_modules": {
         "title": "CSS Modules",
         "description": "Scoped styles = zero drama. No global leaks, no naming accidents. Easy to reuse, easy to scale, easy for teammates to trust."
@@ -76,6 +72,10 @@
       "css_in_js": {
         "title": "CSS-in-JS",
         "description": "When styles live in the component, context and logic go side by side. Styled Components or Emotion — used both in production more than once."
+      },
+      "storybook": {
+        "title": "Storybook",
+        "description": "Components come with documentation. Storybook shows everything — edge cases included. Great for designers, QAs, and future me. No need to ask, 'What does this look like?'"
       }
     },
     "uiux": {

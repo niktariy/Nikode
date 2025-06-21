@@ -1,19 +1,20 @@
-import { type ReactNode, forwardRef } from 'react';
+import { type ReactNode } from 'react';
 import styled from 'styled-components';
 import Typography from './Typography/Typography';
 
 interface BaseSectionProps {
   title: string;
   description?: string;
+  contained?: boolean;
   actions?: ReactNode;
   centered?: boolean;
   halfContent?: boolean;
   children?: ReactNode;
+  ref?: React.Ref<HTMLElement>;
 }
 
 const SectionContainer = styled.section`
   padding: ${({ theme }) => theme.spacing(8)} 0;
-  min-height: 100vh; /* Ensure section has a minimum height for scroll effects */
 `;
 
 const SectionWrapper = styled.div<{ $contentDirection?: 'row' | 'column' }>`
@@ -36,10 +37,11 @@ const StyledDescription = styled(Typography)`
   font-size: 1.25em;
 `
 
-const BaseSection = forwardRef<HTMLElement, BaseSectionProps>((
-  { title, description, actions, centered, halfContent, children },
-  ref
-) => {
+const BaseSection = ({
+  title, description, contained = true, actions, centered, halfContent, children, ref
+}: BaseSectionProps) => {
+  const baseContainerCls = 'container';
+
   const BaseSectionHeader = () => (
     <SectionHeader $centered={centered}>
       <Typography variant="h2">{title}</Typography>
@@ -50,14 +52,16 @@ const BaseSection = forwardRef<HTMLElement, BaseSectionProps>((
 
   return (
     <SectionContainer ref={ref}>
-      <div className="container">
-        <SectionWrapper $contentDirection={halfContent ? 'row' : 'column'}>
-          <BaseSectionHeader />
-          {children && <div>{children}</div>}
-        </SectionWrapper>
-      </div>
+      <SectionWrapper $contentDirection={halfContent ? 'row' : 'column'} className={contained ? baseContainerCls : undefined}>
+        {contained ? <BaseSectionHeader /> : (
+          <div className="container">
+            <BaseSectionHeader />
+          </div>
+        )}
+        {children && <div>{children}</div>}
+      </SectionWrapper>
     </SectionContainer>
   );
-});
+};
 
 export default BaseSection;

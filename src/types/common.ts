@@ -4,6 +4,7 @@ import React from 'react';
 
 export interface IIconProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
+  style?: React.CSSProperties;
 }
 
 export type ProjectIconType = LucideIcon | IconType | React.FC<IIconProps>;
@@ -15,9 +16,10 @@ export interface ISocialLink {
 }
 
 export interface ISkillItem {
-  icon: ProjectIconType;
+  icon?: ProjectIconType;
   title: string;
   description: string;
+  additionalClassName?: string;
 }
 
 export interface ISkillCategoryData {
@@ -30,4 +32,9 @@ export interface ISkillsData {
   styling: ISkillCategoryData;
   uiux: ISkillCategoryData;
   code: ISkillCategoryData;
-} 
+}
+
+export type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type BodyVariant = 'body1' | 'body2';
+
+export type TypographyVariant = HeadingVariant | BodyVariant; 

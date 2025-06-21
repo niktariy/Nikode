@@ -1,10 +1,10 @@
 import type { DefaultTheme } from 'styled-components';
-import { palette, shadow } from './palettes';
+import { palette } from './palettes';
 import { hexToRgba } from '../utils/hexToRgba';
 
 const commonStyles = {
   fonts: {
-    primary: '"JetBrains Mono", monospace',
+    primary: '"Noto Sans", monospace',
     monospace: '"JetBrains Mono", monospace',
     accent: 'Unbounded, monospace',
   },
@@ -14,13 +14,14 @@ const commonStyles = {
       body: 1.5,
     },
     fontSizes: {
-      h1: '4em',
-      h2: '3.5em',
-      h3: '2.5em',
+      h1: '3.5em',
+      h2: '3em',
+      h3: '2em',
       h4: '1.5em',
       h5: '1.375em',
       h6: '1.2em',
-      p: '1.375em',
+      body1: '1.125em',
+      body2: '1.25em',
       caption: '0.9em',
     },
     fontWeights: {
@@ -30,7 +31,8 @@ const commonStyles = {
       h4: 800,
       h5: 800,
       h6: 600,
-      p: 400,
+      body1: 400,
+      body2: 500,
       caption: 400,
     }
   },

@@ -17,9 +17,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${({ theme }) => theme.fonts.primary};
     background-color: ${({ theme }) => theme.colors.body};
     color: ${({ theme }) => theme.colors.text};
-    transition-property: background-color, color;
-    transition-duration: ${({ theme }) => theme.transition.durationBase};
-    transition-timing-function: ${({ theme }) => theme.transition.timingFunc.easeInOutQuart};
+    overflow-x: hidden;
   }
 
   #root {
@@ -27,10 +25,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .container {
+    width: 100%;
     max-width: 96vw;
     margin: 0 auto;
     padding: 0 ${({ theme }) => theme.spacing(2)};
-    height: 100%;
     
     @media (width > ${({ theme }) => theme.breakpoints.xl}) {
       padding: 0 ${({ theme }) => theme.spacing(3)};
@@ -39,6 +37,18 @@ const GlobalStyle = createGlobalStyle`
     @media (width > ${({ theme }) => theme.breakpoints.xl}) {
       max-width: 1520px;
       padding: 0 ${({ theme }) => theme.spacing(4)};
+    }
+  }
+
+  a, button {
+    &, &:focus-visible {
+      outline: inset thick;
+      /* outline-offset: 5px; */
+      outline-color: transparent;
+    }
+
+    @media (forced-colors: active) {
+      border: 2px solid currentColor;
     }
   }
 `;
