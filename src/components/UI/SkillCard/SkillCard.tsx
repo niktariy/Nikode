@@ -1,14 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import Typography from '../Typography/Typography';
-import type { ISkillItem } from '../../../types/common';
+import type { ProjectIconType } from '../../../types/common';
+
+interface ISkillCardProps {
+  title: string;
+  description: string | React.ReactNode;
+  icon?: ProjectIconType;
+  additionalClassName?: string;
+}
 
 const StyledSkillCard = styled.div`
   --skill-card-w: 100%;
   --skill-card-ar: auto;
   --skill-card-fs: 1rem;
   --skill-card-pad: 6.4vw;
-  --title-color: ${({ theme }) => theme.colors.text};
 
   display: flex;
   gap: ${({ theme }) => theme.spacing(4)};
@@ -33,22 +39,18 @@ const StyledSkillCardHeader = styled.div`
   align-items: center;
   justify-content: flex-start;
   gap: ${({ theme }) => theme.spacing(4)};
+  margin-bottom: auto;
 `;
 
-const StyledDescriptionText = styled(Typography)`
-  margin-top: auto;
-`;
 
-const SkillCard: React.FC<ISkillItem> = ({ title, description, icon }) => {
-  const IconComponent = icon as React.ElementType;
-
+const SkillCard: React.FC<ISkillCardProps> = ({ title, description, icon: Icon, additionalClassName }) => {
   return (
-    <StyledSkillCard>
+    <StyledSkillCard className={additionalClassName}>
       <StyledSkillCardHeader>
-        {IconComponent && <IconComponent size={64} strokeWidth={1} color='currentColor' style={{ flexShrink: 0 }} />}
+        {Icon && <Icon size={64} strokeWidth={1} color='currentColor' style={{ flexShrink: 0 }} />}
         <Typography variant="h4">{title}</Typography>
       </StyledSkillCardHeader>
-      <StyledDescriptionText variant="body1">{description}</StyledDescriptionText>
+      <Typography>{description}</Typography>
     </StyledSkillCard>
   );
 };

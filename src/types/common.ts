@@ -1,6 +1,7 @@
 import type { IconType } from '@icons-pack/react-simple-icons';
 import type { LucideIcon } from 'lucide-react';
 import React from 'react';
+import type { IconName } from '../utils/iconMapping';
 
 export interface IIconProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
@@ -34,22 +35,20 @@ export interface ISocialLink {
 }
 
 export interface ISkillItem {
-  icon?: ProjectIconType;
   title: string;
   description: string;
   additionalClassName?: string;
+  icon?: IconName;
 }
 
-export interface ISkillCategoryData {
+export interface ISkillTranslatedItem extends ISkillItem {
+  key: string;
+}
+
+export interface ISkillCategory {
   title: string;
+  key: string;
   items: ISkillItem[];
-}
-
-export interface ISkillsData {
-  markup: ISkillCategoryData;
-  styling: ISkillCategoryData;
-  uiux: ISkillCategoryData;
-  code: ISkillCategoryData;
 }
 
 export type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';

@@ -36,99 +36,160 @@
   "skills": {
     "title": "What's in my toolkit?",
     "desc": "Aside from a steady mind and a stockpile of coffee",
-    "markup": {
-      "title": "Solid Markup",
-      "html": {
-        "title": "HTML: Structure With Purpose",
-        "description": "Markup is architecture, not just tags. I shape the page from meaningful blocks to proper heading flow. Semantics are for real people, not just to pleasing validators."
+    "categories": [
+      {
+        "key": "markup",
+        "title": "Solid Markup",
+        "items": [
+          {
+            "title": "HTML: Structure With Purpose",
+            "description": "Markup is architecture, not just tags. I shape the page from meaningful blocks to proper heading flow. Semantics are for real people, not just to pleasing validators.",
+            "icon": "DevelopmentIcon"
+          },
+          {
+            "title": "Accessibility (a11y)",
+            "description": "WCAG standards? Check. ARIA roles used as intended. Screen readers (NVDA, VoiceOver), keyboard navigation, focus states — all tested. Respect `prefers-*`, `pointer`, color settings and etc.",
+            "icon": "PersonStanding"
+          },
+          {
+            "title": "Responsive & Cross-Browser",
+            "description": "Designed for humans — not just perfect mockups. Retina screens, breakpoints, awkward DPIs, Safari quirks — all taken into account before QA raises a brow.",
+            "icon": "RwdIcon"
+          },
+          {
+            "title": "BEM Naming",
+            "description": "Readable, purposeful class names are non-negotiable. Modifiers aren't mixes, roles aren't blurred, and every class does exactly one thing — and says so.",
+            "icon": "SiBem"
+          }
+        ]
       },
-      "a11y": {
-        "title": "Accessibility (a11y)",
-        "description": "WCAG standards? Check. ARIA roles used as intended. Screen readers (NVDA, VoiceOver), keyboard navigation, focus states — all tested. Respect `prefers-*`, `pointer`, color settings and etc."
+      {
+        "key": "styling",
+        "title": "Clean and Flexible Styling",
+        "items": [
+          {
+            "title": "Smart CSS: Variables, Layers, Containers",
+            "description": "!important stays untouched — I manage the cascade cleanly. Custom properties keep styles flexible. Media queries cover more than breakpoints: hover, orientation, user quirks — I'm on it.",
+            "additionalClassName": "fill",
+            "icon": "SiCss"
+          },
+          {
+            "title": "Preprocessors",
+            "description": "Sass is second nature — from functions to placeholders and deep nesting logic. Styles stay clean and maintainable. Less or Stylus? Not a problem.",
+            "icon": "SiSass"
+          },
+          {
+            "title": "CSS Modules",
+            "description": "Scoped styles = zero drama. No global leaks, no naming accidents. Easy to reuse, easy to scale, easy for teammates to trust.",
+            "icon": "SiCssmodules"
+          },
+          {
+            "title": "CSS-in-JS",
+            "description": "When styles live in the component, context and logic go side by side. Styled Components or Emotion — used both in production more than once.",
+            "icon": "SiStyledcomponents"
+          },
+          {
+            "title": "Storybook",
+            "description": "Components come with documentation. Storybook shows everything — edge cases included. Great for designers, QAs, and future me. No need to ask, 'What does this look like?'",
+            "icon": "SiStorybook"
+          }
+        ]
       },
-      "responsive_crossbrowser": {
-        "title": "Responsive & Cross-Browser",
-        "description": "Designed for humans — not just perfect mockups. Retina screens, breakpoints, awkward DPIs, Safari quirks — all taken into account before QA raises a brow."
+      {
+        "key": "uiux",
+        "title": "UI with a Human Touch",
+        "items": [
+          {
+            "title": "Interactivity",
+            "description": "No gimmicks, just smooth experience. Hovers, clicks, navigation — behave the way users intuitively expect. Predictable, not boring. Familiar, not rigid.",
+            "icon": "MousePointerClick"
+          },
+          {
+            "title": "Animations",
+            "description": "From subtle microinteractions to timeline beasts. CSS handles the light stuff, GSAP brings choreography. Every motion earns its place — to guide the user, not just decorate.",
+            "icon": "Wand2"
+          },
+          {
+            "title": "Figma",
+            "description": "Design files don't need decoding. I get auto layout, constraints, components — and know where to look when something's off. Catch inconsistencies, clarify logic, and bring the mockup to life.",
+            "icon": "SiFigma"
+          },
+          {
+            "title": "UI Kits ≠ Gospel",
+            "description": "I'm analyzing UI kits, not just accept. Missing states? Weird spacing? Logic gaps? All spotted. Always open to ask, suggest, and adapt — not blindly follow.",
+            "icon": "CreativeIcon"
+          },
+          {
+            "title": "UI Libraries (MUI, AntD, CDS etc.)",
+            "description": "I've gone deeper than the docs. Know how themes, slots, styled APIs, internal hooks, and override system stick. Integration is clean, no hacks, no fragile band-aids.",
+            "additionalClassName": "fill",
+            "icon": "Paintbrush"
+          }
+        ]
       },
-      "bem": {
-        "title": "BEM Naming",
-        "description": "Readable, purposeful class names are non-negotiable. Modifiers aren't mixes, roles aren't blurred, and every class does exactly one thing — and says so."
+      {
+        "key": "code",
+        "title": "Logic, Types & Behavior Control",
+        "items": [
+          {
+            "title": "JavaScript",
+            "description": "From DOM to event handling — everything to make the interface feel alive. ES6 features like destructuring and arrow functions? Of course. Logic stays lean and in sync with the markup.",
+            "icon": "SiJavascript"
+          },
+          {
+            "title": "TypeScript",
+            "description": "Types are a design tool, not just a safety net. From prop definitions to utility types and generics — everything's there to keep the codebase confident and honest.",
+            "icon": "SiTypescript"
+          },
+          {
+            "title": "React",
+            "description": "React isn't just a library — it's a mindset. Props and states link data and UI. Effects, callbacks, memoization — used where they matter. Not over-engineered, not under-thought. ",
+            "icon": "SiReact"
+          },
+          {
+            "title": "Vue",
+            "description": "Reactive core, computed props, and directives — all understood and used to keep logic separate from markup. Templates stay clean, scripts stay smart. No spaghetti.",
+            "icon": "SiVuedotjs"
+          },
+          {
+            "title": "Angular",
+            "description": "Strict but reliable. I use containers, directives, input/output binding — and write component logic that stays clear and testable. Behavior is defined cleanly with methods.",
+            "icon": "SiAngular"
+          },
+          {
+            "title": "Linters & Code Style",
+            "description": "ESLint, Prettier, Stylelint — configured per team and project. Consistent style = stable project. Automation takes care of the routine, so focus stays on the logic.",
+            "icon": "SiStylelint"
+          }
+        ]
+      },
+      {
+        "key": "additional",
+        "title": "And also:",
+        "items": [
+          {
+            "title": "Fast adaptation",
+            "description": "New stack? No problem. The main thing is not to look for \"how to make it beautiful,\" but to understand why it doesn't work.",
+            "icon": "Lightbulb"
+          },
+          {
+            "title": "Version control systems",
+            "description": "I know how to roll back not only in life, but also by commits. I navigate branches, resolve conflicts. I can cherry-pick if necessary. I have used <strong>GitHub</strong>, <strong>GitLab</strong>, <strong>Bitbucket</strong> and am familiar with <strong>Git Flow</strong>.",
+            "icon": "GitBranch"
+          },
+          {
+            "title": "Development Methodologies",
+            "description": "I have worked with various approaches: <strong>Agile</strong> (Scrum) — for flexible and changing projects, <strong>Waterfall</strong> — for clearly planned and stable ones, and <strong>Kanban</strong> — for optimizing workflow in small teams or for support.",
+            "icon": "LayoutPanelTop"
+          },
+          {
+            "title": "Soft skills",
+            "description": "I know how to work in a team, share knowledge, and am not afraid to ask questions. I interact closely with designers, testers, and managers to create a quality product.",
+            "icon": "Handshake"
+          }
+        ]
       }
-    },
-    "styling": {
-      "title": "Clean and Flexible Styling",
-      "css": {
-        "title": "Smart CSS: Variables, Layers, Containers",
-        "description": "!important stays untouched — I manage the cascade cleanly. Custom properties keep styles flexible. Media queries cover more than breakpoints: hover, orientation, user quirks — I'm on it."
-      },
-      "preprocessors": {
-        "title": "Preprocessors",
-        "description": "Sass is second nature — from functions to placeholders and deep nesting logic. Styles stay clean and maintainable. Less or Stylus? Not a problem."
-      },
-      "css_modules": {
-        "title": "CSS Modules",
-        "description": "Scoped styles = zero drama. No global leaks, no naming accidents. Easy to reuse, easy to scale, easy for teammates to trust."
-      },
-      "css_in_js": {
-        "title": "CSS-in-JS",
-        "description": "When styles live in the component, context and logic go side by side. Styled Components or Emotion — used both in production more than once."
-      },
-      "storybook": {
-        "title": "Storybook",
-        "description": "Components come with documentation. Storybook shows everything — edge cases included. Great for designers, QAs, and future me. No need to ask, 'What does this look like?'"
-      }
-    },
-    "uiux": {
-      "title": "UI with a Human Touch",
-      "interactivity": {
-        "title": "Interactivity",
-        "description": "No gimmicks, just smooth experience. Hovers, clicks, navigation — behave the way users intuitively expect. Predictable, not boring. Familiar, not rigid."
-      },
-      "animations": {
-        "title": "Animations",
-        "description": "From subtle microinteractions to timeline beasts. CSS handles the light stuff, GSAP brings choreography. Every motion earns its place — to guide the user, not just decorate."
-      },
-      "figma": {
-        "title": "Figma",
-        "description": "Design files don't need decoding. I get auto layout, constraints, components — and know where to look when something's off. Catch inconsistencies, clarify logic, and bring the mockup to life."
-      },
-      "ui_kit": {
-        "title": "UI Kits ≠ Gospel",
-        "description": "I'm analyzing UI kits, not just accept. Missing states? Weird spacing? Logic gaps? All spotted. Always open to ask, suggest, and adapt — not blindly follow."
-      },
-      "ui_libs": {
-        "title": "UI Libraries (MUI, AntD, CDS etc.)",
-        "description": "I've gone deeper than the docs. Know how themes, slots, styled APIs, internal hooks, and override system stick. Integration is clean, no hacks, no fragile band-aids."
-      }
-    },
-    "code": {
-      "title": "Logic, Types & Behavior Control",
-      "javascript": {
-        "title": "JavaScript",
-        "description": "From DOM to event handling — everything to make the interface feel alive. ES6 features like destructuring and arrow functions? Of course. Logic stays lean and in sync with the markup."
-      },
-      "typescript": {
-        "title": "TypeScript",
-        "description": "Types are a design tool, not just a safety net. From prop definitions to utility types and generics — everything's there to keep the codebase confident and honest."
-      },
-      "react": {
-        "title": "React",
-        "description": "React isn't just a library — it's a mindset. Props and states link data and UI. Effects, callbacks, memoization — used where they matter. Not over-engineered, not under-thought. "
-      },
-      "vue": {
-        "title": "Vue",
-        "description": "Reactive core, computed props, and directives — all understood and used to keep logic separate from markup. Templates stay clean, scripts stay smart. No spaghetti."
-      },
-      "angular": {
-        "title": "Angular",
-        "description": "Strict but reliable. I use containers, directives, input/output binding — and write component logic that stays clear and testable. Behavior is defined cleanly with methods."
-      },
-      "tooling": {
-        "title": "Linters & Code Style",
-        "description": "ESLint, Prettier, Stylelint — configured per team and project. Consistent style = stable project. Automation takes care of the routine, so focus stays on the logic."
-      }
-    }
-
+    ]
   },
   "footer": {
     "copyright": "Copyright © Veronika Novikova",

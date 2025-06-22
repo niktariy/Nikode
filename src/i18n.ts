@@ -23,6 +23,7 @@ i18n
     interpolation: {
       escapeValue: false,
     },
+    returnObjects: true,
     detection: {
       order: ['localStorage', 'sessionStorage', 'navigator'], // Приоритет sessionStorage, затем navigator
       caches: ['sessionStorage'], // Сохраняем в sessionStorage

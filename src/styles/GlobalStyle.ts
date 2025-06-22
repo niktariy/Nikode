@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { hexToRgba } from '../utils/hexToRgba';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -50,6 +51,15 @@ const GlobalStyle = createGlobalStyle`
     @media (forced-colors: active) {
       border: 2px solid currentColor;
     }
+  }
+
+  code {
+    padding: 0.125em 0.25em;
+    border-radius: ${({ theme }) => theme.radii.small};
+    font-family: ${({ theme }) => theme.fonts.monospace};
+    font-weight: 500;
+    background-color: ${({ theme }) => hexToRgba(theme.colors.border, 50)};
+    color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
