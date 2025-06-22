@@ -12,6 +12,7 @@ import HomePage from './pages/HomePage';
 import MentoringPage from './pages/MentoringPage';
 import DevelopmentPage from './pages/DevelopmentPage';
 import PortfolioPage from './pages/PortfolioPage';
+import Footer from './components/Footer/Footer';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const App: React.FC = () => {
             <Route path="/portfolio" element={<PortfolioPage />} />
           </Routes>
         </main>
+        <Footer />
       </Router>
     </ThemeProvider>
   );

@@ -19,7 +19,7 @@ const commonStyles = {
       h3: '2em',
       h4: '1.5em',
       h5: '1.375em',
-      h6: '1.2em',
+      h6: '1.125em',
       body1: '1.125em',
       body2: '1.25em',
       caption: '0.9em',

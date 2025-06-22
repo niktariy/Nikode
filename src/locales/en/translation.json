@@ -52,14 +52,14 @@
       },
       "bem": {
         "title": "BEM Naming",
-        "description": "Readable, purposeful class names are non-negotiable. Modifiers aren’t mixes, roles aren’t blurred, and every class does exactly one thing — and says so."
+        "description": "Readable, purposeful class names are non-negotiable. Modifiers aren't mixes, roles aren't blurred, and every class does exactly one thing — and says so."
       }
     },
     "styling": {
       "title": "Clean and Flexible Styling",
       "css": {
         "title": "Smart CSS: Variables, Layers, Containers",
-        "description": "!important stays untouched — I manage the cascade cleanly. Custom properties keep styles flexible. Media queries cover more than breakpoints: hover, orientation, user quirks — I’m on it."
+        "description": "!important stays untouched — I manage the cascade cleanly. Custom properties keep styles flexible. Media queries cover more than breakpoints: hover, orientation, user quirks — I'm on it."
       },
       "preprocessors": {
         "title": "Preprocessors",
@@ -90,7 +90,7 @@
       },
       "figma": {
         "title": "Figma",
-        "description": "Design files don’t need decoding. I get auto layout, constraints, components — and know where to look when something’s off. Catch inconsistencies, clarify logic, and bring the mockup to life."
+        "description": "Design files don't need decoding. I get auto layout, constraints, components — and know where to look when something's off. Catch inconsistencies, clarify logic, and bring the mockup to life."
       },
       "ui_kit": {
         "title": "UI Kits ≠ Gospel",
@@ -98,7 +98,7 @@
       },
       "ui_libs": {
         "title": "UI Libraries (MUI, AntD, CDS etc.)",
-        "description": "I’ve gone deeper than the docs. Know how themes, slots, styled APIs, internal hooks, and override system stick. Integration is clean, no hacks, no fragile band-aids."
+        "description": "I've gone deeper than the docs. Know how themes, slots, styled APIs, internal hooks, and override system stick. Integration is clean, no hacks, no fragile band-aids."
       }
     },
     "code": {
@@ -109,11 +109,11 @@
       },
       "typescript": {
         "title": "TypeScript",
-        "description": "Types are a design tool, not just a safety net. From prop definitions to utility types and generics — everything’s there to keep the codebase confident and honest."
+        "description": "Types are a design tool, not just a safety net. From prop definitions to utility types and generics — everything's there to keep the codebase confident and honest."
       },
       "react": {
         "title": "React",
-        "description": "React isn’t just a library — it’s a mindset. Props and states link data and UI. Effects, callbacks, memoization — used where they matter. Not over-engineered, not under-thought. "
+        "description": "React isn't just a library — it's a mindset. Props and states link data and UI. Effects, callbacks, memoization — used where they matter. Not over-engineered, not under-thought. "
       },
       "vue": {
         "title": "Vue",
@@ -130,8 +130,9 @@
     }
 
   },
-  "social_links": {
-    "github": "https://github.com/niktariy",
-    "codepen": "https://codepen.io/niktariy"
+  "footer": {
+    "copyright": "Copyright © Veronika Novikova",
+    "socials_title": "Socials",
+    "links_title": "Links"
   }
 }

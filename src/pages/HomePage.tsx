@@ -5,9 +5,7 @@ import BaseHeroSection from '../components/UI/BaseHeroSection';
 import type { RootState } from '../store';
 import { useSelector } from 'react-redux';
 import ButtonGroup from '../components/ButtonGroup/ButtonGroup';
-import SocialLinks from '../components/SocialLinks/SocialLinks';
 import Skills from '../components/Skills/Skills';
-import { socialLinksData as importedSocialLinksData } from '../mock/socialLinks';
 
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
@@ -20,11 +18,6 @@ const HomePage: React.FC = () => {
     webp1x: `/src/assets/illustrations/Theme_${isDarkTheme ? 'Dark' : 'Light'}_Me.webp`,
     webp2x: `/src/assets/illustrations/Theme_${isDarkTheme ? 'Dark' : 'Light'}_Me@2x.webp`,
   };
-
-  const socialLinks = importedSocialLinksData.map(link => ({
-    ...link,
-    url: t(link.url as any),
-  }));
 
   return (
     <>
@@ -41,7 +34,6 @@ const HomePage: React.FC = () => {
         } illustration={illustrationPaths}>
       </BaseHeroSection>
       <Skills />
-      <SocialLinks links={socialLinks} />
     </>
   );
 };

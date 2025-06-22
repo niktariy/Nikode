@@ -9,10 +9,28 @@ export interface IIconProps extends React.SVGProps<SVGSVGElement> {
 
 export type ProjectIconType = LucideIcon | IconType | React.FC<IIconProps>;
 
+export enum SocialLinkType {
+  Social = 'social',
+  Portfolio = 'portfolio',
+}
+
+export enum FooterSectionType {
+  Copyright = 'copyright',
+  Socials = 'socials',
+  Links = 'links',
+}
+
+export enum LinkVariant {
+  Primary = 'primary',
+  Accent = 'accent',
+  Neutral = 'neutral',
+}
+
 export interface ISocialLink {
   url: string;
-  icon: ProjectIconType;
+  icon?: ProjectIconType | null;
   label: string;
+  type: SocialLinkType;
 }
 
 export interface ISkillItem {

@@ -129,8 +129,9 @@
       }
     }
   },
-  "social_links": {
-    "github": "https://github.com/niktariy",
-    "codepen": "https://codepen.io/niktariy"
+  "footer": {
+    "copyright": "Copyright © Вероника Новикова",
+    "socials_title": "Социальные сети",
+    "links_title": "Ссылки"
   }
 } 
