@@ -14,8 +14,8 @@ const commonStyles = {
       body: 1.5,
     },
     fontSizes: {
-      h1: '3.5em',
-      h2: '3em',
+      h1: '3em',
+      h2: '2.5em',
       h3: '2em',
       h4: '1.5em',
       h5: '1.375em',

@@ -1,19 +1,25 @@
 import React from 'react';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
-
-const PageContainer = styled.div`
-  padding: var(--spacing-xxl) var(--spacing-md);
-  text-align: center;
-`;
+import { Trans } from 'react-i18next';
+import BaseHeroSection from '../components/UI/BaseHeroSection';
+import type { RootState } from '../store';
+import { useSelector } from 'react-redux';
 
 const DevelopmentPage: React.FC = () => {
-  const { t } = useTranslation();
+  const selectCurrentTheme = (state: RootState) => state.theme.currentTheme;
+  const isDarkTheme = useSelector(selectCurrentTheme) === 'dark';
+
+
+  const illustrationPaths = {
+    png1x: `/src/assets/illustrations/Theme_${isDarkTheme ? 'Dark' : 'Light'}_Develop.png`,
+    png2x: `/src/assets/illustrations/Theme_${isDarkTheme ? 'Dark' : 'Light'}_Develop@2x.png`,
+    webp1x: `/src/assets/illustrations/Theme_${isDarkTheme ? 'Dark' : 'Light'}_Develop.webp`,
+    webp2x: `/src/assets/illustrations/Theme_${isDarkTheme ? 'Dark' : 'Light'}_Develop@2x.webp`,
+  };
   return (
-    <PageContainer>
-      <h1>{t('development.title')}</h1>
-      <p>{t('development.description')}</p>
-    </PageContainer>
+    <>
+      <BaseHeroSection title={<Trans i18nKey='development.title' components={{ small: <small /> }} />} description={<Trans i18nKey={'development.description'} />}
+        illustration={illustrationPaths} />
+    </>
   );
 };
 

@@ -45,7 +45,7 @@ const BaseSection = ({
   const BaseSectionHeader = () => (
     <SectionHeader $centered={centered}>
       <Typography variant="h2">{title}</Typography>
-      {description && <StyledDescription variant='p'>{description}</StyledDescription>}
+      {description && <StyledDescription>{description}</StyledDescription>}
       {actions && actions}
     </SectionHeader>
   );

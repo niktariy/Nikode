@@ -13,13 +13,9 @@
   },
   "home": {
     "title": "Hi, I'm Veronika 👋🏻<br/>Frontend developer <br/><small>& UX Enthusiast</small>",
-    "desc": "<p>Yes, I'm that person who opens Figma and isn't scared.</p><p>I transform layouts into clean, adaptive markup — so everything looks right in Chrome, Safari, and even IE (just kidding, no one looks at IE anymore... I hope).</p><p>My main focus is <strong>React (TypeScript)</strong>, but I also comfortably work with Vue and Angular.",
+    "desc": "<p>Yes, I'm that person who opens Figma and isn't scared.</p><p>I transform layouts into clean, adaptive markup — so everything looks right in Chrome, Safari, and even IE (just kidding, no one looks at IE anymore... I hope).</p>",
     "CTA_portfolio": "View portfolio",
     "CTA_contact": "Invite to a project"
-  },
-  "about": {
-    "title": "Veronika Khalikova",
-    "description": ""
   },
   "portfolio": {
     "title": "Portfolio",
@@ -27,7 +23,7 @@
   },
   "development": {
     "title": "Development",
-    "description": "Information about development will be here."
+    "description": "<p>I design in code — turning static mockups into solid, production-ready interfaces — responsive, clean, and maintainable.</p><p><strong>React + TypeScript</strong> is where I’m fastest, but I speak <strong>Vue</strong> and <strong>Angular</strong> fluently. Structure, logic, and style all get their place — no chaos, no duct tape.</p><p>I write code with a future in mind — readable today, understandable tomorrow, and not embarrassing a year from now.</p>"
   },
   "mentoring": {
     "title": "Mentoring",
@@ -48,12 +44,12 @@
           },
           {
             "title": "Accessibility (a11y)",
-            "description": "WCAG standards? Check. ARIA roles used as intended. Screen readers (NVDA, VoiceOver), keyboard navigation, focus states — all tested. Respect `prefers-*`, `pointer`, color settings and etc.",
+            "description": "<b>WCAG</b> standards? Check. <b>ARIA</b> roles used as intended. Screen readers (<b>NVDA</b>, <b>VoiceOver</b>), keyboard navigation, <code>focus</code> states — all tested. Respect <code>prefers-*</code>, <code>pointer</code>, color settings and etc.",
             "icon": "PersonStanding"
           },
           {
             "title": "Responsive & Cross-Browser",
-            "description": "Designed for humans — not just perfect mockups. Retina screens, breakpoints, awkward DPIs, Safari quirks — all taken into account before QA raises a brow.",
+            "description": "Designed for humans — not just perfect mockups. Retina screens, breakpoints, awkward <b>DPI</b>s, <b>Safari</b> quirks — all taken into account before QA raises a brow.",
             "icon": "RwdIcon"
           },
           {
@@ -69,13 +65,13 @@
         "items": [
           {
             "title": "Smart CSS: Variables, Layers, Containers",
-            "description": "!important stays untouched — I manage the cascade cleanly. Custom properties keep styles flexible. Media queries cover more than breakpoints: hover, orientation, user quirks — I'm on it.",
+            "description": "<code>!important</code> stays untouched — I manage the cascade cleanly. Custom properties keep styles flexible. <b>Media queries</b> cover more than breakpoints: <code>hover</code>, <code>orientation</code>, user quirks — I'm on it.",
             "additionalClassName": "fill",
             "icon": "SiCss"
           },
           {
             "title": "Preprocessors",
-            "description": "Sass is second nature — from functions to placeholders and deep nesting logic. Styles stay clean and maintainable. Less or Stylus? Not a problem.",
+            "description": "<b>Sass</b> is second nature — from <code>functions</code> to <code>placeholders</code> and deep nesting logic. Styles stay clean and maintainable. <b>Less</b> or <b>Stylus</b>? Not a problem.",
             "icon": "SiSass"
           },
           {
@@ -85,12 +81,12 @@
           },
           {
             "title": "CSS-in-JS",
-            "description": "When styles live in the component, context and logic go side by side. Styled Components or Emotion — used both in production more than once.",
+            "description": "When styles live in the component, context and logic go side by side. <b>Styled Components</b> or <b>Emotion</b> — used both in production more than once.",
             "icon": "SiStyledcomponents"
           },
           {
             "title": "Storybook",
-            "description": "Components come with documentation. Storybook shows everything — edge cases included. Great for designers, QAs, and future me. No need to ask, 'What does this look like?'",
+            "description": "Components come with documentation. <b>Storybook</b> shows everything — edge cases included. Great for designers, <b>QAs</b>, and future me. No need to ask, <i>'What does this look like?'</i>",
             "icon": "SiStorybook"
           }
         ]
@@ -101,17 +97,17 @@
         "items": [
           {
             "title": "Interactivity",
-            "description": "No gimmicks, just smooth experience. Hovers, clicks, navigation — behave the way users intuitively expect. Predictable, not boring. Familiar, not rigid.",
+            "description": "No gimmicks, just smooth experience. <code>hover</code>s, <code>click</code>s, navigation — behave the way users intuitively expect. Predictable, not boring. Familiar, not rigid.",
             "icon": "MousePointerClick"
           },
           {
             "title": "Animations",
-            "description": "From subtle microinteractions to timeline beasts. CSS handles the light stuff, GSAP brings choreography. Every motion earns its place — to guide the user, not just decorate.",
+            "description": "From subtle microinteractions to timeline beasts. <b>CSS</b> handles the light stuff, <b>GSAP</b> brings choreography. Every motion earns its place — to guide the user, not just decorate.",
             "icon": "Wand2"
           },
           {
             "title": "Figma",
-            "description": "Design files don't need decoding. I get auto layout, constraints, components — and know where to look when something's off. Catch inconsistencies, clarify logic, and bring the mockup to life.",
+            "description": "Design files don't need decoding. I get <b>auto layout</b>, <b>constraints</b>, <b>components</b> — and know where to look when something's off. Catch inconsistencies, clarify logic, and bring the mockup to life.",
             "icon": "SiFigma"
           },
           {
@@ -121,7 +117,7 @@
           },
           {
             "title": "UI Libraries (MUI, AntD, CDS etc.)",
-            "description": "I've gone deeper than the docs. Know how themes, slots, styled APIs, internal hooks, and override system stick. Integration is clean, no hacks, no fragile band-aids.",
+            "description": "I've gone deeper than the docs. Know how <code>themes</code>, <code>slots</code>, <code>styled</code> APIs, internal <code>hooks</code>, and override system stick. Integration is clean, no hacks, no fragile band-aids.",
             "additionalClassName": "fill",
             "icon": "Paintbrush"
           }
@@ -133,32 +129,32 @@
         "items": [
           {
             "title": "JavaScript",
-            "description": "From DOM to event handling — everything to make the interface feel alive. ES6 features like destructuring and arrow functions? Of course. Logic stays lean and in sync with the markup.",
+            "description": "From <code>DOM</code> to <code>event handling</code> — everything to make the interface feel alive. <b>ES6</b> features like <code>destructuring</code> and <code>arrow functions</code>? Of course. Logic stays lean and in sync with the markup.",
             "icon": "SiJavascript"
           },
           {
             "title": "TypeScript",
-            "description": "Types are a design tool, not just a safety net. From prop definitions to utility types and generics — everything's there to keep the codebase confident and honest.",
+            "description": "Types are a design tool, not just a safety net. From <code>prop</code> definitions to <code>utility types</code> and <code>generics</code> — everything's there to keep the codebase confident and honest.",
             "icon": "SiTypescript"
           },
           {
             "title": "React",
-            "description": "React isn't just a library — it's a mindset. Props and states link data and UI. Effects, callbacks, memoization — used where they matter. Not over-engineered, not under-thought. ",
+            "description": "<b>React</b> isn't just a library — it's a mindset. <code>props</code> and <code>state</code> link data and UI. <code>effects</code>, <code>callbacks</code>, <code>memoization</code> — used where they matter. Not over-engineered, not under-thought.",
             "icon": "SiReact"
           },
           {
             "title": "Vue",
-            "description": "Reactive core, computed props, and directives — all understood and used to keep logic separate from markup. Templates stay clean, scripts stay smart. No spaghetti.",
+            "description": "Reactive core, <code>computed props</code>, and <code>directives</code> — all understood and used to keep logic separate from markup. Templates stay clean, scripts stay smart. No spaghetti.",
             "icon": "SiVuedotjs"
           },
           {
             "title": "Angular",
-            "description": "Strict but reliable. I use containers, directives, input/output binding — and write component logic that stays clear and testable. Behavior is defined cleanly with methods.",
+            "description": "Strict but reliable. I use <code>containers</code>, <code>directives</code>, <code>input/output binding</code> — and write component logic that stays clear and testable. Behavior is defined cleanly with <code>methods</code>.",
             "icon": "SiAngular"
           },
           {
             "title": "Linters & Code Style",
-            "description": "ESLint, Prettier, Stylelint — configured per team and project. Consistent style = stable project. Automation takes care of the routine, so focus stays on the logic.",
+            "description": "<b>ESLint</b>, <b>Prettier</b>, <b>Stylelint</b> — configured per team and project. Consistent style = stable project. Automation takes care of the routine, so focus stays on the logic.",
             "icon": "SiStylelint"
           }
         ]
@@ -169,17 +165,17 @@
         "items": [
           {
             "title": "Fast adaptation",
-            "description": "New stack? No problem. The main thing is not to look for \"how to make it beautiful,\" but to understand why it doesn't work.",
+            "description": "New stack? No problem. The main thing is not to look for \"how to make it beautiful\", but to understand why it doesn't work.",
             "icon": "Lightbulb"
           },
           {
             "title": "Version control systems",
-            "description": "I know how to roll back not only in life, but also by commits. I navigate branches, resolve conflicts. I can cherry-pick if necessary. I have used <strong>GitHub</strong>, <strong>GitLab</strong>, <strong>Bitbucket</strong> and am familiar with <strong>Git Flow</strong>.",
+            "description": "I know how to roll back not only in life, but also by commits. I navigate <code>branches</code>, resolve <code>conflicts</code>. I can <code>cherry-pick</code> if necessary. I have used <b>GitHub</b>, <b>GitLab</b>, <b>Bitbucket</b> and am familiar with <b>Git Flow</b>.",
             "icon": "GitBranch"
           },
           {
             "title": "Development Methodologies",
-            "description": "I have worked with various approaches: <strong>Agile</strong> (Scrum) — for flexible and changing projects, <strong>Waterfall</strong> — for clearly planned and stable ones, and <strong>Kanban</strong> — for optimizing workflow in small teams or for support.",
+            "description": "I have worked with various approaches: <b>Agile</b> (<b>Scrum</b>) — for flexible and changing projects, <b>Waterfall</b> — for clearly planned and stable ones, and <b>Kanban</b> — for optimizing workflow in small teams or for support.",
             "icon": "LayoutPanelTop"
           },
           {
