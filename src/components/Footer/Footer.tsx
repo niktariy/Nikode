@@ -28,18 +28,18 @@ const FooterContent = styled.div`
 `;
 
 interface FooterSectionProps {
-  sectionType?: FooterSectionType;
+  $sectionType?: FooterSectionType;
 }
 
-const getFooterSectionResponsiveStyles = (theme: any, sectionType?: FooterSectionType) => {
-  if (sectionType === FooterSectionType.Copyright) {
+const getFooterSectionResponsiveStyles = (theme: any, $sectionType?: FooterSectionType) => {
+  if ($sectionType === FooterSectionType.Copyright) {
     return css`
       @media (max-width: ${theme.breakpoints.md}) {
         order: 3;
         margin-top: ${theme.spacing(3)};
       }
     `;
-  } else if (sectionType === FooterSectionType.Socials || sectionType === FooterSectionType.Links) {
+  } else if ($sectionType === FooterSectionType.Socials || $sectionType === FooterSectionType.Links) {
     return css`
       @media (max-width: ${theme.breakpoints.md}) {
         text-align: center;
@@ -57,7 +57,7 @@ const FooterSection = styled.div<FooterSectionProps>`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(3)};
 
-  ${({ theme, sectionType }) => getFooterSectionResponsiveStyles(theme, sectionType)}
+  ${({ theme, $sectionType }) => getFooterSectionResponsiveStyles(theme, $sectionType)}
 `;
 
 const Footer: React.FC = () => {
@@ -70,19 +70,19 @@ const Footer: React.FC = () => {
   return (
     <StyledFooter>
       <FooterContent className="container">
-        <FooterSection sectionType={FooterSectionType.Copyright}>
+        <FooterSection $sectionType={FooterSectionType.Copyright}>
           <Typography variant="body2">
             &copy; {currentYear} {t('footer.copyright')}
           </Typography>
         </FooterSection>
-        <FooterSection sectionType={FooterSectionType.Socials}>
+        <FooterSection $sectionType={FooterSectionType.Socials}>
           <Typography variant="h6">
             {t('footer.socials_title')}
           </Typography>
           <FooterLinkList links={socialMediaLinks} />
         </FooterSection>
 
-        <FooterSection sectionType={FooterSectionType.Links}>
+        <FooterSection $sectionType={FooterSectionType.Links}>
           <Typography variant="h6">
             {t('footer.links_title')}
           </Typography>
