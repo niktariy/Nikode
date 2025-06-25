@@ -47,6 +47,7 @@ export type ShadowColors = {
   main?: string | null;
   accent?: string | null;
   fill?: string | null;
+  fillLight?: string | null;
 };
 
 export type TimingFunctions = {

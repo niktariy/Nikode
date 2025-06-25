@@ -1,6 +1,6 @@
+import React from 'react';
 import type { IconType } from '@icons-pack/react-simple-icons';
 import type { LucideIcon } from 'lucide-react';
-import React from 'react';
 import type { IconName } from '../utils/iconMapping';
 
 export interface IIconProps extends React.SVGProps<SVGSVGElement> {

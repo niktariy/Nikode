@@ -8,6 +8,20 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  :root {
+    --c-max-w: 96vw;
+    --c-pad: 0 ${({ theme }) => theme.spacing(2)};
+    
+    @media (width > ${({ theme }) => theme.breakpoints.xl}) {
+      --c-pad: 0 ${({ theme }) => theme.spacing(3)};
+    }
+
+    @media (width > ${({ theme }) => theme.breakpoints.xl}) {
+      --c-max-w: 1520px;
+      --c-pad: 0 ${({ theme }) => theme.spacing(4)};
+    }
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     html {
       scroll-behavior: smooth;
@@ -27,18 +41,9 @@ const GlobalStyle = createGlobalStyle`
 
   .container {
     width: 100%;
-    max-width: 96vw;
+    max-width: var(--c-max-w);
     margin: 0 auto;
-    padding: 0 ${({ theme }) => theme.spacing(2)};
-    
-    @media (width > ${({ theme }) => theme.breakpoints.xl}) {
-      padding: 0 ${({ theme }) => theme.spacing(3)};
-    }
-
-    @media (width > ${({ theme }) => theme.breakpoints.xl}) {
-      max-width: 1520px;
-      padding: 0 ${({ theme }) => theme.spacing(4)};
-    }
+    padding: var(--c-pad);
   }
 
   a, button {

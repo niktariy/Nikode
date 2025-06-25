@@ -76,7 +76,7 @@ const commonStyles = {
       xs: '0 0 4px',
       sm: '0 2px 8px',
       md: '0 4px 16px',
-      lg: '0 8px 32px',
+      lg: '0 6px 32px',
     },
   }
 };
@@ -96,8 +96,9 @@ export const lightTheme: DefaultTheme = {
     caption: palette.neutral[500],
     shadow: {
       main: hexToRgba(palette.main[700], 24),
-      accent: hexToRgba(palette.accent[700], 24),
+      accent: hexToRgba(palette.main[500], 24),
       fill: palette.main[200],
+      fillLight: palette.main[100],
     },
     link: {
       primary: {
@@ -117,10 +118,10 @@ export const lightTheme: DefaultTheme = {
       },
     },
     button: {
-      default: palette.accent[500],
+      default: palette.main[500],
       defaultText: palette.base.white,
-      hover: palette.accent[700],
-      focus: palette.main[500],
+      hover: palette.main[700],
+      focus: palette.main[800],
     },
     burgerMenu: {
       bunTop: palette.neutral[700],
@@ -181,8 +182,9 @@ export const darkTheme: DefaultTheme = {
     caption: palette.grey[500],
     shadow: {
       main: hexToRgba(palette.peach[300], 32),
-      accent: hexToRgba(palette.accent[300], 32),
-      fill: hexToRgba(palette.neutral[500], 32),
+      accent: hexToRgba(palette.grey[300], 50),
+      fill: palette.neutral[500],
+      fillLight: palette.neutral[800],
     },
     link: {
       primary: {
@@ -202,10 +204,10 @@ export const darkTheme: DefaultTheme = {
       },
     },
     button: {
-      default: palette.accent[300],
+      default: palette.grey[200],
       defaultText: palette.neutral[900],
-      hover: palette.accent[200],
-      focus: palette.peach[300],
+      hover: palette.peach[300],
+      focus: palette.peach[400],
     },
     burgerMenu: {
       bunTop: palette.neutral[200],

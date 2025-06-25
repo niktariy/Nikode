@@ -21,12 +21,13 @@ const StyledDropdownButton = styled(Button)`
   box-shadow: 0 0 0 transparent;
   transition: border-color 0.2s, box-shadow 0.2s;
 
-  &:hover {
+  &:hover, &:focus {
+    background: transparent;
     border-color: ${({ theme }) => theme.colors.primary};
     box-shadow: ${({ theme }) => theme.shadow.elevation.flat} ${({ theme }) => theme.colors.shadow.main};
   }
 
-  &[aria-expanded="true"] {
+  &[aria-expanded="true"], &:focus {
     border-color: ${({ theme }) => theme.colors.primary};
   }
 

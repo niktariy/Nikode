@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import TextLink from '../UI/Link/TextLink';
 
@@ -17,12 +16,11 @@ const StyledLinkList = styled.ul`
 `;
 
 const FooterLinkList: React.FC<FooterLinkListProps> = ({ links }) => {
-  const { t } = useTranslation();
   return (
     <StyledLinkList>
       {links.map((link) => (
         <li key={link.url}>
-          <TextLink href={t(link.url)} target="_blank" rel="noopener noreferrer">
+          <TextLink href={link.url} target="_blank" rel="noopener noreferrer">
             {link.label}
           </TextLink>
         </li>
