@@ -1,18 +1,30 @@
 import React, { type ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { hexToRgba } from '../../../utils/hexToRgba';
+import { type DefaultTheme } from 'styled-components';
 
-interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'onClick' | 'ref'> {
-  variant?: 'filled' | 'outlined';
-  size?: 'small' | 'medium' | 'large';
-  label?: string;
-  children?: ReactNode;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  ref?: React.Ref<HTMLButtonElement>;
-}
+const outlinedStyles = (theme: DefaultTheme) => css`
+  --btn-outline-bg: ${theme.colors.button.defaultText};
+  --btn-shadow: inset 0 0 0 2px var(--btn-color), var(--btn-outside-shadow);
+
+  background-color: var(--btn-outline-bg);
+  color: var(--btn-color);
+  position: relative;
+  z-index: 1;
+
+  &:hover, &:focus {
+    --btn-outline-bg: ${hexToRgba(theme.colors.button.hover, 4)};
+  }
+  &:focus {
+    --btn-outline-bg: ${hexToRgba(theme.colors.button.hover, 8)};
+    ${theme.mode === 'dark' && css`
+      color: ${theme.colors.button.default};
+    `};
+  }
+`;
 
 const StyledButton = styled.button.attrs<{
-  $variant?: 'filled' | 'outlined';
+  $variant?: 'filled' | 'outlined' | 'outlinedQuiet';
   $size?: 'small' | 'medium' | 'large';
 }>(props => ({
   $variant: props.$variant || 'filled',
@@ -20,6 +32,7 @@ const StyledButton = styled.button.attrs<{
 }))`
   --btn-color: ${({ theme }) => theme.colors.button.default};
   --btn-outside-shadow: 0 0 0 0 transparent;
+  --btn-inside-shadow: 0 0 0 0 transparent;
   
   display: flex;
   align-items: center;
@@ -35,7 +48,7 @@ const StyledButton = styled.button.attrs<{
   font-family: ${({ theme }) => theme.fonts.monospace};
   font-size: 1rem;
   line-height: 1.5em;
-  box-shadow: var(--btn-shadow, var(--btn-outside-shadow));
+  box-shadow: inset var(--btn-inside-shadow), var(--btn-shadow, var(--btn-outside-shadow));
   will-change: transform, background-color, color, box-shadow;
   transition-property: transform, background-color, color, box-shadow, outline;
   transition-duration: ${({ theme }) => theme.transition.durationBase};
@@ -48,12 +61,12 @@ const StyledButton = styled.button.attrs<{
     `};
   }
 
-  &:focus:not(:disabled),
+  &:focus,
+  &:focus-visible,
   &:active {
     --btn-color: ${({ theme }) => theme.colors.button.focus};
     ${({ theme }) => theme.mode === 'dark' ? css`
-      outline: 2px solid ${theme.colors.button.default};
-      outline-offset: 2px;`
+      outline: 2px solid ${theme.colors.button.default};`
     : css`
       --btn-outside-shadow: ${theme.shadow.elevation.sm} ${theme.colors.shadow.main};
     `};
@@ -74,23 +87,7 @@ const StyledButton = styled.button.attrs<{
     switch ($variant) {
       case 'outlined':
         return css`
-          --btn-outline-bg: ${theme.colors.button.defaultText};
-          --btn-shadow: inset 0 0 0 2px var(--btn-color), var(--btn-outside-shadow);
-
-          background-color: var(--btn-outline-bg);
-          color: var(--btn-color);
-          position: relative;
-          z-index: 1;
-
-          &:hover, &:focus {
-            --btn-outline-bg: ${hexToRgba(theme.colors.button.hover, 4)};
-          }
-          &:focus {
-            --btn-outline-bg: ${hexToRgba(theme.colors.button.hover, 8)};
-            ${({ theme }) => theme.mode === 'dark' && css`
-              color: ${theme.colors.button.default};
-            `};
-          }
+          ${outlinedStyles(theme)}
         `;
       case 'filled':
       default:
@@ -100,12 +97,47 @@ const StyledButton = styled.button.attrs<{
         `;
     }
   }}
+
+  ${({ theme, $variant }) => {
+    if ($variant === 'outlinedQuiet') {
+      return css`
+        ${outlinedStyles(theme)}
+        --btn-shadow: 0 0 0 0 transparent;
+        --btn-inside-shadow: 0 0 0 1px ${({ theme }) => theme.colors.border};
+
+        color: ${({ theme }) => theme.colors.text};
+        border-radius: ${({ theme }) => theme.radii.pill};
+        
+        &:hover, &:focus {
+          --btn-outline-bg: ${({ theme }) => theme.colors.button.defaultText};
+          --btn-inside-shadow: 0 0 0 0 transparent;
+          --btn-shadow: ${({ theme }) => `${theme.shadow.elevation.flat} ${theme.colors.button.default}`};
+        }
+        
+        &[aria-expanded="true"], &:focus {
+          outline-offset: 0;
+        }
+        
+        &[aria-expanded="true"] {
+          --btn-outline-bg: ${hexToRgba(theme.colors.button.hover, 8)};
+        }
+      `;
+    }
+    return null; // Return null if not outlinedQuiet, handled by switch
+  }}
 `;
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ type = 'button', children, label, variant, size, ...props }, ref) => {
+interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'onClick'> {
+  variant?: 'filled' | 'outlined' | 'outlinedQuiet';
+  size?: 'small' | 'medium' | 'large';
+  label?: string;
+  children?: ReactNode;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
+}
+
+const Button = ({ type = 'button', children, label, variant, size, ref, ...props }: ButtonProps) => {
   return <StyledButton type={type} ref={ref} $variant={variant} $size={size} {...props}>{children || label}</StyledButton>;
-});
+};
 
-Button.displayName = 'Button';
-
-export default Button; 
+export default Button;

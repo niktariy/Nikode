@@ -1,136 +1,78 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styled, { keyframes, css } from 'styled-components';
+import Button from '../UI/Button/Button';
 
 interface BurgerMenuProps {
   isOpened: boolean;
   onToggle: () => void;
+  className?: string;
+  ref?: React.Ref<HTMLButtonElement>;
 }
 
 const spacing = 8; //px
-const height = 24; //px
 const width = 28; //px
 const bunHeight = 3; // px
 
-// Keyframes
+// ... (keyframes remain unchanged)
 const bunTopOut = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  20% {
-    transform: rotate(15deg);
-  }
-  80% {
-    transform: rotate(-60deg);
-  }
-  100% {
-    transform: rotate(-45deg);
-  }
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(15deg); }
+  80% { transform: rotate(-60deg); }
+  100% { transform: rotate(-45deg); }
 `;
-
 const bunTopIn = keyframes`
-  0% {
-    transform: rotate(-45deg);
-  }
-  20% {
-    transform: rotate(-60deg);
-  }
-  80% {
-    transform: rotate(15deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
+  0% { transform: rotate(-45deg); }
+  20% { transform: rotate(-60deg); }
+  80% { transform: rotate(15deg); }
+  100% { transform: rotate(0deg); }
 `;
-
 const bunBotOut = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  20% {
-    transform: rotate(-15deg);
-  }
-  80% {
-    transform: rotate(60deg);
-  }
-  100% {
-    transform: rotate(45deg);
-  }
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(-15deg); }
+  80% { transform: rotate(60deg); }
+  100% { transform: rotate(45deg); }
 `;
-
 const bunBotIn = keyframes`
-  0% {
-    transform: rotate(45deg);
-  }
-  20% {
-    transform: rotate(60deg);
-  }
-  80% {
-    transform: rotate(-15deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
+  0% { transform: rotate(45deg); }
+  20% { transform: rotate(60deg); }
+  80% { transform: rotate(-15deg); }
+  100% { transform: rotate(0deg); }
 `;
-
 const bunFillIn = keyframes`
-  0% {
-    width: 0;
-    right: 0;
-  }
-  40% {
-    width: 0;
-    right: ${width * -1}px;
-  }
-  80% {
-    width: ${width - bunHeight}px;
-    right: 6px;
-  }
-  100% {
-    width: ${width - bunHeight}px;
-    right: 0;
-  }
+  0% { width: 0; right: 0; }
+  40% { width: 0; right: ${width * -1}px; }
+  80% { width: ${width - bunHeight}px; right: 6px; }
+  100% { width: ${width - bunHeight}px; right: 0; }
 `;
-
 const bunFillOut = keyframes`
-  0% {
-    width: ${width - bunHeight}px;
-    right: 0;
-  }
-  20% {
-    width: 42px;
-    right: 6px;
-  }
-  40% {
-    width: 0;
-    right: -40px;
-  }
-  100% {
-    width: 0;
-    right: ${width - bunHeight}px;
-  }
+  0% { width: ${width - bunHeight}px; right: 0; }
+  20% { width: 42px; right: 6px; }
+  40% { width: 0; right: -40px; }
+  100% { width: 0; right: ${width - bunHeight}px; }
 `;
 
-const StyledBurger = styled.div`
-  width: ${width + 2 * spacing}px;
-  height: ${height + 2 * spacing}px;
-  display: none; // Default to none, then show on mobile
+const StyledBurgerMenu = styled(Button)`
+  display: flex;
+  align-items: center;
   position: relative;
-  padding: ${1.5 * spacing}px ${spacing}px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transform: scale(1);
-  transition: ease 0.001s;
-  z-index: ${({ theme }) => theme.zIndex.header} + 1;
-  -webkit-touch-callout: none;
+  z-index: ${({ theme }) => theme.zIndex.header};
+  background-color: var(--header-bgc);
+  backdrop-filter: var(--header-drop-filter);
+  border-radius: var(--header-br);
   user-select: none;
+  -webkit-touch-callout: none;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    display: block;
+  @media (width < ${({ theme }) => theme.breakpoints.lg}) {
+    display: flex;
+    align-items: center;
   }
 
   .burger__buns {
     position: relative;
+    width: ${width}px;
+    height: ${spacing * 2 + bunHeight}px;
+    margin-left: ${spacing}px;
   }
 
   --color-bun-top: ${({ theme }) => theme.colors.burgerMenu.bunTop};
@@ -178,16 +120,24 @@ const StyledBun = styled.span<{ $isTop?: boolean; $isMid?: boolean; $isBot?: boo
   `}
 `;
 
-const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpened, onToggle }) => {
+const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpened, onToggle, className, ref }) => {
+  const { t } = useTranslation();
   return (
-    <StyledBurger onClick={onToggle} aria-label="Open menu">
+    <StyledBurgerMenu
+      onClick={onToggle}
+      variant='outlinedQuiet'
+      aria-label="Open menu"
+      className={className}
+      ref={ref}
+    >
+      {t('navigation.menu')}
       <div className="burger__buns">
         <StyledBun $isTop $isOpened={isOpened} />
         <StyledBun $isMid $isOpened={isOpened} />
         <StyledBun $isBot $isOpened={isOpened} />
       </div>
-    </StyledBurger>
+    </StyledBurgerMenu>
   );
 };
 
-export default BurgerMenu; 
+export default BurgerMenu;

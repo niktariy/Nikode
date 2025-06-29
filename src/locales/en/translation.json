@@ -9,7 +9,8 @@
     "mentoring": "Mentoring",
     "development": "Development",
     "portfolio": "Portfolio",
-    "logo_aria_label": "Open Home page"
+    "logo_aria_label": "Open Home page",
+    "menu": "Menu"
   },
   "home": {
     "title": "Hi, I'm Veronika 👋🏻<br/>Frontend developer <br/><small>& UX Enthusiast</small>",
@@ -23,7 +24,7 @@
   },
   "development": {
     "title": "Development",
-    "description": "<p>I design in code — turning static mockups into solid, production-ready interfaces — responsive, clean, and maintainable.</p><p><strong>React + TypeScript</strong> is where I’m fastest, but I speak <strong>Vue</strong> and <strong>Angular</strong> fluently. Structure, logic, and style all get their place — no chaos, no duct tape.</p><p>I write code with a future in mind — readable today, understandable tomorrow, and not embarrassing a year from now.</p>"
+    "description": "<p>I design in code — turning static mockups into solid, production-ready interfaces — responsive, clean, and maintainable.</p><p><strong>React + TypeScript</strong> is where I'm fastest, but I speak <strong>Vue</strong> and <strong>Angular</strong> fluently. Structure, logic, and style all get their place — no chaos, no duct tape.</p><p>I write code with a future in mind — readable today, understandable tomorrow, and not embarrassing a year from now.</p>"
   },
   "mentoring": {
     "title": "Mentoring",
@@ -191,5 +192,30 @@
     "copyright": "Copyright © Veronika Novikova",
     "socials_title": "Socials",
     "links_title": "Links"
+  },
+  "prices": {
+    "title": "Web development prices",
+    "cards": [
+      {
+        "title": "Website from scratch",
+        "description": "You only have designer mockups, I can choose the tech stack",
+        "price": "$18/hr"
+      },
+      {
+        "title": "New components, features or pages",
+        "description": "You already have a working site and designer mockups to implement",
+        "price": "$20/hr"
+      },
+      {
+        "title": "Redesign of an existing site",
+        "description": "Your site needs an update and you want to hire me for this. Please check my tech stack first.",
+        "price": "$23/hr"
+      },
+      {
+        "title": "Support for an existing project",
+        "description": "Bug fixing / troubleshooting",
+        "price": "$20/hr"
+      }
+    ]
   }
 }

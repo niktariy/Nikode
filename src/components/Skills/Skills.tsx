@@ -1,13 +1,10 @@
 import styled from "styled-components";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import Typography from '../UI/Typography/Typography';
 import BaseSection from "../UI/BaseSection";
 import SkillCard from "../UI/SkillCard/SkillCard";
 import { iconMapping } from '../../utils/iconMapping';
 import type { ISkillCategory } from '../../types/common';
-import { useState, useEffect } from 'react';
-import { fetchSkillsData } from '../../utils/mockApi';
-
 
 const StyledList = styled.ul`
   display: grid;
@@ -50,53 +47,26 @@ const StyledCategoryTitle = styled(Typography)`
 `;
 
 const Skills = () => {
-  const { i18n } = useTranslation();
-  const [skillsGeneralTranslation, setSkillsGeneralTranslation] = useState<{
-    title: string;
-    desc: string;
-    categories: ISkillCategory[];
-  } | null>(null);
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const getSkills = async () => {
-      setIsLoading(true);
-      try {
-        const data = await fetchSkillsData(i18n.language);
-        setSkillsGeneralTranslation(data);
-      } catch (error) {
-        console.error("Failed to fetch skills data:", error);
-        setSkillsGeneralTranslation(null);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    getSkills();
-  }, [i18n.language]);
-
-  if (isLoading || !skillsGeneralTranslation || !skillsGeneralTranslation.categories) {
-    return null; // Or a loading spinner
-  }
+  const { t } = useTranslation();
+  const skillsCategories = t('skills.categories', { returnObjects: true }) as Array<ISkillCategory>;
 
   return (
-    <BaseSection centered title={skillsGeneralTranslation.title} description={skillsGeneralTranslation.desc}>
-      {skillsGeneralTranslation.categories.map((translatedCategory) => {
+    <BaseSection centered title={t('skills.title')} description={t('skills.desc')}>
+      {skillsCategories.map((category) => {
 
         return (
-          <div key={translatedCategory.key}>
-            <StyledCategoryTitle variant="h3">{translatedCategory.title}</StyledCategoryTitle>
+          <div key={category.key}>
+            <StyledCategoryTitle variant="h3">{category.title}</StyledCategoryTitle>
             <StyledList>
-              {translatedCategory.items.map((skillTranslation, index) => {
-                const IconComponent = skillTranslation.icon ? iconMapping[skillTranslation.icon] : undefined;
+              {category.items.map((item, index) => {
+                const IconComponent = item.icon ? iconMapping[item.icon] : undefined;
 
                 return (
-                  <li key={index} className={skillTranslation.additionalClassName}>
+                  <li key={index} className={item.additionalClassName}>
                     <SkillCard
-                      title={skillTranslation.title}
+                      title={item.title}
                       icon={IconComponent}
-                      description={<Trans i18nKey={skillTranslation.description} components={{ code: <code />, b: <b />, i: <i /> }} />}
+                      description={<span dangerouslySetInnerHTML={{ __html: item.description }}></span>}
                     />
                   </li>
                 );

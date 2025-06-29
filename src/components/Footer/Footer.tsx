@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type Ref } from 'react';
 import styled, { css } from 'styled-components';
 import Typography from '../UI/Typography/Typography';
 import { useTranslation } from 'react-i18next';
@@ -60,7 +60,11 @@ const FooterSection = styled.div<FooterSectionProps>`
   ${({ theme, $sectionType }) => getFooterSectionResponsiveStyles(theme, $sectionType)}
 `;
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  ref?: Ref<HTMLElement>;
+}
+
+const Footer: React.FC<FooterProps> = ({ ref }) => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
@@ -68,7 +72,7 @@ const Footer: React.FC = () => {
   const portfolioLinks = socialLinksData.filter(link => link.type === SocialLinkType.Portfolio);
 
   return (
-    <StyledFooter>
+    <StyledFooter ref={ref}>
       <FooterContent className="container">
         <FooterSection $sectionType={FooterSectionType.Copyright}>
           <Typography variant="body2">

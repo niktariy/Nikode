@@ -59,11 +59,12 @@ const commonStyles = {
     pill: '9999px'
   },
   zIndex: {
+    above: -1,
     default: 1,
     absolute: 10,
     input: 20,
-    header: 30,
-    navigation: 40,
+    header: 40,
+    navigation: 30,
     popover: 50,
     tooltip: 50,
     backdrop: 60,
@@ -72,7 +73,7 @@ const commonStyles = {
   },
   shadow: {
     elevation: {
-      flat: '0 0 0 3px',
+      flat: '0 0 0 2px',
       xs: '0 0 4px',
       sm: '0 2px 8px',
       md: '0 4px 16px',
@@ -103,17 +104,17 @@ export const lightTheme: DefaultTheme = {
     link: {
       primary: {
         default: palette.main[700],
-        hover: palette.main[900],
+        hover: palette.main[500],
         focus: palette.main[900],
       },
       accent: {
         default: palette.accent[700],
-        hover: palette.accent[900],
+        hover: palette.accent[500],
         focus: palette.accent[900],
       },
       neutral: {
         default: palette.neutral[800],
-        hover: palette.neutral[900],
+        hover: palette.neutral[500],
         focus: palette.neutral[900],
       },
     },
@@ -173,8 +174,8 @@ export const darkTheme: DefaultTheme = {
   colors: {
     primary: palette.peach[300],
     accent: palette.accent[300],
-    body: palette.neutral[900],
-    header: palette.neutral[800],
+    body: palette.neutral[800],
+    header: palette.neutral[700],
     text: palette.grey[300],
     headline: palette.grey[200],
     border: palette.neutral[700],

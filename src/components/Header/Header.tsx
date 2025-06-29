@@ -1,121 +1,132 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link, useLocation } from 'react-router-dom';
+import styled, { useTheme } from 'styled-components';
 import Nav from '../Navigation/Nav';
 import BurgerMenu from '../Navigation/BurgerMenu';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
-import { type Theme } from '../../store/themeSlice';
+import { hexToRgba } from '../../utils/hexToRgba';
+import type { IRouteItem } from '../../types/common';
 
 const StyledHeader = styled.header`
-  background-color: ${({ theme }) => theme.colors.header};
-  color: ${({ theme }) => theme.colors.text};
-  padding: ${({ theme }) => theme.spacing(2)} 0;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  --header-bgc: ${({ theme }) => hexToRgba(theme.colors.header, 50)};
+  --header-border: 1px solid ${({ theme }) => theme.colors.border};
+  --header-br: ${({ theme }) => theme.radii.pill};
+  --header-drop-filter: blur(${({ theme }) => theme.spacing(2)});
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: ${({ theme }) => theme.zIndex.header};
-  }
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: ${({ theme }) => theme.zIndex.header};
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+const StyledHeaderActions = styled.div<{ $padding?: string }>`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(0.75)};
+  padding: ${({ $padding, theme }) => $padding ? $padding : theme.spacing(1)};
+  background-color: var(--header-bgc);
+  backdrop-filter: var(--header-drop-filter);
+  border: var(--header-border);
+  border-radius: var(--header-br);
 `;
 
 const HeaderContent = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   gap: ${({ theme }) => theme.spacing(3)};
-`
+  max-width: var(--c-max-w);
+  margin: 0 auto;
+  padding: var(--c-pad);
+  padding-top: 2vw;
+`;
 
 const LogoLink = styled(Link)`
   display: flex;
-  gap: ${({ theme }) => theme.spacing(0.5)};
-  font-family: ${({ theme }) => theme.fonts.monospace};
+  padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(2.5)}`};
   color: ${({ theme }) => theme.colors.headline};
+  font-family: ${({ theme }) => theme.fonts.monospace};
   font-size: 1.5em;
   text-decoration: none;
-`;
-
-const NavContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing(2)};
-`;
-
-const Divider = styled.span`
-  width: 2px;
-  height: 24px;
-  margin: 0 ${({ theme }) => theme.spacing(2)};
-  background-color: ${({ theme }) => theme.colors.text};
-`;
-
-const MobileNavWrapper = styled.div<{ $isMenuOpened: boolean; $headerHeight: number }>`
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    display: ${(props) => (props.$isMenuOpened ? 'flex' : 'none')};
-    flex-direction: column;
-    position: fixed;
-    top: ${({ $headerHeight }) => $headerHeight}px;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - ${({ $headerHeight }) => $headerHeight}px);
-    background-color: ${({ theme }) => theme.colors.body};
-    z-index: ${({ theme }) => theme.zIndex.header};
-    justify-content: center;
-    align-items: center;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    display: block; // Always show on desktop
-  }
+  position: relative;
+  z-index: ${({ theme }) => theme.zIndex.header};
+  background-color: var(--header-bgc);
+  backdrop-filter: var(--header-drop-filter);
+  border: var(--header-border);
+  border-radius: var(--header-br);
 `;
 
 interface HeaderProps {
-  currentTheme: Theme;
-  onThemeChange: (theme: Theme) => void;
+  routes: IRouteItem[];
 }
 
-const Header: React.FC<HeaderProps> = ({ currentTheme, onThemeChange }) => {
+const Header: React.FC<HeaderProps> = ({ routes }) => {
   const { t } = useTranslation();
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef<HTMLElement>(null);
+  const theme = useTheme();
+  const [isMobile, setIsMobile] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsMenuOpened(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < parseInt(theme.breakpoints.lg, 10));
+    };
+
+    checkIsMobile(); // Initial check
+
+    window.addEventListener('resize', checkIsMobile);
+    window.addEventListener('orientationchange', checkIsMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+      window.removeEventListener('orientationchange', checkIsMobile);
+    };
+  }, [theme.breakpoints.lg]);
 
   useEffect(() => {
     if (headerRef.current) {
       setHeaderHeight(headerRef.current.offsetHeight);
     }
-  }, []);
+  }, [headerRef.current]);
 
+  const burgerButtonRef = useRef<HTMLButtonElement>(null);
   const toggleMenu = () => {
     setIsMenuOpened((prev) => !prev);
   };
-
-  const routes = [
-    { path: '/', label: 'navigation.about' },
-    { path: '/mentoring', label: 'navigation.mentoring' },
-    { path: '/development', label: 'navigation.development' },
-    { path: '/portfolio', label: 'navigation.portfolio' },
-  ];
+  const closeMenu = () => setIsMenuOpened(false);
 
   return (
     <StyledHeader ref={headerRef}>
-      <HeaderContent className="container">
+      <HeaderContent>
         <LogoLink to="/" aria-label={t('navigation.logo_aria_label')}>
-          <img src="/src/assets/Logo.svg" alt="Nikode Logo" style={{ height: '40px' }} />
-          Nikode
+          &lt;Niktariy<span>/</span>&gt;
         </LogoLink>
-        <NavContainer>
-          <BurgerMenu isOpened={isMenuOpened} onToggle={toggleMenu} />
-          <MobileNavWrapper $isMenuOpened={isMenuOpened} $headerHeight={headerHeight}>
-            <Nav routes={routes} />
-          </MobileNavWrapper>
-          <Divider />
+        
+        <StyledHeaderActions>
           <LanguageSwitcher />
-          <ThemeSwitcher currentTheme={currentTheme} onThemeChange={onThemeChange} />
-        </NavContainer>
+          <ThemeSwitcher />
+        </StyledHeaderActions>
+
+        <BurgerMenu isOpened={isMenuOpened} onToggle={toggleMenu} ref={burgerButtonRef} />
+        <Nav
+          routes={routes}
+          isMenuOpened={isMenuOpened}
+          isMobile={isMobile}
+          headerHeight={headerHeight}
+          onClose={closeMenu}
+          burgerButtonRef={burgerButtonRef}
+        />
       </HeaderContent>
     </StyledHeader>
   );

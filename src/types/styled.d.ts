@@ -17,6 +17,7 @@ export type Breakpoints = {
 };
 
 export type ZIndex = {
+  above: number;
   default: number;
   absolute: number;
   input: number;
@@ -63,8 +64,8 @@ declare module 'styled-components' {
     colors: {
       primary: string;
       accent: string;
-      header: string;
       body: string;
+      header: string;
       text: string;
       headline: string;
       border: string;

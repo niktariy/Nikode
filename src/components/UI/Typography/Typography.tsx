@@ -1,12 +1,13 @@
-import React, { forwardRef, memo } from 'react';
+import React, { memo } from 'react';
 import styled, { css } from 'styled-components';
 import { type TypographyVariant } from '../../../types/common';
 
-interface TypographyProps {
+interface TypographyProps extends Omit<React.HTMLAttributes<HTMLParagraphElement>, 'children' | 'style' | 'ref'> {
   variant?: TypographyVariant;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   style?: 'accent' | 'caption';
   component?: React.ElementType;
+  ref?: React.Ref<HTMLParagraphElement>;
 }
 
 // Вспомогательная функция для проверки варианта 'body'
@@ -44,9 +45,21 @@ const StyledTypography = styled.p.attrs<{
   }}
 `;
 
-const Typography = memo(forwardRef<HTMLParagraphElement, TypographyProps>(({ variant = 'body1', children, style, component, ...props }, ref) => {
-  const Component = component || (isBodyVariant(variant) ? 'span' : variant);
-  return <StyledTypography as={Component} $variant={variant} $style={style} ref={ref} {...props}>{children}</StyledTypography>;
-}));
+const Typography = memo(({
+  variant = 'body1',
+  children,
+  style,
+  component,
+  ref,
+  ...props
+}: TypographyProps) => {
+  const $variant = variant || 'body1';
+  const Component = component || (isBodyVariant($variant) ? 'span' : $variant);
+  return (
+    <StyledTypography as={Component} $variant={$variant} $style={style} ref={ref} {...props}>
+      {children}
+    </StyledTypography>
+  );
+});
 
 export default Typography;

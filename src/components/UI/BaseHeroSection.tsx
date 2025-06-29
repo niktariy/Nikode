@@ -1,4 +1,4 @@
-import React, { useState, useEffect, type ReactNode } from 'react';
+import React, { useState, useEffect, type ReactNode, type Ref } from 'react';
 import styled from 'styled-components';
 import Typography from './Typography/Typography';
 
@@ -14,6 +14,7 @@ interface BaseHeroSectionProps {
   description?: string | ReactNode;
   actions?: ReactNode;
   illustration: IllustrationPaths;
+  ref?: Ref<HTMLElement>;
 }
 
 const StyledSection = styled.section`
@@ -91,6 +92,7 @@ const BaseHeroSection: React.FC<BaseHeroSectionProps> = ({
   description,
   actions,
   illustration,
+  ref
 }) => {
   const [currentIllustration, setCurrentIllustration] = useState(illustration.png1x);
   const fallbackImage = illustration.png1x;
@@ -106,7 +108,7 @@ const BaseHeroSection: React.FC<BaseHeroSectionProps> = ({
   };
 
   return (
-    <StyledSection>
+    <StyledSection ref={ref}>
       <div className="container">
         <ContentWrapper>
           <HeroSectionHeader>

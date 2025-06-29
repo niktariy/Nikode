@@ -2,39 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 import Typography from '../Typography/Typography';
 
-interface PriceCardProps {
-  title: string;
-  description: string;
-  price: string;
-  className?: string;
-  Illustration?: React.FC<React.SVGProps<SVGSVGElement>>;
-}
-
 const StyledPriceCard = styled.article`
   width: 100%;
   position: relative;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-start;
   background: ${({ theme }) => theme.colors.header};
-  padding: ${({ theme }) => theme.spacing(6)};
   box-sizing: border-box;
   overflow: hidden;
   gap: ${({ theme }) => theme.spacing(6)};
-
-  @media (width > ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing(4)};
-  }
 `;
 
 const SvgPlaceholder = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 145px;
-  height: 340px;
+  width: 30%;
+  height: 100%;
   z-index: 0;
   pointer-events: none;
+      display: flex;
+    justify-content: end;
 `;
 
 const CardContent = styled.div`
@@ -42,7 +28,13 @@ const CardContent = styled.div`
   z-index: 1;
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: ${({ theme }) => theme.spacing(6)};
+  padding: ${({ theme }) => theme.spacing(6)};
+
+  @media (width > ${({ theme }) => theme.breakpoints.sm}) {
+    padding: ${({ theme }) => theme.spacing(4)};
+  }
 `;
 
 const CardTitle = styled(Typography)`
@@ -71,16 +63,24 @@ const CardPrice = styled.span`
   z-index: 1;
 `;
 
+interface PriceCardProps {
+  title: string;
+  description: string;
+  price: string;
+  className?: string;
+  Illustration?: React.FC<React.SVGProps<SVGSVGElement>>;
+}
+
 const PriceCard: React.FC<PriceCardProps> = ({ title, description, price, className, Illustration }) => (
   <StyledPriceCard className={className}>
-    <SvgPlaceholder>
-      {Illustration && <Illustration />}
-    </SvgPlaceholder>
     <CardContent>
       <CardTitle as="h4">{title}</CardTitle>
       <CardDescription as="p">{description}</CardDescription>
       <CardPrice>{price}</CardPrice>
     </CardContent>
+    <SvgPlaceholder>
+      {Illustration && <Illustration />}
+    </SvgPlaceholder>
   </StyledPriceCard>
 );
 

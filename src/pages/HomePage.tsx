@@ -6,6 +6,7 @@ import type { RootState } from '../store';
 import { useSelector } from 'react-redux';
 import ButtonGroup from '../components/ButtonGroup/ButtonGroup';
 import Skills from '../components/Skills/Skills';
+// import BrowserIllustration from '../components/Illustrations';
 
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
@@ -21,6 +22,9 @@ const HomePage: React.FC = () => {
 
   return (
     <>
+      {/* <BrowserIllustration displayVariant='main' />
+      <BrowserIllustration displayVariant='code' />
+      <BrowserIllustration displayVariant='utube' /> */}
       <BaseHeroSection
         title={<Trans i18nKey='home.title' components={{ small: <small /> }} />}
         description={<Trans i18nKey='home.desc' />}

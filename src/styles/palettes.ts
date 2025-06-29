@@ -82,19 +82,3 @@ export const palette = {
     white: '#FFFFFF',
   },
 };
-
-export const shadow = {
-  elevation: {
-    flat: '0 0 0 3px',
-    xs: '0 0 4px',
-    sm: '0 2px 8px',
-    md: '0 4px 16px',
-    lg: '0 8px 32px',
-  },
-  color: {
-    mainOnLight: hexToRgba(palette.main[700], 24),
-    accentOnLight: hexToRgba(palette.accent[700], 24),
-    mainOnDark: hexToRgba(palette.peach[300], 32),
-    accentOnDark: hexToRgba(palette.accent[300], 32),
-  }
-}

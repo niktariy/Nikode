@@ -33,8 +33,8 @@ const SocialLinks: React.FC<ISocialLinksProps> = ({ links }) => {
         const SocialIconComponent = link.icon;
         return (
           <SocialLinkItem key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
-            <SocialIconComponent size={24} aria-label={link.label} />
-            <Typography variant="p">{link.label}</Typography>
+            {SocialIconComponent && <SocialIconComponent size={24} aria-label={link.label} />}
+            <Typography>{link.label}</Typography>
           </SocialLinkItem>
         );
       })}

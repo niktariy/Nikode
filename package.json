@@ -1,5 +1,5 @@
 {
-  "name": "novikode",
+  "name": "Niktariy",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@icons-pack/react-simple-icons": "^13.1.0",
     "@reduxjs/toolkit": "^2.8.2",
     "gsap": "^3.13.0",

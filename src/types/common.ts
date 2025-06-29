@@ -27,6 +27,13 @@ export enum LinkVariant {
   Neutral = 'neutral',
 }
 
+
+export interface IRouteItem {
+  path: string;
+  label: string;
+  element: React.ReactNode;
+}
+
 export interface ISocialLink {
   url: string;
   icon?: ProjectIconType | null;

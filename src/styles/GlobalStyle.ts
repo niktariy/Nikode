@@ -47,14 +47,29 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a, button {
-    &, &:focus-visible {
-      outline: inset thick;
-      /* outline-offset: 5px; */
-      outline-color: transparent;
-    }
-
     @media (forced-colors: active) {
-      border: 2px solid currentColor;
+      border: 1px solid;
+
+      &:focus-visible {
+        outline: 2px solid ${({ theme }) => theme.colors.button.default};
+      }
+    }
+  }
+  
+  a {
+    outline-offset: 0.125em;
+    
+    &:focus-visible {
+      outline-color: ${({ theme }) => theme.colors.accent};
+    }
+  }
+
+  button{
+    outline: 0 solid transparent;
+    outline-offset: 0.25em;
+    
+    &:focus-visible {
+      outline: 2px solid ${({ theme }) => theme.colors.accent};
     }
   }
 
