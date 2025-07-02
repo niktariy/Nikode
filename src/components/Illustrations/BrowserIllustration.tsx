@@ -150,7 +150,7 @@ const BrowserIllustration: React.FC<BrowserIllustrationProps> = ({
       default:
         setSvgWidth(582);
     }
-  }, [currentTheme]);
+  }, [displayVariant]);
 
   return (
     <IllustrationContainer className={className}>

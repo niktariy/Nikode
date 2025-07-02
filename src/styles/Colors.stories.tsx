@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import styled from 'styled-components';
 import { palette } from './palettes'; // Измененный путь
 import { copyToClipboard } from '../utils/copyToClipboard';

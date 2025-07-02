@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react';
 import styled from 'styled-components';
 import Typography from './Typography/Typography';
+import { TypographyVariant } from '../../types/common';
 
 interface BaseSectionProps {
   title: string;
@@ -44,7 +45,7 @@ const BaseSection = ({
 
   const BaseSectionHeader = () => (
     <SectionHeader $centered={centered}>
-      <Typography variant="h2">{title}</Typography>
+      <Typography variant={TypographyVariant.h2}>{title}</Typography>
       {description && <StyledDescription>{description}</StyledDescription>}
       {actions && actions}
     </SectionHeader>

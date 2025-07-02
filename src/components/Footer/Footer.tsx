@@ -1,10 +1,10 @@
 import React, { type Ref } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, type DefaultTheme } from 'styled-components';
 import Typography from '../UI/Typography/Typography';
 import { useTranslation } from 'react-i18next';
 import { socialLinksData } from '../../mock/socialLinks';
 import FooterLinkList from './FooterLinkList';
-import { SocialLinkType, FooterSectionType } from '../../types/common';
+import { SocialLinkType, FooterSectionType, TypographyVariant } from '../../types/common';
 
 const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.colors.header};
@@ -31,7 +31,7 @@ interface FooterSectionProps {
   $sectionType?: FooterSectionType;
 }
 
-const getFooterSectionResponsiveStyles = (theme: any, $sectionType?: FooterSectionType) => {
+const getFooterSectionResponsiveStyles = (theme: DefaultTheme, $sectionType?: FooterSectionType) => {
   if ($sectionType === FooterSectionType.Copyright) {
     return css`
       @media (max-width: ${theme.breakpoints.md}) {
@@ -75,19 +75,19 @@ const Footer: React.FC<FooterProps> = ({ ref }) => {
     <StyledFooter ref={ref}>
       <FooterContent className="container">
         <FooterSection $sectionType={FooterSectionType.Copyright}>
-          <Typography variant="body2">
+          <Typography variant={TypographyVariant.body2}>
             &copy; {currentYear} {t('footer.copyright')}
           </Typography>
         </FooterSection>
         <FooterSection $sectionType={FooterSectionType.Socials}>
-          <Typography variant="h6">
+          <Typography variant={TypographyVariant.h6}>
             {t('footer.socials_title')}
           </Typography>
           <FooterLinkList links={socialMediaLinks} />
         </FooterSection>
 
         <FooterSection $sectionType={FooterSectionType.Links}>
-          <Typography variant="h6">
+          <Typography variant={TypographyVariant.h6}>
             {t('footer.links_title')}
           </Typography>
           <FooterLinkList links={portfolioLinks} />

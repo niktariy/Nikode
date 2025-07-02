@@ -4,15 +4,14 @@ import Typography from '../UI/Typography/Typography';
 import BaseSection from "../UI/BaseSection";
 import SkillCard from "../UI/SkillCard/SkillCard";
 import { iconMapping } from '../../utils/iconMapping';
-import type { ISkillCategory } from '../../types/common';
+import { TypographyVariant, type ISkillCategory } from '../../types/common';
 
 const StyledList = styled.ul`
-  display: grid;
-  gap: ${({ theme }) => theme.spacing(5)};
   list-style: none;
   padding: 3vw 0;
 
   @media (width > ${({ theme }) => theme.breakpoints.md}) {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     place-items: stretch center;
     gap: 2px;
@@ -56,7 +55,7 @@ const Skills = () => {
 
         return (
           <div key={category.key}>
-            <StyledCategoryTitle variant="h3">{category.title}</StyledCategoryTitle>
+            <StyledCategoryTitle variant={TypographyVariant.h3}>{category.title}</StyledCategoryTitle>
             <StyledList>
               {category.items.map((item, index) => {
                 const IconComponent = item.icon ? iconMapping[item.icon] : undefined;

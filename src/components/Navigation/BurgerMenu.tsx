@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled, { keyframes, css } from 'styled-components';
 import Button from '../UI/Button/Button';
+import { ButtonVariant } from '../../types/common';
 
 interface BurgerMenuProps {
   isOpened: boolean;
@@ -14,7 +15,6 @@ const spacing = 8; //px
 const width = 28; //px
 const bunHeight = 3; // px
 
-// ... (keyframes remain unchanged)
 const bunTopOut = keyframes`
   0% { transform: rotate(0deg); }
   20% { transform: rotate(15deg); }
@@ -86,12 +86,7 @@ const StyledBurgerMenu = styled(Button)`
   }
 `;
 
-const StyledBun = styled.span<{ $isTop?: boolean; $isMid?: boolean; $isBot?: boolean; $isOpened: boolean }>`
-  position: absolute;
-  display: block;
-  width: ${width}px;
-  height: ${bunHeight}px;
-  border-radius: 2px;
+const StyledBunBase = styled.path<{ $isTop?: boolean; $isMid?: boolean; $isBot?: boolean; $isOpened: boolean }>`
   transition: background-color 0.2s ease;
 
   animation-duration: 0.6s;
@@ -100,42 +95,40 @@ const StyledBun = styled.span<{ $isTop?: boolean; $isMid?: boolean; $isBot?: boo
   animation-fill-mode: forwards;
 
   ${({ $isTop, $isOpened }) => $isTop && css`
-    top: 0px;
-    background-color: var(--color-bun-top);
-    transform-origin: ${width - bunHeight}px 2px;
+    fill: var(--color-bun-top);
     animation-name: ${$isOpened ? bunTopOut : bunTopIn};
   `}
 
   ${({ $isMid, $isOpened }) => $isMid && css`
-    top: ${spacing}px;
-    background-color: var(--color-bun-mid);
+    fill: var(--color-bun-mid);
     animation-name: ${$isOpened ? bunFillOut : bunFillIn};
   `}
 
   ${({ $isBot, $isOpened }) => $isBot && css`
-    top: ${2 * spacing}px;
-    background-color: var(--color-bun-bot);
-    transform-origin: ${width - bunHeight}px 2px;
+    fill: var(--color-bun-bot);
     animation-name: ${$isOpened ? bunBotOut : bunBotIn};
   `}
 `;
+const StyledBun = React.memo(StyledBunBase);
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpened, onToggle, className, ref }) => {
   const { t } = useTranslation();
+
   return (
     <StyledBurgerMenu
       onClick={onToggle}
-      variant='outlinedQuiet'
-      aria-label="Open menu"
+      variant={ButtonVariant.OutlinedQuiet}
+      aria-expanded={isOpened}
+      aria-controls='main-nav'
       className={className}
       ref={ref}
     >
       {t('navigation.menu')}
-      <div className="burger__buns">
-        <StyledBun $isTop $isOpened={isOpened} />
-        <StyledBun $isMid $isOpened={isOpened} />
-        <StyledBun $isBot $isOpened={isOpened} />
-      </div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" >
+        <StyledBun $isTop $isOpened={isOpened} d="M4 6h24"/>
+        <StyledBun $isMid $isOpened={isOpened} d="M4 12h20"/>
+        <StyledBun $isBot $isOpened={isOpened} d="M4 18h24"/>
+      </svg>
     </StyledBurgerMenu>
   );
 };

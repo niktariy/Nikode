@@ -3,8 +3,31 @@ import type { IconType } from '@icons-pack/react-simple-icons';
 import type { LucideIcon } from 'lucide-react';
 import type { IconName } from '../utils/iconMapping';
 
+export enum TypographyVariant {
+  h1 = 'h1',
+  h2 = 'h2',
+  h3 = 'h3',
+  h4 = 'h4',
+  h5 = 'h5',
+  h6 = 'h6',
+  body1 = 'body1',
+  body2 = 'body2',
+}
+
+export enum ButtonVariant {
+  Filled = 'filled',
+  Outlined = 'outlined',
+  OutlinedQuiet = 'outlinedQuiet'
+}
+
+export enum ButtonSize {
+  Small = 'small',
+  Medium = 'medium',
+  Large = 'large'
+}
+
 export interface IIconProps extends React.SVGProps<SVGSVGElement> {
-  size?: number;
+  size?: number | string;
   style?: React.CSSProperties;
 }
 
@@ -27,8 +50,8 @@ export enum LinkVariant {
   Neutral = 'neutral',
 }
 
-
 export interface IRouteItem {
+  id?: string;
   path: string;
   label: string;
   element: React.ReactNode;
@@ -57,8 +80,3 @@ export interface ISkillCategory {
   key: string;
   items: ISkillItem[];
 }
-
-export type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-export type BodyVariant = 'body1' | 'body2';
-
-export type TypographyVariant = HeadingVariant | BodyVariant; 

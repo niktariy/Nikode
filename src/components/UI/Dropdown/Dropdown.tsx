@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 
 import Button from '../Button/Button';
 import { hexToRgba } from '../../../utils/hexToRgba';
+import { ButtonSize, ButtonVariant } from '../../../types/common';
 
 const DropdownContainer = styled.div`
   position: relative;
@@ -13,13 +14,16 @@ const DropdownContainer = styled.div`
 
 const StyledDropdownButton = styled(Button)`
   gap: ${({ theme }) => theme.spacing(0.5)};
-  font-size: 0.9rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 
   & svg {
     width: ${({ theme }) => theme.spacing(2)};
     height: ${({ theme }) => theme.spacing(2)};
     fill: ${({ theme }) => theme.colors.text};
+  }
+
+  @media (width > ${({theme}) => theme.breakpoints.md}) {
+    font-size: 0.9rem;
   }
 `;
 
@@ -144,8 +148,8 @@ const Dropdown: React.FC<DropdownProps> = ({ triggerLabel, triggerAriaLabel, chi
   return (
     <DropdownContainer ref={dropdownRef}>
       <StyledDropdownButton
-        variant='outlinedQuiet'
-        size='small'
+        variant={ButtonVariant.OutlinedQuiet}
+        size={ButtonSize.Small}
         ref={buttonRef}
         onClick={toggleDropdown}
         tabIndex={0}

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 interface ButtonGroupProps {
   children: React.ReactNode;
-  a11y?: Boolean;
+  a11y?: boolean;
 }
 
 const StyledGroup = styled.div`

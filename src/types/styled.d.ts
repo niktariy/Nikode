@@ -2,146 +2,173 @@ import 'styled-components';
 import { commonStyles } from '../styles/themes';
 
 export type BorderRadius = {
-  base: string;
-  small: string;
-  large: string;
-  round: string;
-  pill: string;
+  readonly base: string;
+  readonly small: string;
+  readonly large: string;
+  readonly round: string;
+  readonly pill: string;
 };
 
-type Breakpoint =
-  | 'sm' | 'md' | 'lg' | 'xl';
+const BREAKPOINTS = {
+  sm: 'sm',
+  md: 'md', 
+  lg: 'lg',
+  xl: 'xl'
+} as const;
+
+type Breakpoint = keyof typeof BREAKPOINTS;
 
 export type Breakpoints = {
-  [key in Breakpoint]: string;
+  readonly [key in Breakpoint]: string;
 };
 
+type ZIndexLevel = 'above' | 'default' | 'absolute' | 'input' | 'popover' | 'tooltip' | 'header' | 'backdrop' | 'navigation' | 'modal' | 'toast';
+
 export type ZIndex = {
-  above: number;
-  default: number;
-  absolute: number;
-  input: number;
-  popover: number;
-  tooltip: number;
-  header: number;
-  backdrop: number;
-  navigation: number;
-  modal: number;
-  toast: number;
+  readonly [K in ZIndexLevel]: number & { readonly __brand: K };
+} & {
+  readonly above: number & { readonly __brand: 'above' };
+  readonly default: number & { readonly __brand: 'default' };
+  readonly absolute: number & { readonly __brand: 'absolute' };
+  readonly input: number & { readonly __brand: 'input' };
+  readonly popover: number & { readonly __brand: 'popover' };
+  readonly tooltip: number & { readonly __brand: 'tooltip' };
+  readonly header: number & { readonly __brand: 'header' };
+  readonly backdrop: number & { readonly __brand: 'backdrop' };
+  readonly navigation: number & { readonly __brand: 'navigation' };
+  readonly modal: number & { readonly __brand: 'modal' };
+  readonly toast: number & { readonly __brand: 'toast' };
 };
 
 export type LinkColors = {
-  default: string;
-  hover: string;
-  focus: string;
+  readonly default: string;
+  readonly hover: string;
+  readonly focus: string;
 }
 
 export type ShadowElevation = {
-  flat: string;
-  xs: string;
-  sm: string;
-  md: string;
-  lg: string;
+  readonly flat: string;
+  readonly xs: string;
+  readonly sm: string;
+  readonly md: string;
+  readonly lg: string;
 };
 
 export type ShadowColors = {
-  main?: string | null;
-  accent?: string | null;
-  fill?: string | null;
-  fillLight?: string | null;
+  readonly main: string;
+  readonly light: string;
+  readonly flat: string;
+  readonly flatLight: string;
 };
 
 export type TimingFunctions = {
-  easeInOutQuart: string;
-  easeOutExpo: string;
+  readonly easeInOutQuart: string;
+  readonly easeOutExpo: string;
 };
+
+export type Durations = {
+  readonly base: string;
+  readonly fast: string;
+  readonly slow: string;
+}
+
+interface LinkColorGroup {
+  readonly primary: LinkColors;
+  readonly accent: LinkColors;
+  readonly neutral: LinkColors;
+}
+
+interface ButtonColors {
+  readonly default: string;
+  readonly defaultText: string;
+  readonly hover: string;
+  readonly focus: string;
+  readonly fab: string;
+}
+
+interface BurgerMenuColors {
+  readonly bunTop: string;
+  readonly bunTopActive: string;
+  readonly bunMid: string;
+  readonly bunMidActive: string;
+  readonly bunBot: string;
+  readonly bunBotActive: string;
+}
+
+interface IllustrationColors {
+  readonly circle: {
+    readonly big: string;
+    readonly small: string;
+  };
+  readonly button: {
+    readonly bg: string;
+    readonly text: string;
+    readonly shadow: string;
+  };
+  readonly shape: {
+    readonly bg: {
+      readonly main: string;
+      readonly accent: string;
+    };
+    readonly lines: {
+      readonly main: string;
+      readonly accent: string;
+    };
+  };
+  readonly web: {
+    readonly body: string;
+    readonly head: string;
+    readonly dots: string;
+    readonly block: string;
+    readonly code: string;
+  };
+  readonly nika: {
+    readonly main: string;
+    readonly accent: string;
+    readonly accentShadow: string;
+  };
+}
+
+interface ThemeColors {
+  readonly primary: string;
+  readonly accent: string;
+  readonly body: string;
+  readonly header: string;
+  readonly text: string;
+  readonly headline: string;
+  readonly border: string;
+  readonly disabled: string;
+  readonly caption: string;
+  readonly shadow: ShadowColors;
+  readonly link: LinkColorGroup;
+  readonly button: ButtonColors;
+  readonly burgerMenu: BurgerMenuColors;
+  readonly illustration: IllustrationColors;
+}
 
 declare module 'styled-components' {
   type TypographyType = typeof commonStyles.typography;
 
   export interface DefaultTheme {
-    mode: 'light' | 'dark';
-    colors: {
-      primary: string;
-      accent: string;
-      body: string;
-      header: string;
-      text: string;
-      headline: string;
-      border: string;
-      disabled: string;
-      caption: string;
-      shadow: ShadowColors;
-      link: {
-        primary: LinkColors,
-        accent: LinkColors,
-        neutral: LinkColors,
-      },
-      button: {
-        default: string;
-        defaultText: string;
-        hover: string;
-        focus: string;
-      };
-      burgerMenu: {
-        bunTop: string;
-        bunTopActive: string;
-        bunMid: string;
-        bunMidActive: string;
-        bunBot: string;
-        bunBotActive: string;
-      }
-      illustration: {
-        circle: {
-          big: string;
-          small: string;
-        };
-        button: {
-          bg: string;
-          text: string;
-          shadow: string;
-        };
-        shape: {
-          bg: {
-            main: string;
-            accent: string;
-          };
-          lines: {
-            main: string;
-            accent: string;
-          };
-        };
-        web: {
-          body: string;
-          head: string;
-          dots: string;
-          block: string;
-          code: string;
-        };
-        nika: {
-          main: string;
-          accent: string;
-          accentShadow: string;
-        };
-      };
+    readonly mode: 'light' | 'dark';
+    readonly colors: ThemeColors;
+    readonly fonts: {
+      readonly primary: string;
+      readonly monospace: string;
+      readonly accent: string;
     };
-    fonts: {
-      primary: string;
-      monospace: string;
-      accent: string;
+    readonly breakpoints: Breakpoints;
+    readonly transition: {
+      readonly timingFunc: TimingFunctions;
+      readonly duration: Durations;
     };
-    breakpoints: Breakpoints;
-    transition: {
-      timingFunc: TimingFunctions;
-      durationBase: string;
+    readonly baseSpacing: number;
+    readonly spacing: <T extends number>(factor: T) => string;
+    readonly shadow: {
+      readonly elevation: ShadowElevation;
     };
-    baseSpacing: number;
-    spacing: (factor: number) => string;
-    shadow: {
-      elevation: ShadowElevation;
-    };
-    radii: BorderRadius;
-    zIndex: ZIndex;
-    typography: TypographyType;
+    readonly radii: BorderRadius;
+    readonly zIndex: ZIndex;
+    readonly typography: TypographyType;
   }
-} 
+}

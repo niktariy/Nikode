@@ -20,19 +20,8 @@ const StyledHeader = styled.header`
   left: 0;
   right: 0;
   width: 100%;
-  z-index: ${({ theme }) => theme.zIndex.header};
   color: ${({ theme }) => theme.colors.text};
-`;
-
-const StyledHeaderActions = styled.div<{ $padding?: string }>`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing(0.75)};
-  padding: ${({ $padding, theme }) => $padding ? $padding : theme.spacing(1)};
-  background-color: var(--header-bgc);
-  backdrop-filter: var(--header-drop-filter);
-  border: var(--header-border);
-  border-radius: var(--header-br);
+  z-index: ${({ theme }) => theme.zIndex.header};
 `;
 
 const HeaderContent = styled.div`
@@ -46,6 +35,18 @@ const HeaderContent = styled.div`
   padding-top: 2vw;
 `;
 
+const StyledHeaderActions = styled.div<{ $padding?: string }>`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(0.75)};
+  padding: ${({ $padding, theme }) => $padding ? $padding : theme.spacing(1)};
+  background-color: var(--header-bgc);
+  backdrop-filter: var(--header-drop-filter);
+  border: var(--header-border);
+  border-radius: var(--header-br);
+  z-index: ${({ theme }) => theme.zIndex.header};
+`;
+
 const LogoLink = styled(Link)`
   display: flex;
   padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(2.5)}`};
@@ -54,11 +55,11 @@ const LogoLink = styled(Link)`
   font-size: 1.5em;
   text-decoration: none;
   position: relative;
-  z-index: ${({ theme }) => theme.zIndex.header};
   background-color: var(--header-bgc);
   backdrop-filter: var(--header-drop-filter);
   border: var(--header-border);
   border-radius: var(--header-br);
+  z-index: ${({ theme }) => theme.zIndex.header};
 `;
 
 interface HeaderProps {
@@ -80,7 +81,7 @@ const Header: React.FC<HeaderProps> = ({ routes }) => {
 
   useEffect(() => {
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < parseInt(theme.breakpoints.lg, 10));
+      setIsMobile(window.innerWidth < parseInt(theme.breakpoints.sm, 10));
     };
 
     checkIsMobile(); // Initial check
@@ -92,13 +93,13 @@ const Header: React.FC<HeaderProps> = ({ routes }) => {
       window.removeEventListener('resize', checkIsMobile);
       window.removeEventListener('orientationchange', checkIsMobile);
     };
-  }, [theme.breakpoints.lg]);
+  }, [theme.breakpoints.sm]);
 
   useEffect(() => {
     if (headerRef.current) {
       setHeaderHeight(headerRef.current.offsetHeight);
     }
-  }, [headerRef.current]);
+  }, [headerRef]);
 
   const burgerButtonRef = useRef<HTMLButtonElement>(null);
   const toggleMenu = () => {
@@ -113,10 +114,10 @@ const Header: React.FC<HeaderProps> = ({ routes }) => {
           &lt;Niktariy<span>/</span>&gt;
         </LogoLink>
         
-        <StyledHeaderActions>
+        {!isMobile && <StyledHeaderActions>
           <LanguageSwitcher />
           <ThemeSwitcher />
-        </StyledHeaderActions>
+        </StyledHeaderActions>}
 
         <BurgerMenu isOpened={isMenuOpened} onToggle={toggleMenu} ref={burgerButtonRef} />
         <Nav

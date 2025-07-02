@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SkillCard from './SkillCard';
 import type { ISkillItem } from '../../../types/common';
+import { iconMapping } from '../../../utils/iconMapping';
 
 const StyledSkillCard = styled(SkillCard)`
   @media (width > ${({ theme }) => theme.breakpoints.md}) {
@@ -15,7 +16,7 @@ const StyledSkillCard = styled(SkillCard)`
         
         &:hover,
         &:focus {
-          box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.primary}, 1em 1em 0 0 ${({ theme }) => theme.colors.shadow.fill};
+          box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.primary}, 1em 1em 0 0 ${({ theme }) => theme.colors.shadow.flat};
         };
     };
   }
@@ -35,9 +36,10 @@ const StyledSkillCard = styled(SkillCard)`
 
 
 const SkillCardForMotion: React.FC<ISkillItem> = ({ title, description, icon }) => {
+  const IconComponent = icon ? iconMapping[icon] : undefined;
 
   return (
-    <StyledSkillCard title={title} description={description} icon={icon} />
+    <StyledSkillCard title={title} description={description} icon={IconComponent} />
   );
 };
 

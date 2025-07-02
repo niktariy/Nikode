@@ -1,10 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import Button from './Button';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from '../../../styles/themes';
+import { ButtonSize, ButtonVariant } from '../../../types/common';
+import { MenuIcon } from 'lucide-react';
 
 const meta: Meta<typeof Button> = {
-  title: 'UI-kit/Button',
+  title: 'UI/Button',
   component: Button,
   parameters: {
     layout: 'centered',
@@ -14,13 +16,13 @@ const meta: Meta<typeof Button> = {
     variant: {
       control: {
         type: 'select',
-        options: ['filled', 'outlined'],
+        options: Object.values(ButtonVariant),
       },
     },
     size: {
       control: {
         type: 'select',
-        options: ['small', 'medium', 'large'],
+        options: Object.values(ButtonSize),
       },
     },
     onClick: { action: 'clicked' },
@@ -41,32 +43,41 @@ type Story = StoryObj<typeof Button>;
 export const Filled: Story = {
   args: {
     label: 'Filled Button',
-    variant: 'filled',
-    size: 'medium',
+    variant: ButtonVariant.Filled,
+    size: ButtonSize.Medium,
   },
 };
 
 export const Outlined: Story = {
   args: {
     label: 'Outlined Button',
-    variant: 'outlined',
-    size: 'medium',
+    variant: ButtonVariant.Outlined,
+    size: ButtonSize.Medium,
   },
 };
+
+export const OutlinedQuiet: Story = {
+  args: {
+    label: 'Outlined Quiet',
+    variant: ButtonVariant.OutlinedQuiet,
+    size: ButtonSize.Medium,
+  },
+};
+
 
 export const Small: Story = {
   args: {
     label: 'Small Button',
-    size: 'small',
-    variant: 'filled',
+    size: ButtonSize.Small,
+    variant: ButtonVariant.Filled,
   },
 };
 
 export const Large: Story = {
   args: {
     label: 'Large Button',
-    size: 'large',
-    variant: 'filled',
+    size: ButtonSize.Large,
+    variant: ButtonVariant.Filled,
   },
 };
 
@@ -74,6 +85,31 @@ export const Disabled: Story = {
   args: {
     label: 'Disabled Button',
     disabled: true,
-    variant: 'filled',
+    variant: ButtonVariant.Filled,
   },
-}; 
+};
+
+export const WithChildren: Story = {
+  args: {
+    children: <>Menu<MenuIcon/></>,
+    variant: ButtonVariant.OutlinedQuiet,
+    size: ButtonSize.Medium,
+  },
+};
+
+export const AsLink: Story = {
+  args: {
+    label: 'Button as Link',
+    as: 'a',
+    href: '#',
+    variant: ButtonVariant.Filled,
+  },
+};
+
+export const AsDiv: Story = {
+  args: {
+    label: 'Button as Div',
+    as: 'div',
+    variant: ButtonVariant.Outlined,
+  },
+};

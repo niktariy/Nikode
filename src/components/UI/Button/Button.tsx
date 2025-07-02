@@ -1,35 +1,59 @@
-import React, { type ReactNode } from 'react';
-import styled, { css } from 'styled-components';
+import React from 'react';
+import styled, { css, type RuleSet } from 'styled-components';
 import { hexToRgba } from '../../../utils/hexToRgba';
 import { type DefaultTheme } from 'styled-components';
+import { ButtonVariant, ButtonSize } from '../../../types/common';
 
-const outlinedStyles = (theme: DefaultTheme) => css`
+const outlineBaseStyles = (theme: DefaultTheme) => css`
   --btn-outline-bg: ${theme.colors.button.defaultText};
-  --btn-shadow: inset 0 0 0 2px var(--btn-color), var(--btn-outside-shadow);
-
+  
   background-color: var(--btn-outline-bg);
-  color: var(--btn-color);
-  position: relative;
-  z-index: 1;
 
-  &:hover, &:focus {
-    --btn-outline-bg: ${hexToRgba(theme.colors.button.hover, 4)};
+  &:hover {
+    --btn-outline-bg: ${hexToRgba(theme.colors.button.defaultText, 64)};
   }
   &:focus {
-    --btn-outline-bg: ${hexToRgba(theme.colors.button.hover, 8)};
     ${theme.mode === 'dark' && css`
       color: ${theme.colors.button.default};
     `};
   }
 `;
 
-const StyledButton = styled.button.attrs<{
-  $variant?: 'filled' | 'outlined' | 'outlinedQuiet';
-  $size?: 'small' | 'medium' | 'large';
-}>(props => ({
-  $variant: props.$variant || 'filled',
-  $size: props.$size || 'medium',
-}))`
+const outlinedStyles = (theme: DefaultTheme) => css`
+  --btn-inside-shadow: 0 0 0 2px var(--btn-color);
+  ${outlineBaseStyles(theme)};
+  color: var(--btn-color);
+`;
+
+const outlinedQuietStyles = (theme: DefaultTheme) => css`
+  --btn-inside-shadow: transparent;
+  --btn-outside-shadow: 0 0 0 0 transparent;
+  ${outlineBaseStyles(theme)};
+  
+  color: ${theme.colors.text};
+  border-radius: ${theme.radii.pill};
+  border: 1px solid ${theme.colors.border};
+  outline-offset: 0;
+  
+  &:hover, &:focus {
+    --btn-outline-bg: ${hexToRgba(theme.colors.button.defaultText, 64)};
+    --btn-inside-shadow: 0 0 0 0 transparent;
+    --btn-outside-shadow: ${`${theme.shadow.elevation.flat} ${theme.colors.button.default}`};
+    border-color: transparent;
+  }
+`;
+
+// Helper function for button padding based on size, using ButtonSize enum
+const getButtonPadding = (theme: DefaultTheme, size?: ButtonSize) => (
+  size === ButtonSize.Small
+    ? `${theme.spacing(1)} ${theme.spacing(2)}`
+    : `${theme.spacing(1.5)} ${theme.spacing(3)}`
+);
+
+const StyledButton = styled.button<{
+  $variant?: ButtonVariant;
+  $size?: ButtonSize;
+}>`
   --btn-color: ${({ theme }) => theme.colors.button.default};
   --btn-outside-shadow: 0 0 0 0 transparent;
   --btn-inside-shadow: 0 0 0 0 transparent;
@@ -38,26 +62,26 @@ const StyledButton = styled.button.attrs<{
   align-items: center;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(1)};
-  padding: ${({ theme, $size }) => {
-    return $size === 'small'
-      ? `${theme.spacing(1)} ${theme.spacing(2)}`
-      : `${theme.spacing(1.5)} ${theme.spacing(3)}`
-  }};
+  padding: ${({ theme, $size }) => getButtonPadding(theme, $size)};
   cursor: pointer;
   font-weight: 700;
   font-family: ${({ theme }) => theme.fonts.monospace};
-  font-size: 1rem;
+  font-size: ${({$size}) => $size === ButtonSize.Small ? '1rem' : '1.25rem'};
   line-height: 1.5em;
   box-shadow: inset var(--btn-inside-shadow), var(--btn-shadow, var(--btn-outside-shadow));
   will-change: transform, background-color, color, box-shadow;
-  transition-property: transform, background-color, color, box-shadow, outline;
-  transition-duration: ${({ theme }) => theme.transition.durationBase};
+  transition-property: transform, background-color, color, border-color, box-shadow, outline;
+  transition-duration: ${({ theme }) => theme.transition.duration.base};
   transition-timing-function: ${({ theme }) => theme.transition.timingFunc.easeInOutQuart};
+
+  @media (width > ${({theme}) => theme.breakpoints.md}) {
+    font-size: ${({$size}) => $size === ButtonSize.Small ? '0.9rem' : '1rem'};
+  }
 
   &:hover {
     --btn-color: ${({ theme }) => theme.colors.button.hover};
     ${({ theme }) => theme.mode === 'dark' ? null : css`
-      --btn-outside-shadow: ${theme.shadow.elevation.lg} ${theme.colors.shadow.accent}
+      --btn-outside-shadow: ${theme.shadow.elevation.lg} ${theme.colors.shadow.light}
     `};
   }
 
@@ -83,61 +107,57 @@ const StyledButton = styled.button.attrs<{
     pointer-events: none;
   }
 
-  ${({ theme, $variant }) => {
+  ${({ theme, $variant }): RuleSet<object> => {
     switch ($variant) {
-      case 'outlined':
-        return css`
-          ${outlinedStyles(theme)}
-        `;
-      case 'filled':
+      case ButtonVariant.Outlined:
+        return outlinedStyles(theme);
+      case ButtonVariant.OutlinedQuiet:
+        return outlinedQuietStyles(theme);
+      case ButtonVariant.Filled:
       default:
         return css`
           background-color: var(--btn-color);
-          color: ${theme.colors.button.defaultText};
+          &, &:hover, &:focus {
+            color: ${theme.colors.button.defaultText};
+          }
         `;
     }
   }}
-
-  ${({ theme, $variant }) => {
-    if ($variant === 'outlinedQuiet') {
-      return css`
-        ${outlinedStyles(theme)}
-        --btn-shadow: 0 0 0 0 transparent;
-        --btn-inside-shadow: 0 0 0 1px ${({ theme }) => theme.colors.border};
-
-        color: ${({ theme }) => theme.colors.text};
-        border-radius: ${({ theme }) => theme.radii.pill};
-        
-        &:hover, &:focus {
-          --btn-outline-bg: ${({ theme }) => theme.colors.button.defaultText};
-          --btn-inside-shadow: 0 0 0 0 transparent;
-          --btn-shadow: ${({ theme }) => `${theme.shadow.elevation.flat} ${theme.colors.button.default}`};
-        }
-        
-        &[aria-expanded="true"], &:focus {
-          outline-offset: 0;
-        }
-        
-        &[aria-expanded="true"] {
-          --btn-outline-bg: ${hexToRgba(theme.colors.button.hover, 8)};
-        }
-      `;
-    }
-    return null; // Return null if not outlinedQuiet, handled by switch
-  }}
 `;
 
-interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'onClick'> {
-  variant?: 'filled' | 'outlined' | 'outlinedQuiet';
-  size?: 'small' | 'medium' | 'large';
+// Simple ButtonProps interface
+interface ButtonProps {
+  as?: React.ElementType;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
   label?: string;
-  children?: ReactNode;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  ref?: React.Ref<HTMLButtonElement>;
+  children?: React.ReactNode;
+  ref?: React.Ref<HTMLElement>;
+  [key: string]: any; // Allow any additional props for different elements
 }
 
-const Button = ({ type = 'button', children, label, variant, size, ref, ...props }: ButtonProps) => {
-  return <StyledButton type={type} ref={ref} $variant={variant} $size={size} {...props}>{children || label}</StyledButton>;
+const Button = ({
+  type = 'button',
+  as = 'button',
+  children,
+  label,
+  variant = ButtonVariant.Filled,
+  size = ButtonSize.Medium,
+  ref,
+  ...props
+}: ButtonProps) => {
+  return (
+    <StyledButton
+      ref={ref}
+      as={as}
+      type={as === 'button' ? type : undefined}
+      $variant={variant}
+      $size={size}
+      {...props}
+    >
+      {children || label}
+    </StyledButton>
+  );
 };
 
 export default Button;

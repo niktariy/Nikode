@@ -14,11 +14,11 @@ const commonStyles = {
       body: 1.5,
     },
     fontSizes: {
-      h1: '3em',
+      h1: '2.75em',
       h2: '2.5em',
       h3: '2em',
-      h4: '1.5em',
-      h5: '1.375em',
+      h4: '1.375em',
+      h5: '1.25em',
       h6: '1.125em',
       body1: '1.125em',
       body2: '1.25em',
@@ -47,7 +47,7 @@ const commonStyles = {
       easeInOutQuart: 'cubic-bezier(0.77,0,0.175,1)',
       easeOutExpo: 'cubic-bezier(0.19,1,0.22,1)',
     },
-    durationBase: '280ms',
+    duration: {base: '280ms', slow: '600ms', fast: '140ms' },
   },
   baseSpacing: 0.5,
   spacing: (factor: number) => `${0.5 * factor}rem`,
@@ -97,25 +97,25 @@ export const lightTheme: DefaultTheme = {
     caption: palette.neutral[500],
     shadow: {
       main: hexToRgba(palette.main[700], 24),
-      accent: hexToRgba(palette.main[500], 24),
-      fill: palette.main[200],
-      fillLight: palette.main[100],
+      light: hexToRgba(palette.main[500], 24),
+      flat: palette.main[200],
+      flatLight: palette.main[100],
     },
     link: {
       primary: {
-        default: palette.main[700],
-        hover: palette.main[500],
+        default: palette.main[500],
+        hover: palette.main[700],
         focus: palette.main[900],
       },
       accent: {
-        default: palette.accent[700],
-        hover: palette.accent[500],
+        default: palette.accent[500],
+        hover: palette.accent[700],
         focus: palette.accent[900],
       },
       neutral: {
-        default: palette.neutral[800],
+        default: palette.neutral[700],
         hover: palette.neutral[500],
-        focus: palette.neutral[900],
+        focus: palette.neutral[500],
       },
     },
     button: {
@@ -123,6 +123,7 @@ export const lightTheme: DefaultTheme = {
       defaultText: palette.base.white,
       hover: palette.main[700],
       focus: palette.main[800],
+      fab: palette.grey[300],
     },
     burgerMenu: {
       bunTop: palette.neutral[700],
@@ -183,9 +184,9 @@ export const darkTheme: DefaultTheme = {
     caption: palette.grey[500],
     shadow: {
       main: hexToRgba(palette.peach[300], 32),
-      accent: hexToRgba(palette.grey[300], 50),
-      fill: palette.neutral[500],
-      fillLight: palette.neutral[800],
+      light: hexToRgba(palette.grey[300], 50),
+      flat: palette.neutral[500],
+      flatLight: palette.neutral[800],
     },
     link: {
       primary: {
@@ -209,6 +210,7 @@ export const darkTheme: DefaultTheme = {
       defaultText: palette.neutral[900],
       hover: palette.peach[300],
       focus: palette.peach[400],
+      fab: palette.grey[700],
     },
     burgerMenu: {
       bunTop: palette.neutral[200],

@@ -1,5 +1,3 @@
-import { hexToRgba } from '../utils/hexToRgba';
-
 export const palette = {
   main: {
     900: '#132076',

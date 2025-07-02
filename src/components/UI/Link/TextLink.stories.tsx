@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import TextLink from './TextLink';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { LinkVariant } from '../../../types/common';

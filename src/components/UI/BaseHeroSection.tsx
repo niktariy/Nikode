@@ -1,6 +1,7 @@
 import React, { useState, useEffect, type ReactNode, type Ref } from 'react';
 import styled from 'styled-components';
 import Typography from './Typography/Typography';
+import { TypographyVariant } from '../../types/common';
 
 interface IllustrationPaths {
   png1x: string;
@@ -46,7 +47,7 @@ const HeroSectionHeader = styled.header`
   flex-direction: column;
   text-align: center;
   gap: ${({ theme }) => theme.spacing(3)};
-  
+
   @media (width > ${({ theme }) => theme.breakpoints.lg}) {
     text-align: left;
     align-self: center;
@@ -112,9 +113,9 @@ const BaseHeroSection: React.FC<BaseHeroSectionProps> = ({
       <div className="container">
         <ContentWrapper>
           <HeroSectionHeader>
-            <Typography variant="h1">{title}</Typography>
+            <Typography variant={TypographyVariant.h1}>{title}</Typography>
             {description && (
-              <DescriptionWrapper variant='body2' component='div'>{description}</DescriptionWrapper>
+              <DescriptionWrapper variant={TypographyVariant.body2} component='div'>{description}</DescriptionWrapper>
             )}
           </HeroSectionHeader>
           <ImageWrapper>

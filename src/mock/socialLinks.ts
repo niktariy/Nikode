@@ -16,7 +16,7 @@ const SOCIAL_LINKS: {
   instagram: "https://instagram.com/niktariy_dev",
   linkedin: "https://linkedin.com/in/veronika-novikova",
   facebook: "https://facebook.com/veronika.novikova.dev",
-  medium: ""
+  medium: "https://medium.com/@niktariy"
 };
 
 export const socialLinksData: ISocialLink[] = [
@@ -33,6 +33,12 @@ export const socialLinksData: ISocialLink[] = [
     type: SocialLinkType.Portfolio,
   },
   {
+    url: SOCIAL_LINKS.medium,
+    icon: SiMedium,
+    label: 'Medium',
+    type: SocialLinkType.Portfolio,
+  },
+  {
     url: SOCIAL_LINKS.instagram,
     icon: SiInstagram,
     label: 'Instagram',
@@ -42,18 +48,6 @@ export const socialLinksData: ISocialLink[] = [
     url: SOCIAL_LINKS.facebook,
     icon: SiFacebook,
     label: 'Facebook',
-    type: SocialLinkType.Social,
-  },
-  {
-    url: SOCIAL_LINKS.linkedin,
-    icon: null,
-    label: 'Linkedin',
-    type: SocialLinkType.Social,
-  },
-  {
-    url: SOCIAL_LINKS.medium,
-    icon: SiMedium,
-    label: 'Medium',
     type: SocialLinkType.Social,
   }
 ]; 

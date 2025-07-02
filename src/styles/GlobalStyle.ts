@@ -28,6 +28,14 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  html {
+    font-size: 0.875rem;
+  
+    @media (width > ${({ theme }) => theme.breakpoints.md}) {
+      font-size: 1rem;
+    }
+  }
+
   body {
     font-family: ${({ theme }) => theme.fonts.primary};
     background-color: ${({ theme }) => theme.colors.body};
@@ -67,10 +75,6 @@ const GlobalStyle = createGlobalStyle`
   button{
     outline: 0 solid transparent;
     outline-offset: 0.25em;
-    
-    &:focus-visible {
-      outline: 2px solid ${({ theme }) => theme.colors.accent};
-    }
   }
 
   code {

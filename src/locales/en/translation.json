@@ -13,7 +13,7 @@
     "menu": "Menu"
   },
   "home": {
-    "title": "Hi, I'm Veronika 👋🏻<br/>Frontend developer <br/><small>& UX Enthusiast</small>",
+    "title": "Hi, I'm Veronika 👋🏻<br/>Frontend developer <small>& UX Enthusiast</small>",
     "desc": "<p>Yes, I'm that person who opens Figma and isn't scared.</p><p>I transform layouts into clean, adaptive markup — so everything looks right in Chrome, Safari, and even IE (just kidding, no one looks at IE anymore... I hope).</p>",
     "CTA_portfolio": "View portfolio",
     "CTA_contact": "Invite to a project"

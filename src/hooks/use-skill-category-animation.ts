@@ -1,4 +1,4 @@
-import { useRef, useState, useLayoutEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { useScroll, MotionValue } from "framer-motion";
 
 interface UseSkillCategoryAnimationReturn {
