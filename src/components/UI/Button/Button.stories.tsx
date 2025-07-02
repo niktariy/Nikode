@@ -1,9 +1,8 @@
 import Button from './Button';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ThemeProvider } from 'styled-components';
-import { lightTheme } from '../../../styles/themes';
 import { ButtonSize, ButtonVariant } from '../../../types/common';
 import { MenuIcon } from 'lucide-react';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 const meta: Meta<typeof Button> = {
   title: 'UI/Button',
@@ -14,31 +13,28 @@ const meta: Meta<typeof Button> = {
   tags: ['autodocs'],
   argTypes: {
     variant: {
-      control: {
-        type: 'select',
-        options: Object.values(ButtonVariant),
-      },
+      control: 'select',
+      options: Object.values(ButtonVariant),
     },
     size: {
-      control: {
-        type: 'select',
-        options: Object.values(ButtonSize),
-      },
+      control: 'select',
+      options: Object.values(ButtonSize),
     },
     onClick: { action: 'clicked' },
   },
-  decorators: [
-    (Story) => (
-      <ThemeProvider theme={lightTheme}>
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    children: 'Filled Button',
+    variant: ButtonVariant.Filled,
+    size: ButtonSize.Medium,
+  },
+};
 
 export const Filled: Story = {
   args: {
@@ -101,15 +97,24 @@ export const AsLink: Story = {
   args: {
     label: 'Button as Link',
     as: 'a',
-    href: '#',
+    href: 'https://github.com/niktariy',
+    target: '_blank',
     variant: ButtonVariant.Filled,
   },
 };
 
-export const AsDiv: Story = {
+export const AsRouterLink: Story = {
   args: {
-    label: 'Button as Div',
-    as: 'div',
+    label: 'Button as Router Link',
+    as: Link,
+    to: '/some-path',
     variant: ButtonVariant.Outlined,
   },
+  decorators: [
+    (Story) => (
+      <BrowserRouter>
+        <Story />
+      </BrowserRouter>
+    ),
+  ],
 };

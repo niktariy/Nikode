@@ -1,6 +1,23 @@
 import type { DefaultTheme } from 'styled-components';
+import type { ZIndex } from '../types/styled';
 import { palette } from './palettes';
 import { hexToRgba } from '../utils/hexToRgba';
+
+const createZIndex = <K extends keyof ZIndex>(key: K, value: number): number & { readonly __brand: K } => value as number & { readonly __brand: K };
+
+const zIndexValues = {
+  above: createZIndex('above', -1),
+  default: createZIndex('default', 1),
+  absolute: createZIndex('absolute', 10),
+  input: createZIndex('input', 20),
+  header: createZIndex('header', 40),
+  navigation: createZIndex('navigation', 30),
+  popover: createZIndex('popover', 50),
+  tooltip: createZIndex('tooltip', 50),
+  backdrop: createZIndex('backdrop', 60),
+  modal: createZIndex('modal', 80),
+  toast: createZIndex('toast', 90),
+} as const;
 
 const commonStyles = {
   fonts: {
@@ -22,7 +39,7 @@ const commonStyles = {
       h6: '1.125em',
       body1: '1.125em',
       body2: '1.25em',
-      caption: '0.9em',
+      caption: '0.875em',
     },
     fontWeights: {
       h1: 700,
@@ -58,19 +75,7 @@ const commonStyles = {
     round: '100%',
     pill: '9999px'
   },
-  zIndex: {
-    above: -1,
-    default: 1,
-    absolute: 10,
-    input: 20,
-    header: 40,
-    navigation: 30,
-    popover: 50,
-    tooltip: 50,
-    backdrop: 60,
-    modal: 80,
-    toast: 90,
-  },
+  zIndex: zIndexValues,
   shadow: {
     elevation: {
       flat: '0 0 0 2px',
@@ -190,19 +195,19 @@ export const darkTheme: DefaultTheme = {
     },
     link: {
       primary: {
-        default: palette.main[500],
-        hover: palette.main[300],
-        focus: palette.main[300],
+        default: palette.peach[300],
+        hover: palette.peach[200],
+        focus: palette.peach[400],
       },
       accent: {
-        default: palette.accent[500],
-        hover: palette.accent[300],
-        focus: palette.accent[300],
+        default: palette.accent[300],
+        hover: palette.accent[200],
+        focus: palette.accent[400],
       },
       neutral: {
         default: palette.grey[100],
-        hover: palette.grey[300],
-        focus: palette.grey[300],
+        hover: palette.grey[200],
+        focus: palette.grey[200],
       },
     },
     button: {

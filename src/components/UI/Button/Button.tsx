@@ -125,34 +125,45 @@ const StyledButton = styled.button<{
   }}
 `;
 
-// Simple ButtonProps interface
-interface ButtonProps {
-  as?: React.ElementType;
+// Polymorphic Button component with proper typing for React 19
+// Utility type for polymorphic components
+// See: https://react.dev/reference/react/forwardRef#forwarding-refs-to-polymorphic-components
+
+type ButtonOwnProps = {
   variant?: ButtonVariant;
   size?: ButtonSize;
   label?: string;
   children?: React.ReactNode;
-  ref?: React.Ref<HTMLElement>;
-  [key: string]: any; // Allow any additional props for different elements
-}
+};
 
-const Button = ({
-  type = 'button',
-  as = 'button',
-  children,
-  label,
-  variant = ButtonVariant.Filled,
-  size = ButtonSize.Medium,
-  ref,
-  ...props
-}: ButtonProps) => {
+type ButtonProps<C extends React.ElementType> = ButtonOwnProps & {
+  as?: C;
+  ref?: React.ComponentPropsWithRef<C>["ref"];
+} & Omit<React.ComponentPropsWithoutRef<C>, keyof ButtonOwnProps | 'as'>;
+
+const Button = <C extends React.ElementType = 'button'>(
+  {
+    as,
+    children,
+    label,
+    variant = ButtonVariant.Filled,
+    size = ButtonSize.Medium,
+    type,
+    ref,
+    ...props
+  }: ButtonProps<C>
+) => {
+  const Component = as || 'button';
+  const buttonProps = (Component === 'button')
+    ? { type: type || 'button' as 'button' | 'submit' | 'reset' | undefined }
+    : {};
   return (
     <StyledButton
-      ref={ref}
-      as={as}
-      type={as === 'button' ? type : undefined}
+      as={Component}
       $variant={variant}
       $size={size}
+      ref={ref}
+      {...buttonProps}
       {...props}
     >
       {children || label}

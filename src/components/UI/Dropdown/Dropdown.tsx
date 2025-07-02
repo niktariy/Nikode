@@ -168,4 +168,4 @@ const Dropdown: React.FC<DropdownProps> = ({ triggerLabel, triggerAriaLabel, chi
   );
 };
 
-export { Dropdown, StyledDropdownOption }; 
+export { Dropdown, StyledDropdownOption };

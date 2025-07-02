@@ -14,6 +14,11 @@ export enum TypographyVariant {
   body2 = 'body2',
 }
 
+export enum TypographyStyle {
+  Accent = 'accent',
+  Caption = 'caption',
+}
+
 export enum ButtonVariant {
   Filled = 'filled',
   Outlined = 'outlined',

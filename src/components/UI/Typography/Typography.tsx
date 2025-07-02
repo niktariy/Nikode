@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 import styled, { css } from 'styled-components';
-import { TypographyVariant } from '../../../types/common';
+import { TypographyStyle, TypographyVariant } from '../../../types/common';
 
 interface TypographyProps extends Omit<React.HTMLAttributes<HTMLParagraphElement>, 'children' | 'style' | 'ref'> {
   variant?: TypographyVariant;
   children?: React.ReactNode;
-  typographyStyle?: 'accent' | 'caption';
+  typographyStyle?: TypographyStyle;
   component?: React.ElementType;
   ref?: React.Ref<HTMLParagraphElement>;
 }
@@ -15,7 +15,7 @@ const isBodyVariant = ($variant: TypographyVariant) => $variant === TypographyVa
 
 interface StyledTypographyProps {
   $variant: TypographyVariant;
-  $typographyStyle?: 'accent' | 'caption';
+  $typographyStyle?: TypographyStyle;
 }
 
 const StyledTypography = styled.p.attrs<StyledTypographyProps>(
@@ -34,14 +34,15 @@ const StyledTypography = styled.p.attrs<StyledTypographyProps>(
 
   ${({ $typographyStyle, theme }) => {
     switch ($typographyStyle) {
-      case 'accent':
+      case TypographyStyle.Accent:
         return css`
           color: ${theme.colors.accent};
           font-weight: bolder;
         `;
-      case 'caption':
+      case TypographyStyle.Caption:
         return css`
           font-size: ${theme.typography.fontSizes.caption};
+          font-weight: ${theme.typography.fontWeights.caption};
           color: ${theme.colors.caption};
         `;
       default:

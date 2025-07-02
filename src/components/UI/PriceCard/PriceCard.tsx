@@ -19,8 +19,8 @@ const SvgPlaceholder = styled.div`
   height: 100%;
   z-index: 0;
   pointer-events: none;
-      display: flex;
-    justify-content: end;
+  display: flex;
+  justify-content: end;
 `;
 
 const CardContent = styled.div`

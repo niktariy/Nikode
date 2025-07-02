@@ -9,11 +9,6 @@ import { t } from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../store';
 
-// interface ThemeSwitcherProps {
-//   currentTheme: Theme;
-//   onThemeChange: (theme: Theme) => void;
-// }
-
 const ThemeSwitcher: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);

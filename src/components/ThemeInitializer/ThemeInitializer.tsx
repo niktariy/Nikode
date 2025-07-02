@@ -7,9 +7,11 @@ const ThemeInitializer: React.FC = () => {
   const { currentTheme } = useSelector((state: RootState) => state.theme);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
     const applyThemeToHtml = (theme: Theme) => {
       if (theme === 'os-default') {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        if (mediaQuery.matches) {
           document.documentElement.setAttribute('data-theme', 'dark');
         } else {
           document.documentElement.setAttribute('data-theme', 'light');
@@ -21,7 +23,6 @@ const ThemeInitializer: React.FC = () => {
 
     applyThemeToHtml(currentTheme);
 
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = () => {
       if (currentTheme === 'os-default') {
         applyThemeToHtml('os-default');
@@ -35,4 +36,4 @@ const ThemeInitializer: React.FC = () => {
   return null; // Этот компонент не рендерит ничего в DOM
 };
 
-export default ThemeInitializer; 
+export default ThemeInitializer;

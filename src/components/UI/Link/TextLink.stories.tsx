@@ -6,13 +6,14 @@ import { LinkVariant } from '../../../types/common';
 const meta: Meta<typeof TextLink> = {
   title: 'UI/TextLink',
   component: TextLink,
+  parameters: {
+    layout: 'centered',
+  },
   tags: ['autodocs'],
   argTypes: {
     variant: {
-      control: {
-        type: 'select',
-        options: Object.values(LinkVariant),
-      },
+      control: 'select',
+      options: Object.values(LinkVariant),
     },
     href: {
       control: 'text',
@@ -71,6 +72,15 @@ export const NeutralVariant: Story = {
   },
 };
 
+export const PrimaryActiveVariant: Story = {
+  args: {
+    href: '#',
+    variant: LinkVariant.Primary,
+    children: 'Primary Active Link',
+    isActive: true,
+  },
+};
+
 export const RouterLink: Story = {
   args: {
     to: '/',
@@ -85,4 +95,4 @@ export const ExternalLink: Story = {
     rel: 'noopener noreferrer',
     children: 'External Link',
   },
-}; 
+};

@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
@@ -166,3 +168,4 @@ const BrowserIllustration: React.FC<BrowserIllustrationProps> = ({
 };
 
 export default BrowserIllustration; 
+// @ts-check

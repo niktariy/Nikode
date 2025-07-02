@@ -1,14 +1,11 @@
 import Typography from './Typography';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ThemeProvider } from 'styled-components';
-import { lightTheme } from '../../../styles/themes';
-import { TypographyVariant } from '../../../types/common';
+import { TypographyStyle, TypographyVariant } from '../../../types/common';
 
 const meta: Meta<typeof Typography> = {
   title: 'UI/Typography',
   component: Typography,
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component: 'The Typography component provides consistent text styles for headings, paragraphs, and captions across the application.',
@@ -18,26 +15,20 @@ const meta: Meta<typeof Typography> = {
   tags: ['autodocs'],
   argTypes: {
     variant: {
-      control: {
-        type: 'select',
-        options: Object.values(TypographyVariant),
-      },
+      control: 'select',
+      options: Object.values(TypographyVariant),
+    },
+    typographyStyle: {
+      control: 'select',
+      options: Object.values(TypographyStyle),
     },
     children: { control: 'text' },
   },
-  decorators: [
-    (Story) => (
-      <ThemeProvider theme={lightTheme}>
-        <Story />
-      </ThemeProvider>
-    )
-  ],
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Typography>;
-
 
 export const Playground: Story = {
   args: {
