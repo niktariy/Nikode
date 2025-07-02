@@ -129,6 +129,12 @@ interface IllustrationColors {
   };
 }
 
+interface CardColors {
+  readonly neutral: string;
+  readonly price: string;
+  readonly skill: string;
+}
+
 interface ThemeColors {
   readonly primary: string;
   readonly accent: string;
@@ -144,6 +150,7 @@ interface ThemeColors {
   readonly button: ButtonColors;
   readonly burgerMenu: BurgerMenuColors;
   readonly illustration: IllustrationColors;
+  readonly card: CardColors;
 }
 
 declare module 'styled-components' {

@@ -122,7 +122,7 @@ const BaseHeroSection: React.FC<BaseHeroSectionProps> = ({
             <picture>
               <source type="image/webp" srcSet={`${illustration.webp1x} 1x, ${illustration.webp2x} 2x`} />
               <source type="image/png" srcSet={`${illustration.png1x} 1x, ${illustration.png2x} 2x`} />
-              <img src={currentIllustration} alt={title?.toString()} onError={handleImageError} />
+              <img src={currentIllustration} alt={title?.toString()} onError={handleImageError} loading='lazy' />
             </picture>
           </ImageWrapper>
           {actions && actions}

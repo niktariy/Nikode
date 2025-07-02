@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import Typography from '@ui/Typography/Typography';
 import BaseSection from "@ui/BaseSection";
-import SkillCard from "@ui/SkillCard/SkillCard";
+import { SkillCard } from "@ui/Cards";
 import { iconMapping } from '@/utils/iconMapping';
 import { TypographyVariant, type ISkillCategory } from '@/types/common';
 

@@ -36,7 +36,7 @@ const StyledTypography = styled.p.attrs<StyledTypographyProps>(
     switch ($typographyStyle) {
       case TypographyStyle.Accent:
         return css`
-          color: ${theme.colors.accent};
+          color: ${theme.colors.primary};
           font-weight: bolder;
         `;
       case TypographyStyle.Caption:

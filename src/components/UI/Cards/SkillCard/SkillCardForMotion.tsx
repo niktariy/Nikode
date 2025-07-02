@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import SkillCard from './SkillCard';
-import type { ISkillItem } from '../../../types/common';
-import { iconMapping } from '../../../utils/iconMapping';
+import type { ISkillItem } from '../../../../types/common';
+import { iconMapping } from '../../../../utils/iconMapping';
 
 const StyledSkillCard = styled(SkillCard)`
   @media (width > ${({ theme }) => theme.breakpoints.md}) {

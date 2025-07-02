@@ -31,12 +31,12 @@ const commonStyles = {
       body: 1.5,
     },
     fontSizes: {
-      h1: '2.75em',
+      h1: '3em',
       h2: '2.5em',
-      h3: '2em',
-      h4: '1.375em',
-      h5: '1.25em',
-      h6: '1.125em',
+      h3: '1.875em',
+      h4: '1.25em',
+      h5: '1.125em',
+      h6: '1em',
       body1: '1.125em',
       body2: '1.25em',
       caption: '0.875em',
@@ -138,6 +138,11 @@ export const lightTheme: DefaultTheme = {
       bunBot: palette.neutral[500],
       bunBotActive: palette.main[700],
     },
+    card: {
+      neutral: palette.neutral[100],
+      price: palette.main[100],
+      skill: palette.base.white,
+    },
     illustration: {
       circle: {
         big: palette.main[300],
@@ -224,6 +229,11 @@ export const darkTheme: DefaultTheme = {
       bunMidActive: palette.peach[300],
       bunBot: palette.neutral[400],
       bunBotActive: palette.peach[200],
+    },
+    card: {
+      neutral: palette.neutral[900],
+      price: palette.grey[900],
+      skill: palette.neutral[900],
     },
     illustration: {
       circle: {
