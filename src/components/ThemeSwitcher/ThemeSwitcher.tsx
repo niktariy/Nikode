@@ -1,19 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import SunFilledIcon from '../../assets/ant-design_sun-filled.svg?react';
-import MoonFilledIcon from '../../assets/ant-design_moon-filled.svg?react';
+import SunFilledIcon from '@assets/ant-design_sun-filled.svg?react';
+import MoonFilledIcon from '@assets/ant-design_moon-filled.svg?react';
 
-import { setTheme, type Theme } from '../../store/themeSlice';
-import { Dropdown, StyledDropdownOption } from '../UI/Dropdown/Dropdown';
-import { t } from 'i18next';
+import { setTheme, type Theme } from '@/store/themeSlice';
+import { Dropdown, StyledDropdownOption } from '@ui/Dropdown/Dropdown';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '../../store';
+import type { RootState } from '@/store';
 
 const ThemeSwitcher: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
-  const { currentTheme } = useSelector((state: RootState) => state.theme);
+  const { t } = useTranslation();
+  const selectCurrentTheme = (state: RootState) => state.theme.currentTheme;
+  const currentTheme = useSelector(selectCurrentTheme);
 
   const handleThemeChange = (theme: Theme) => {
     dispatch(setTheme(theme));

@@ -2,12 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import styled, { useTheme } from 'styled-components';
-import Nav from '../Navigation/Nav';
-import BurgerMenu from '../Navigation/BurgerMenu';
-import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
-import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
-import { hexToRgba } from '../../utils/hexToRgba';
-import type { IRouteItem } from '../../types/common';
+import Nav from '@components/Navigation/Nav';
+import BurgerMenu from '@components/Navigation/BurgerMenu';
+import LanguageSwitcher from '@components/LanguageSwitcher/LanguageSwitcher';
+import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher';
+import { hexToRgba } from '@/utils/hexToRgba';
+import type { IRouteItem } from '@/types/common';
 
 const StyledHeader = styled.header`
   --header-bgc: ${({ theme }) => hexToRgba(theme.colors.header, 50)};

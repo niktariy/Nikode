@@ -1,9 +1,9 @@
 import type { DefaultTheme } from 'styled-components';
-import type { ZIndex } from '../types/styled';
+import type { ZIndex } from '@/types/styled';
 import { palette } from './palettes';
-import { hexToRgba } from '../utils/hexToRgba';
+import { hexToRgba } from '@/utils/hexToRgba';
 
-const createZIndex = <K extends keyof ZIndex>(key: K, value: number): number & { readonly __brand: K } => value as number & { readonly __brand: K };
+const createZIndex = <K extends keyof ZIndex>(_: K, value: number): number & { readonly __brand: K } => value as number & { readonly __brand: K };
 
 const zIndexValues = {
   above: createZIndex('above', -1),

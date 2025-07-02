@@ -1,10 +1,10 @@
 import React, { type Ref } from 'react';
 import styled, { css, type DefaultTheme } from 'styled-components';
-import Typography from '../UI/Typography/Typography';
+import Typography from '@ui/Typography/Typography';
 import { useTranslation } from 'react-i18next';
-import { socialLinksData } from '../../mock/socialLinks';
+import { socialLinksData } from '@/mock/socialLinks';
 import FooterLinkList from './FooterLinkList';
-import { SocialLinkType, FooterSectionType, TypographyVariant } from '../../types/common';
+import { SocialLinkType, FooterSectionType, TypographyVariant } from '@/types/common';
 
 const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.colors.header};

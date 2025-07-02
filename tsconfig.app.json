@@ -22,7 +22,16 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+
+    /* Path Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@ui/*": ["src/components/UI/*"]
+    }
   },
   "include": ["src"]
 }

@@ -2,11 +2,11 @@ import React, { useRef, useEffect, useMemo, type RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
-import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
-import { LinkVariant, type IRouteItem } from '../../types/common';
-import TextLink from '../UI/Link/TextLink';
-import SocialLinks from '../SocialLinks/SocialLinks';
+import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher';
+import LanguageSwitcher from '@components/LanguageSwitcher/LanguageSwitcher';
+import { LinkVariant, type IRouteItem } from '@/types/common';
+import TextLink from '@ui/Link/TextLink';
+import SocialLinks from '@components/SocialLinks/SocialLinks';
 
 const StyledDialog = styled.div<{ $isMenuOpened: boolean; $headerHeight: number }>`
   display: ${(props) => (props.$isMenuOpened ? 'block' : 'none')};
@@ -36,7 +36,7 @@ const NavigationGrid = styled.div`
   }
 
   @media (width > ${({ theme }) => theme.breakpoints.lg}) {
-    flex-direction: row;
+    flex-direction: row-reverse;
     gap: ${({ theme }) => theme.spacing(10)};
     align-items: end;
   }

@@ -1,12 +1,13 @@
 import React from 'react';
-import Button from '../components/UI/Button/Button';
+import Button from '@ui/Button/Button';
 import { useTranslation, Trans } from 'react-i18next';
-import BaseHeroSection from '../components/UI/BaseHeroSection';
-import type { RootState } from '../store';
+import BaseHeroSection from '@ui/BaseHeroSection';
+import type { RootState } from '@/store';
 import { useSelector } from 'react-redux';
-import ButtonGroup from '../components/ButtonGroup/ButtonGroup';
-import Skills from '../components/Skills/Skills';
-// import BrowserIllustration from '../components/Illustrations';
+import ButtonGroup from '@components/ButtonGroup/ButtonGroup';
+import SectionSkills from '@components/SectionSkills/SectionSkills';
+import { ButtonVariant } from '@/types/common';
+// import BrowserIllustration from '@components/Illustrations';
 
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
@@ -29,15 +30,13 @@ const HomePage: React.FC = () => {
         title={<Trans i18nKey='home.title' components={{ small: <small /> }} />}
         description={<Trans i18nKey='home.desc' />}
         actions={
-          <>
-            <ButtonGroup>
-              <Button label={t('home.CTA_portfolio')} variant='filled' />
-              <Button label={t('home.CTA_contact')} variant='outlined' />
-            </ButtonGroup>
-          </>
+          <ButtonGroup>
+            <Button label={t('home.CTA_portfolio')} variant={ButtonVariant.Filled} />
+            <Button label={t('home.CTA_contact')} variant={ButtonVariant.Outlined} />
+          </ButtonGroup>
         } illustration={illustrationPaths}>
       </BaseHeroSection>
-      <Skills />
+      <SectionSkills />
     </>
   );
 };

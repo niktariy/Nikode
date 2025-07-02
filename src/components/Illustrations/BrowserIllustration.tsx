@@ -1,9 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import type { RootState } from '../../store';
+import type { RootState } from '@/store';
 
 type DisplayVariant = 'main' | 'code' | 'utube';
 
@@ -139,8 +137,20 @@ const BrowserIllustration: React.FC<BrowserIllustrationProps> = ({
   className,
 }) => {
   const selectCurrentTheme = (state: RootState) => state.theme.currentTheme;
-  const currentTheme = useSelector(selectCurrentTheme);
+  const theme = useSelector(selectCurrentTheme);
   const [svgWidth, setSvgWidth] = useState(0);
+
+  const svgContent = React.useMemo(() => {
+    switch (displayVariant) {
+      case 'code':
+        return theme === 'dark' ? darkCodeSvgContent : lightCodeSvgContent;
+      case 'utube':
+        return theme === 'dark' ? darkUtubeSvgContent : lightUtubeSvgContent;
+      case 'main':
+      default:
+        return theme === 'dark' ? darkMainSvgContent : lightMainSvgContent;
+    }
+  }, [displayVariant, theme]);
 
   React.useMemo(() => {
     switch (displayVariant) {
@@ -162,6 +172,7 @@ const BrowserIllustration: React.FC<BrowserIllustrationProps> = ({
         <path d="M24 28.0005C28.4183 28.0005 32 24.4188 32 20.0005C32 15.5822 28.4183 12.0005 24 12.0005C19.5817 12.0005 16 15.5822 16 20.0005C16 24.4188 19.5817 28.0005 24 28.0005Z" fill="var(--i-web-dots)" />
         <path d="M48 28.0005C52.4183 28.0005 56 24.4188 56 20.0005C56 15.5822 52.4183 12.0005 48 12.0005C43.5817 12.0005 40 15.5822 40 20.0005C40 24.4188 43.5817 28.0005 48 28.0005Z" fill="var(--i-web-dots)" />
         <path d="M72 28.0005C76.4183 28.0005 80 24.4188 80 20.0005C80 15.5822 76.4183 12.0005 72 12.0005C67.5817 12.0005 64 15.5822 64 20.0005C64 24.4188 67.5817 28.0005 72 28.0005Z" fill="var(--i-web-dots)" />
+        {svgContent}
       </svg>
     </IllustrationContainer>
   );

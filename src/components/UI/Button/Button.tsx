@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css, type RuleSet } from 'styled-components';
-import { hexToRgba } from '../../../utils/hexToRgba';
+import { hexToRgba } from '@/utils/hexToRgba';
 import { type DefaultTheme } from 'styled-components';
-import { ButtonVariant, ButtonSize } from '../../../types/common';
+import { ButtonVariant, ButtonSize } from '@/types/common';
 
 const outlineBaseStyles = (theme: DefaultTheme) => css`
   --btn-outline-bg: ${theme.colors.button.defaultText};

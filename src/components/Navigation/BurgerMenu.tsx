@@ -124,7 +124,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpened, onToggle, className, 
       ref={ref}
     >
       {t('navigation.menu')}
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" >
         <StyledBun $isTop $isOpened={isOpened} d="M4 6h24"/>
         <StyledBun $isMid $isOpened={isOpened} d="M4 12h20"/>
         <StyledBun $isBot $isOpened={isOpened} d="M4 18h24"/>

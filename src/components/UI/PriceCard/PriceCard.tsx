@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Typography from '../Typography/Typography';
+import { TypographyVariant } from '@/types/common';
 
 const StyledPriceCard = styled.article`
   width: 100%;
@@ -38,7 +39,6 @@ const CardContent = styled.div`
 `;
 
 const CardTitle = styled(Typography)`
-  font-family: ${({ theme }) => theme.fonts.primary};
   font-weight: 700;
   font-size: 23px;
   line-height: 1.04;
@@ -46,7 +46,6 @@ const CardTitle = styled(Typography)`
 `;
 
 const CardDescription = styled(Typography)`
-  font-family: ${({ theme }) => theme.fonts.monospace};
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
@@ -54,7 +53,7 @@ const CardDescription = styled(Typography)`
 `;
 
 const CardPrice = styled.span`
-  font-family: ${({ theme }) => theme.fonts.primary};
+  font-family: ${({ theme }) => theme.fonts.monospace};
   font-weight: 700;
   font-size: 24px;
   line-height: 2;
@@ -74,7 +73,7 @@ interface PriceCardProps {
 const PriceCard: React.FC<PriceCardProps> = ({ title, description, price, className, Illustration }) => (
   <StyledPriceCard className={className}>
     <CardContent>
-      <CardTitle as="h4">{title}</CardTitle>
+      <CardTitle variant={TypographyVariant.h4}>{title}</CardTitle>
       <CardDescription as="p">{description}</CardDescription>
       <CardPrice>{price}</CardPrice>
     </CardContent>
