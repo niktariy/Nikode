@@ -1,7 +1,7 @@
 import React, { useState, useEffect, type ReactNode, type Ref } from 'react';
 import styled from 'styled-components';
 import Typography from './Typography/Typography';
-import { TypographyVariant } from '../../types/common';
+import { TypographyVariant } from '@/types/common';
 
 interface IllustrationPaths {
   png1x: string;

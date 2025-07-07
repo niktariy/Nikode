@@ -179,4 +179,3 @@ const BrowserIllustration: React.FC<BrowserIllustrationProps> = ({
 };
 
 export default BrowserIllustration; 
-// @ts-check

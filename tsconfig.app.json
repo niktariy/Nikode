@@ -30,7 +30,8 @@
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
-      "@ui/*": ["src/components/UI/*"]
+      "@ui/*": ["src/components/UI/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["src"]

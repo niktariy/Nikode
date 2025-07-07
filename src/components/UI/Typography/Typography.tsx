@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import styled, { css } from 'styled-components';
-import { TypographyStyle, TypographyVariant } from '../../../types/common';
+import { TypographyStyle, TypographyVariant } from '@/types/common';
 
 interface TypographyProps extends Omit<React.HTMLAttributes<HTMLParagraphElement>, 'children' | 'style' | 'ref'> {
   variant?: TypographyVariant;
@@ -29,7 +29,9 @@ const StyledTypography = styled.p.attrs<StyledTypographyProps>(
 
   small {
     color: ${({ theme }) => theme.colors.primary};
-    white-space: pre;
+    @media (width > ${({theme}) => theme.breakpoints.sm}) {
+      white-space: pre;
+    }
   }
 
   ${({ $typographyStyle, theme }) => {

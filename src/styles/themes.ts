@@ -31,8 +31,8 @@ const commonStyles = {
       body: 1.5,
     },
     fontSizes: {
-      h1: '3em',
-      h2: '2.5em',
+      h1: '2.75em',
+      h2: '2.25em',
       h3: '1.875em',
       h4: '1.25em',
       h5: '1.125em',
@@ -144,6 +144,7 @@ export const lightTheme: DefaultTheme = {
       skill: palette.base.white,
     },
     illustration: {
+      hearts: palette.lilac[500],
       circle: {
         big: palette.main[300],
         small: palette.accent[300],
@@ -155,12 +156,14 @@ export const lightTheme: DefaultTheme = {
       },
       shape: {
         bg: {
-          main: palette.main[100],
-          accent: palette.main[500],
+          main700: palette.main[700],
+          main300: palette.main[300],
+          main100: palette.main[100],
         },
         lines: {
-          main: palette.main[300],
-          accent: palette.base.white,
+          main700: palette.base.white,
+          main300: palette.base.white,
+          main100: palette.main[300],
         }
       },
       web: {
@@ -232,10 +235,11 @@ export const darkTheme: DefaultTheme = {
     },
     card: {
       neutral: palette.neutral[900],
-      price: palette.grey[900],
+      price: palette.neutral[900],
       skill: palette.neutral[900],
     },
     illustration: {
+      hearts: palette.lilac[500],
       circle: {
         big: palette.neutral[500], // lines for main shape
         small: palette.grey[300],
@@ -247,12 +251,14 @@ export const darkTheme: DefaultTheme = {
       },
       shape: {
         bg: {
-          main: palette.grey[800],
-          accent: palette.neutral[700],
+          main700: palette.neutral[700],
+          main300: palette.neutral[500],
+          main100: palette.grey[800],
         },
         lines: {
-          main: palette.neutral[500],
-          accent: palette.neutral[900],
+          main700: palette.neutral[900],
+          main300: palette.neutral[900],
+          main100: palette.neutral[500],
         }
       },
       web: {

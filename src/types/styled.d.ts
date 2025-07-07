@@ -96,6 +96,7 @@ interface BurgerMenuColors {
 }
 
 interface IllustrationColors {
+  readonly hearts: string;
   readonly circle: {
     readonly big: string;
     readonly small: string;
@@ -107,12 +108,14 @@ interface IllustrationColors {
   };
   readonly shape: {
     readonly bg: {
-      readonly main: string;
-      readonly accent: string;
+      readonly main700: string;
+      readonly main300: string;
+      readonly main100: string;
     };
     readonly lines: {
-      readonly main: string;
-      readonly accent: string;
+      readonly main700
+      readonly main300
+      readonly main100: string;
     };
   };
   readonly web: {

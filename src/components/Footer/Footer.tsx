@@ -1,11 +1,13 @@
+// Импорты
 import React, { type Ref } from 'react';
 import styled, { css, type DefaultTheme } from 'styled-components';
 import Typography from '@ui/Typography/Typography';
 import { useTranslation } from 'react-i18next';
-import { socialLinksData } from '@/mock/socialLinks';
+import { persoanlLinksData } from '@/mock/myLinks.const';
 import FooterLinkList from './FooterLinkList';
-import { SocialLinkType, FooterSectionType, TypographyVariant } from '@/types/common';
+import { FooterLinkType, FooterLinksSectionName, TypographyVariant, type FooterLinksSectionType } from '@/types/common';
 
+// Стилизация компонентов
 const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.colors.header};
   color: ${({ theme }) => theme.colors.text};
@@ -27,39 +29,44 @@ const FooterContent = styled.div`
   }
 `;
 
-interface FooterSectionProps {
-  $sectionType?: FooterSectionType;
+interface FooterLinksSectionProps {
+  $sectionType?: FooterLinksSectionType;
 }
 
-const getFooterSectionResponsiveStyles = (theme: DefaultTheme, $sectionType?: FooterSectionType) => {
-  if ($sectionType === FooterSectionType.Copyright) {
-    return css`
-      @media (max-width: ${theme.breakpoints.md}) {
-        order: 3;
-        margin-top: ${theme.spacing(3)};
-      }
-    `;
-  } else if ($sectionType === FooterSectionType.Socials || $sectionType === FooterSectionType.Links) {
-    return css`
-      @media (max-width: ${theme.breakpoints.md}) {
-        text-align: center;
-        ul {
-          justify-content: center;
+// Утилита для медиа-запросов
+const getFooterLinksSectionResponsiveStyles = (theme: DefaultTheme, $sectionType?: FooterLinksSectionType) => {
+  switch ($sectionType) {
+    case FooterLinksSectionName.Copyright:
+      return css`
+        @media (max-width: ${theme.breakpoints.md}) {
+          order: 3;
+          margin-top: ${theme.spacing(3)};
         }
-      }
-    `;
+      `;
+    case FooterLinksSectionName.Articles:
+    case FooterLinksSectionName.CodeSamples:
+      return css`
+        @media (max-width: ${theme.breakpoints.md}) {
+          text-align: center;
+          ul {
+            justify-content: center;
+          }
+        }
+      `;
+    default:
+      return css``;
   }
-  return css``;
 };
 
-const FooterSection = styled.div<FooterSectionProps>`
+const FooterLinksSection = styled.div<FooterLinksSectionProps>`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(3)};
 
-  ${({ theme, $sectionType }) => getFooterSectionResponsiveStyles(theme, $sectionType)}
+  ${({ theme, $sectionType }) => getFooterLinksSectionResponsiveStyles(theme, $sectionType)}
 `;
 
+// Основной компонент
 interface FooterProps {
   ref?: Ref<HTMLElement>;
 }
@@ -68,33 +75,32 @@ const Footer: React.FC<FooterProps> = ({ ref }) => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
-  const socialMediaLinks = socialLinksData.filter(link => link.type === SocialLinkType.Social);
-  const portfolioLinks = socialLinksData.filter(link => link.type === SocialLinkType.Portfolio);
+  const articlesLinks = persoanlLinksData.filter(link => link.type === FooterLinkType.Articles);
+  const codeSamplesLinks = persoanlLinksData.filter(link => link.type === FooterLinkType.CodeSamples);
 
   return (
     <StyledFooter ref={ref}>
       <FooterContent className="container">
-        <FooterSection $sectionType={FooterSectionType.Copyright}>
+        <FooterLinksSection $sectionType={FooterLinksSectionName.Copyright}>
           <Typography variant={TypographyVariant.body2}>
             &copy; {currentYear} {t('footer.copyright')}
           </Typography>
-        </FooterSection>
-        <FooterSection $sectionType={FooterSectionType.Socials}>
+        </FooterLinksSection>
+        <FooterLinksSection $sectionType={FooterLinksSectionName.Articles}>
           <Typography variant={TypographyVariant.h6}>
-            {t('footer.socials_title')}
+            {t('footer.articles_title')}
           </Typography>
-          <FooterLinkList links={socialMediaLinks} />
-        </FooterSection>
-
-        <FooterSection $sectionType={FooterSectionType.Links}>
+          <FooterLinkList links={articlesLinks} />
+        </FooterLinksSection>
+        <FooterLinksSection $sectionType={FooterLinksSectionName.CodeSamples}>
           <Typography variant={TypographyVariant.h6}>
-            {t('footer.links_title')}
+            {t('footer.code_samples_title')}
           </Typography>
-          <FooterLinkList links={portfolioLinks} />
-        </FooterSection>
+          <FooterLinkList links={codeSamplesLinks} />
+        </FooterLinksSection>
       </FooterContent>
     </StyledFooter>
   );
 };
 
-export default Footer; 
+export default Footer;

@@ -1,4 +1,4 @@
-import React from 'react';
+import { type ComponentProps, type FC } from 'react';
 import styled from 'styled-components';
 import Typography from '../../Typography/Typography';
 import { TypographyStyle, TypographyVariant } from '@/types/common';
@@ -22,17 +22,21 @@ const StyledPriceCard = styled(BaseCard)`
   }
 `;
 
-const SvgPlaceholder = styled.div`
-  width: 30%;
+const SvgWrapper = styled.div`
+  width: auto;
   height: 100%;
   z-index: 0;
   pointer-events: none;
   display: flex;
   justify-content: end;
 
-  img {
-    height: calc(100% + 1px);
-    margin-top: -1px;
+  svg:not(.parallax) {
+    height: 100%;
+    width: auto;
+    object-fit: fill;
+  }
+  .parallax {
+    position: absolute;
   }
 `;
 
@@ -51,31 +55,31 @@ const CardPrice = styled(Typography)`
   margin-top: auto;
 `;
 
+
 interface PriceCardProps {
   title: string;
   description: string;
   price: string;
   className?: string;
-  bgImage?: string;
-  Illustration?: React.FC<React.SVGProps<SVGSVGElement>> | null;
+  cardIllustration?: FC<ComponentProps<'svg'>> | null;
+  accentShape?: FC<ComponentProps<'svg'>> | null;
 }
 
-const PriceCard: React.FC<PriceCardProps> = ({ title, description, price, className, bgImage, Illustration }) => {
-  const ParallaxIllustration = Illustration ? styled(Illustration)`
-    position: absolute;
-  ` : null;
+const PriceCard: FC<PriceCardProps> = ({ title, description, price, className, cardIllustration, accentShape }) => {
+  const AccentIllustration = accentShape && accentShape;
+  const BgIllustration = cardIllustration && cardIllustration;
 
   return (
     <StyledPriceCard className={className}>
       <CardContent>
         <Typography variant={TypographyVariant.h4} component='h3'>{title}</Typography>
         <Typography>{description}</Typography>
-        <CardPrice variant={TypographyVariant.h4} typographyStyle={TypographyStyle.Accent}>{price}</CardPrice>
+        <CardPrice variant={TypographyVariant.h3} component='span' typographyStyle={TypographyStyle.Accent}>{price}</CardPrice>
       </CardContent>
-      <SvgPlaceholder>
-        {bgImage && <img src={bgImage} alt="" loading='lazy'/>}
-        {ParallaxIllustration && <ParallaxIllustration />}
-      </SvgPlaceholder>
+      <SvgWrapper>
+        {BgIllustration && <BgIllustration />}
+        {AccentIllustration && <AccentIllustration  className='parallax'/>}
+      </SvgWrapper>
     </StyledPriceCard>
   );
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Typography from '../../Typography/Typography';
-import { TypographyVariant, type ProjectIconType } from '../../../../types/common';
-import BaseCard from '../BaseCard';
+import Typography from '@ui/Typography/Typography';
+import BaseCard from '@ui/Cards/BaseCard';
+import { TypographyVariant, type GlobalIconType } from '@/types/common';
 
 const StyledSkillCard = styled(BaseCard)`
   --card-bg: ${({ theme }) => theme.colors.card.skill};
@@ -33,7 +33,7 @@ const StyledSkillCardHeader = styled.div`
 interface SkillCardProps {
   title: string;
   description: string | React.ReactNode;
-  icon?: ProjectIconType;
+  icon?: GlobalIconType;
   additionalClassName?: string;
 }
 

@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LinkVariant } from '../../../types/common';
 import type { To } from 'react-router-dom';
 import type { DefaultTheme } from 'styled-components/dist/types';
+import { LinkVariant } from './textLinkTypes';
 
 interface StyledTextLinkProps {
   variant?: LinkVariant;

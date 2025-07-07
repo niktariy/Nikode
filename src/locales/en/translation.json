@@ -189,32 +189,32 @@
     ]
   },
   "footer": {
-    "copyright": "Copyright © Veronika Novikova",
-    "socials_title": "Socials",
-    "links_title": "Links"
+    "copyright": "Copyright © Veronika Khalikova",
+    "articles_title": "Articles",
+    "code_samples_title": "Code Samples"
   },
   "prices": {
     "title": "Web development prices",
     "cards": [
       {
-        "title": "Website from scratch",
-        "description": "You only have designer mockups, I can choose the tech stack",
-        "price": "$18/hr"
+        "title": "New Website Development",
+        "description": "From concept to launch, I'll build your website based on provided design layouts and select the optimal technology stack.",
+        "price": "$20/hour"
       },
       {
-        "title": "New components, features or pages",
-        "description": "You already have a working site and designer mockups to implement",
-        "price": "$20/hr"
+        "title": "Existing Project Enhancement",
+        "description": "Integrating new components, features, or pages into your current website, implementing designs from your layouts.",
+        "price": "$20/hour"
       },
       {
-        "title": "Redesign of an existing site",
-        "description": "Your site needs an update and you want to hire me for this. Please check my tech stack first.",
-        "price": "$23/hr"
+        "title": "Website Redesign",
+        "description": "Modernizing the look and improving the functionality of your existing website to meet current standards and trends.",
+        "price": "$25/hour"
       },
       {
-        "title": "Support for an existing project",
-        "description": "Bug fixing / troubleshooting",
-        "price": "$20/hr"
+        "title": "Website Support & Optimization",
+        "description": "Troubleshooting and ensuring the smooth operation of your web project.",
+        "price": "$18/hour"
       }
     ]
   }

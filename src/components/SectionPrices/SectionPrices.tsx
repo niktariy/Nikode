@@ -3,18 +3,9 @@ import styled from "styled-components";
 import BaseSection from "@ui/BaseSection";
 import { PriceCard } from "@ui/Cards";
 
-import PriceBg1Light from '@assets/illustrations/parts/price-bg-1@light.svg';
-import PriceBg1Dark from '@assets/illustrations/parts/price-bg-1@dark.svg';
-import PriceBg2Light from '@assets/illustrations/parts/price-bg-2@light.svg';
-import PriceBg2Dark from '@assets/illustrations/parts/price-bg-2@dark.svg';
-import PriceBg3Light from '@assets/illustrations/parts/price-bg-3@light.svg';
-import PriceBg3Dark from '@assets/illustrations/parts/price-bg-3@dark.svg';
-import PriceBg4Light from '@assets/illustrations/parts/price-bg-4@light.svg';
-import PriceBg4Dark from '@assets/illustrations/parts/price-bg-4@dark.svg';
-import IllustrationHearts, { IllustrationHeartsSize } from "../Illustrations/Hearts";
-import IllustrationCircle, { IllustrationCircleSize } from "../Illustrations/Circle";
-import type { RootState } from "@/store";
-import { useSelector } from "react-redux";
+import { CircleIllustration, HeartsIllustration, ButtonCodeIllustration, TwoDotsIllustration } from "../Illustrations";
+import { PriceBackgrounds } from "../Illustrations/CardBackground";
+import type { SVGComponentType } from "@/types/common";
 
 const PriceGrid = styled.ul`
   display: flex;
@@ -29,29 +20,33 @@ const PriceGrid = styled.ul`
   }
 `
 
-const SmallHeartsIllustration: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <IllustrationHearts variant={IllustrationHeartsSize.Small} style={{ top: '18%', right: '-4%' }} {...props}/>
+const PositionedHeartsIllustration: SVGComponentType = (props) => (
+  <HeartsIllustration size='small' style={{ top: '18%', right: '-4%' }} {...props} />
 );
 
-const SmallCircleIllustration: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <IllustrationCircle variant={IllustrationCircleSize.Small} style={{ bottom: '10%', right: '-2%' }} {...props}/>
+const PositionedButtonCodeIllustration: SVGComponentType = (props) => (
+  <ButtonCodeIllustration size='small' shadowOnly={true} style={{ top: '30%', right: '-5%' }} {...props} />
 );
 
+const PositionedTwoDotsIllustration: SVGComponentType = (props) => (
+  <TwoDotsIllustration style={{ top: '12%', right: '6%' }} {...props} />
+);
+
+const PositionedCircleIllustration: SVGComponentType = (props) => (
+  <CircleIllustration size='small' style={{ bottom: '10%', right: '-2%' }} {...props} />
+);
 
 const SectionPrices = () => {
   const { t } = useTranslation();
   
-  const selectCurrentTheme = (state: RootState) => state.theme.currentTheme;
-  const isDarkTheme = useSelector(selectCurrentTheme) === 'dark';
   const priceCards = t('prices.cards', { returnObjects: true }) as Array<{ title: string; description: string; price: string }>;
-  const PriceIllustrations: (React.FC<React.SVGProps<SVGSVGElement>> | null)[] = [SmallHeartsIllustration, null, null, SmallCircleIllustration];
-  const PriceBackgrounds: string[] = isDarkTheme ? [PriceBg1Dark, PriceBg2Dark, PriceBg3Dark, PriceBg4Dark] : [PriceBg1Light, PriceBg2Light, PriceBg3Light, PriceBg4Light];
+  const PriceIllustrations: (SVGComponentType | null)[] = [PositionedHeartsIllustration, PositionedButtonCodeIllustration, PositionedTwoDotsIllustration, PositionedCircleIllustration];
 
   return (
     <BaseSection title={t('prices.title')} centered>
       <PriceGrid>
         {priceCards.map((card, index) => (
-          <PriceCard key={index} title={card.title} description={card.description} price={card.price} bgImage={PriceBackgrounds[index]} Illustration={PriceIllustrations[index]}/>
+          <PriceCard key={index} title={card.title} description={card.description} price={card.price} cardIllustration={PriceBackgrounds[index]} accentShape={PriceIllustrations[index]}/>
         ))}
       </PriceGrid>
     </BaseSection>

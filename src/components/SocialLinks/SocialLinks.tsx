@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { socialLinksData } from '../../mock/socialLinks';
+import { persoanlLinksData } from '../../mock/myLinks.const';
 import TextLink from '../UI/Link/TextLink';
 import { LinkVariant } from '../../types/common';
 
@@ -75,7 +75,7 @@ const SocialLinkItem = styled(TextLink)`
 const SocialLinks: React.FC = () => {
   return (
     <StyledSocialList>
-      {socialLinksData.map((link, index) => {
+      {persoanlLinksData.map((link, index) => {
         const SocialIconComponent = link.icon;
         return (
           <li key={index + link.label }>
