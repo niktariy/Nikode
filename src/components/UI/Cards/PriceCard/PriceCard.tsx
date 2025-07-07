@@ -78,7 +78,7 @@ const PriceCard: FC<PriceCardProps> = ({ title, description, price, className, c
       </CardContent>
       <SvgWrapper>
         {BgIllustration && <BgIllustration />}
-        {AccentIllustration && <AccentIllustration  className='parallax'/>}
+        {AccentIllustration && <AccentIllustration className='parallax'/>}
       </SvgWrapper>
     </StyledPriceCard>
   );

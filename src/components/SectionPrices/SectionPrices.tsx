@@ -6,6 +6,7 @@ import { PriceCard } from "@ui/Cards";
 import { CircleIllustration, HeartsIllustration, ButtonCodeIllustration, TwoDotsIllustration } from "../Illustrations";
 import { PriceBackgrounds } from "../Illustrations/CardBackground";
 import type { SVGComponentType } from "@/types/common";
+import { useCursorParallax } from '@/hooks/useCursorParallax';
 
 const PriceGrid = styled.ul`
   display: flex;
@@ -38,6 +39,7 @@ const PositionedCircleIllustration: SVGComponentType = (props) => (
 
 const SectionPrices = () => {
   const { t } = useTranslation();
+  useCursorParallax('.parallax');
   
   const priceCards = t('prices.cards', { returnObjects: true }) as Array<{ title: string; description: string; price: string }>;
   const PriceIllustrations: (SVGComponentType | null)[] = [PositionedHeartsIllustration, PositionedButtonCodeIllustration, PositionedTwoDotsIllustration, PositionedCircleIllustration];
