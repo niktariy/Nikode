@@ -131,11 +131,11 @@ export const lightTheme: DefaultTheme = {
       fab: palette.grey[300],
     },
     burgerMenu: {
-      bunTop: palette.neutral[700],
+      bunTop: palette.neutral[500],
       bunTopActive: palette.main[500],
       bunMid: palette.neutral[600],
       bunMidActive: palette.main[600],
-      bunBot: palette.neutral[500],
+      bunBot: palette.neutral[700],
       bunBotActive: palette.main[700],
     },
     card: {
@@ -226,11 +226,11 @@ export const darkTheme: DefaultTheme = {
       fab: palette.grey[700],
     },
     burgerMenu: {
-      bunTop: palette.neutral[200],
+      bunTop: palette.neutral[400],
       bunTopActive: palette.peach[400],
       bunMid: palette.neutral[300],
       bunMidActive: palette.peach[300],
-      bunBot: palette.neutral[400],
+      bunBot: palette.neutral[200],
       bunBotActive: palette.peach[200],
     },
     card: {

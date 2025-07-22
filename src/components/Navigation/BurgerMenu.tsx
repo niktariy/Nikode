@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styled, { keyframes, css } from 'styled-components';
 import Button from '../UI/Button/Button';
 import { ButtonVariant } from '../../types/common';
+import { Illustration } from '../Illustrations/Illustration';
 
 interface BurgerMenuProps {
   isOpened: boolean;
@@ -11,45 +12,47 @@ interface BurgerMenuProps {
   ref?: React.Ref<HTMLButtonElement>;
 }
 
-const spacing = 8; //px
-const width = 28; //px
-const bunHeight = 3; // px
+const BUN_SIZING = {
+  spacing: 4,
+  width: 22,
+  height: 2,
+}
 
-const bunTopOut = keyframes`
-  0% { transform: rotate(0deg); }
-  20% { transform: rotate(15deg); }
-  80% { transform: rotate(-60deg); }
-  100% { transform: rotate(-45deg); }
+const bunsHeight = BUN_SIZING.spacing * 2 + BUN_SIZING.height * 3; //px
+const bunMidStartY = BUN_SIZING.spacing + BUN_SIZING.height;
+const bunMidOffsetX = BUN_SIZING.height;
+const bunTopStartY = BUN_SIZING.height;
+const bunBotStartY = bunMidStartY * 2;
+
+const bunTopClosed = keyframes`
+  0% { transform: translateY(${bunMidStartY}px) rotate(45deg); }
+  50% { transform: translateY(${bunMidStartY}px) rotate(0deg); }
+  100% { transform: translateY(0) rotate(0deg); }
 `;
-const bunTopIn = keyframes`
-  0% { transform: rotate(-45deg); }
-  20% { transform: rotate(-60deg); }
-  80% { transform: rotate(15deg); }
-  100% { transform: rotate(0deg); }
+const bunTopOpened = keyframes`
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(${bunMidStartY}px) rotate(0deg); }
+  100% { transform: translateY(${bunMidStartY}px) rotate(45deg); }
 `;
-const bunBotOut = keyframes`
-  0% { transform: rotate(0deg); }
-  20% { transform: rotate(-15deg); }
-  80% { transform: rotate(60deg); }
-  100% { transform: rotate(45deg); }
+const bunBotClosed = keyframes`
+  0% { transform: translateY(${bunMidStartY * -1}px) rotate(-45deg); }
+  50% { transform: translateY(${bunMidStartY * -1}px) rotate(0deg); }
+  100% { transform: translateY(0) rotate(0deg); }
 `;
-const bunBotIn = keyframes`
-  0% { transform: rotate(45deg); }
-  20% { transform: rotate(60deg); }
-  80% { transform: rotate(-15deg); }
-  100% { transform: rotate(0deg); }
+const bunBotOpened = keyframes`
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(${bunMidStartY * -1}px) rotate(0deg); }
+  100% { transform: translateY(${bunMidStartY * -1}px) rotate(-45deg); }
 `;
-const bunFillIn = keyframes`
-  0% { width: 0; right: 0; }
-  40% { width: 0; right: ${width * -1}px; }
-  80% { width: ${width - bunHeight}px; right: 6px; }
-  100% { width: ${width - bunHeight}px; right: 0; }
+const bunMidClosed = keyframes`
+  0% { scale: 0;}
+  50% { scale: 0;}
+  100% { scale: 1;}
 `;
-const bunFillOut = keyframes`
-  0% { width: ${width - bunHeight}px; right: 0; }
-  20% { width: 42px; right: 6px; }
-  40% { width: 0; right: -40px; }
-  100% { width: 0; right: ${width - bunHeight}px; }
+const bunMidOpened = keyframes`
+  0% { scale: 1;}
+  50% { scale: 0;}
+  100% { scale: 0;}
 `;
 
 const StyledBurgerMenu = styled(Button)`
@@ -63,18 +66,6 @@ const StyledBurgerMenu = styled(Button)`
   user-select: none;
   -webkit-touch-callout: none;
 
-  @media (width < ${({ theme }) => theme.breakpoints.lg}) {
-    display: flex;
-    align-items: center;
-  }
-
-  .burger__buns {
-    position: relative;
-    width: ${width}px;
-    height: ${spacing * 2 + bunHeight}px;
-    margin-left: ${spacing}px;
-  }
-
   --color-bun-top: ${({ theme }) => theme.colors.burgerMenu.bunTop};
   --color-bun-mid: ${({ theme }) => theme.colors.burgerMenu.bunMid};
   --color-bun-bot: ${({ theme }) => theme.colors.burgerMenu.bunBot};
@@ -84,29 +75,36 @@ const StyledBurgerMenu = styled(Button)`
     --color-bun-mid: ${({ theme }) => theme.colors.burgerMenu.bunMidActive};
     --color-bun-bot: ${({ theme }) => theme.colors.burgerMenu.bunBotActive};
   }
+
+  svg {
+    overflow: visible;
+  }
 `;
 
 const StyledBunBase = styled.path<{ $isTop?: boolean; $isMid?: boolean; $isBot?: boolean; $isOpened: boolean }>`
-  transition: background-color 0.2s ease;
+  transition: fill ${({theme}) => theme.transition.duration.base} ${({theme}) => theme.transition.timingFunc.easeOutExpo};
 
   animation-duration: 0.6s;
   animation-direction: normal;
-  animation-timing-function: linear;
+  animation-timing-function: ease;
   animation-fill-mode: forwards;
 
   ${({ $isTop, $isOpened }) => $isTop && css`
-    fill: var(--color-bun-top);
-    animation-name: ${$isOpened ? bunTopOut : bunTopIn};
+    fill: ${$isOpened ? 'currentColor' : 'var(--color-bun-top)'};
+    animation-name: ${$isOpened ? bunTopOpened : bunTopClosed};
+    transform-origin: top center;
   `}
 
   ${({ $isMid, $isOpened }) => $isMid && css`
     fill: var(--color-bun-mid);
-    animation-name: ${$isOpened ? bunFillOut : bunFillIn};
+    transform-origin: center;
+    animation-name: ${$isOpened ? bunMidOpened : bunMidClosed};
   `}
 
   ${({ $isBot, $isOpened }) => $isBot && css`
-    fill: var(--color-bun-bot);
-    animation-name: ${$isOpened ? bunBotOut : bunBotIn};
+    fill: ${$isOpened ? 'currentColor' : 'var(--color-bun-bot)'};
+    animation-name: ${$isOpened ? bunBotOpened : bunBotClosed};
+    transform-origin: bottom center;
   `}
 `;
 const StyledBun = React.memo(StyledBunBase);
@@ -124,11 +122,11 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpened, onToggle, className, 
       ref={ref}
     >
       {t('navigation.menu')}
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" >
-        <StyledBun $isTop $isOpened={isOpened} d="M4 6h24"/>
-        <StyledBun $isMid $isOpened={isOpened} d="M4 12h20"/>
-        <StyledBun $isBot $isOpened={isOpened} d="M4 18h24"/>
-      </svg>
+      <Illustration size={BUN_SIZING.width} height={bunsHeight} viewBox={`0 0 ${BUN_SIZING.width} ${bunsHeight}`} aria-hidden="true">
+        <StyledBun $isTop $isOpened={isOpened} d={`M0 ${BUN_SIZING.height}h${BUN_SIZING.width}V0H0v${bunTopStartY}z`}/>
+        <StyledBun $isMid $isOpened={isOpened} d={`M${bunMidOffsetX} ${BUN_SIZING.height + bunMidStartY}h${BUN_SIZING.width - bunMidOffsetX}V${bunMidStartY}H${bunMidOffsetX}v${BUN_SIZING.height}z`}/>
+        <StyledBun $isBot $isOpened={isOpened} d={`M0 ${BUN_SIZING.height + bunBotStartY}h${BUN_SIZING.width}V${bunBotStartY}H0v${BUN_SIZING.height}z`}/>
+      </Illustration>
     </StyledBurgerMenu>
   );
 };
